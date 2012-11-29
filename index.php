@@ -1,14 +1,17 @@
 <?php
 session_start();
-require 'api/Slim/Slim.php';
+require 'Slim/Slim.php';
+require 'api.php';
 
 $app = new Slim();
 
 $app->get('/', 'index');
-$app->get('/salt' 'salt');
+$app->get('/salt', 'salt');
 $app->get('/login', 'login');
 $app->get('/logout', 'logout');
 
+$api = new API($app);
+$api->setup_routes(is_logged());
 
 function index() 
 {
@@ -69,4 +72,19 @@ function logout()
     unset($_SESSION['login']);
 }
 
+function is_logged()
+{
+    return isset($_SESSION['login']);
+}
+
+$log = $app->getLog();
+$log->setLevel(\Slim\Log::DEBUG);
+// $app->hook('slim.before.dispatch', function () use ($app) {
+//     $res = $app->response();
+//     if($res->isNotFound())
+//     {
+//         
+//     }
+// });
+// print_r($app);
 $app->run();

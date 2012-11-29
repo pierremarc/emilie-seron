@@ -1,12 +1,13 @@
 <?php
 
 
-class API{
+class API
+{
     
-    public function __construct($app, $)
+    public function __construct($app)
     {
         $this->app = $app;
-        
+        $this->setup_db();
     }
     
     private function setup_db()
@@ -19,14 +20,17 @@ class API{
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     
-    private function setup_routes()
+    public function setup_routes($auth = false)
     {
-        $app->get('/api/:table', 'gets');
-        $app->get('/api/:table/:id', 'get');
-        $app->get('/api/:table/search/:query', 'findByName');
-        $app->post('/api/:table', 'add');
-        $app->put('/api/:table/:id', 'update');
-        $app->delete('/api/:table/:id',  'delete');
+        $this->app->get('/api/:table', array(&$this, 'gets'));
+        $this->app->get('/api/:table/:id', array(&$this, 'get'));
+        $this->app->get('/api/:table/search/:query', array(&$this, 'findByName'));
+        if($auth)
+        {
+            $this->app->post('/api/:table', array(&$this, 'add'));
+            $this->app->put('/api/:table/:id', array(&$this, 'update'));
+            $this->app->delete('/api/:table/:id',  array(&$this, 'delete'));
+        }
     }
     
     private function result($body)
@@ -40,8 +44,8 @@ class API{
         $sql = "select * FROM ". $this->db->quote($table)." ORDER BY name";
         try {
             $stmt = $this->db->query($sql);  
-            $wines = $stmt->fetchAll(PDO::FETCH_OBJ);
-            $this->result( '{"wine": ' . json_encode($wines) . '}');
+            $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $this->result( '{"result": ' . json_encode($results) . '}');
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }
@@ -53,8 +57,8 @@ class API{
             $stmt = $this->db->prepare($sql);  
             $stmt->bindParam("id", $id);
             $stmt->execute();
-            $wine = $stmt->fetchObject();
-            $this->result( json_encode($wine) ); 
+            $result = $stmt->fetchObject();
+            $this->result( json_encode($result) ); 
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }
@@ -88,36 +92,34 @@ class API{
     }
 
     public function update($table,$id) {
-        $request = Slim::getInstance()->request();
-        $body = $request->getBody();
-        $wine = json_decode($body);
-        $sql = "UPDATE wine SET name=:name, grapes=:grapes, country=:country, region=:region, year=:year, description=:description WHERE id=:id";
-        try {
-            $db = getConnection();
-            $stmt = $db->prepare($sql);  
-            $stmt->bindParam("name", $wine->name);
-            $stmt->bindParam("grapes", $wine->grapes);
-            $stmt->bindParam("country", $wine->country);
-            $stmt->bindParam("region", $wine->region);
-            $stmt->bindParam("year", $wine->year);
-            $stmt->bindParam("description", $wine->description);
-            $stmt->bindParam("id", $id);
-            $stmt->execute();
-            $db = null;
-            $this->result( json_encode($wine)); 
-        } catch(PDOException $e) {
-            $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
-        }
+//         $request = Slim::getInstance()->request();
+//         $body = $request->getBody();
+//         $wine = json_decode($body);
+//         $sql = "UPDATE wine SET name=:name, grapes=:grapes, country=:country, region=:region, year=:year, description=:description WHERE id=:id";
+//         try {
+//             $db = getConnection();
+//             $stmt = $db->prepare($sql);  
+//             $stmt->bindParam("name", $wine->name);
+//             $stmt->bindParam("grapes", $wine->grapes);
+//             $stmt->bindParam("country", $wine->country);
+//             $stmt->bindParam("region", $wine->region);
+//             $stmt->bindParam("year", $wine->year);
+//             $stmt->bindParam("description", $wine->description);
+//             $stmt->bindParam("id", $id);
+//             $stmt->execute();
+//             $db = null;
+//             $this->result( json_encode($wine)); 
+//         } catch(PDOException $e) {
+//             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
+//         }
     }
 
     public function delete($table,$id) {
         $sql = "DELETE FROM ". $this->db->quote($table)." WHERE id=:id";
         try {
-            $db = getConnection();
-            $stmt = $db->prepare($sql);  
+            $stmt = $this->db->prepare($sql);  
             $stmt->bindParam("id", $id);
             $stmt->execute();
-            $db = null;
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }
@@ -126,14 +128,12 @@ class API{
     public function findByName($table,$query) {
         $sql = "SELECT * FROM ". $this->db->quote($table)." WHERE UPPER(name) LIKE :query ORDER BY name";
         try {
-            $db = getConnection();
-            $stmt = $db->prepare($sql);
+            $stmt = $this->db->prepare($sql);
             $query = "%".$query."%";  
             $stmt->bindParam("query", $query);
             $stmt->execute();
-            $wines = $stmt->fetchAll(PDO::FETCH_OBJ);
-            $db = null;
-            $this->result( '{"wine": ' . json_encode($wines) . '}');
+            $results = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $this->result( '{"result": ' . json_encode($results) . '}');
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }
