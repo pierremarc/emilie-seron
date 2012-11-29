@@ -22,6 +22,8 @@ class API
     
     public function setup_routes($auth = false)
     {
+        $that = $this;
+        //         $this->app->get('/api/:table', function(){ $that->gets($table); });
         $this->app->get('/api/:table', array(&$this, 'gets'));
         $this->app->get('/api/:table/:id', array(&$this, 'get'));
         $this->app->get('/api/:table/search/:query', array(&$this, 'findByName'));
@@ -37,11 +39,12 @@ class API
     {
         $res = $this->app->response();
         $res['Content-Type'] = 'application/json';
+        error_log('[RESULT]' .$body);
         $res->body($body);
     }
     
     public function gets($table) {
-        $sql = "select * FROM ". $this->db->quote($table)." ORDER BY name";
+        $sql = "select * FROM ". $table." ORDER BY name";
         try {
             $stmt = $this->db->query($sql);  
             $results = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -52,7 +55,7 @@ class API
     }
 
     public function get($table,$id) {
-        $sql = "SELECT * FROM ". $this->db->quote($table)." WHERE id=:id";
+        $sql = "SELECT * FROM ". $table." WHERE id=:id";
         try {
             $stmt = $this->db->prepare($sql);  
             $stmt->bindParam("id", $id);
@@ -76,7 +79,7 @@ class API
             $cols1[] = ':'.$cv[0];
             $vals[] = $cv[1];
         }
-        $sql = "INSERT INTO ".$this->db->quote($table)." (".implode(',',$cols0).") VALUES (".implode(',',$cols1).")";
+        $sql = "INSERT INTO ".$table." (".implode(',',$cols0).") VALUES (".implode(',',$cols1).")";
         try {
             $stmt = $this->db->prepare($sql); 
             foreach($req_data['insert'] as $cv)
@@ -115,7 +118,7 @@ class API
     }
 
     public function delete($table,$id) {
-        $sql = "DELETE FROM ". $this->db->quote($table)." WHERE id=:id";
+        $sql = "DELETE FROM ". $table." WHERE id=:id";
         try {
             $stmt = $this->db->prepare($sql);  
             $stmt->bindParam("id", $id);
@@ -126,7 +129,7 @@ class API
     }
 
     public function findByName($table,$query) {
-        $sql = "SELECT * FROM ". $this->db->quote($table)." WHERE UPPER(name) LIKE :query ORDER BY name";
+        $sql = "SELECT * FROM ". $table." WHERE UPPER(name) LIKE :query ORDER BY name";
         try {
             $stmt = $this->db->prepare($sql);
             $query = "%".$query."%";  

@@ -6,12 +6,19 @@
 <html>
 <head>
 <title></title>
-<link rel="stylesheet" href="css/styles.css" />
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/seron.js"></script>
 </head>
 
 <body>
 
-<h1><?php echo $title ?></h1>
+<div id="map">
+</div>
+<div id="header">
+</div>
+<div id="index">
+</div>
 
 </body>
 </html>

@@ -1,9 +1,16 @@
 <?php
 session_start();
-require 'Slim/Slim.php';
+require 'Slim/Slim/Slim.php';
+\Slim\Slim::registerAutoloader();
+
 require 'api.php';
 
-$app = new Slim();
+$app = new \Slim\Slim(array(
+    'mode' =>'development',
+    'debug' => true,
+    'log.level' => \Slim\Log::DEBUG,
+    'templates.path' => './templates'
+    ));
 
 $app->get('/', 'index');
 $app->get('/salt', 'salt');
@@ -66,7 +73,6 @@ function login()
     
 }
 
-
 function logout()
 {
     unset($_SESSION['login']);
@@ -77,8 +83,6 @@ function is_logged()
     return isset($_SESSION['login']);
 }
 
-$log = $app->getLog();
-$log->setLevel(\Slim\Log::DEBUG);
 // $app->hook('slim.before.dispatch', function () use ($app) {
 //     $res = $app->response();
 //     if($res->isNotFound())
@@ -87,4 +91,11 @@ $log->setLevel(\Slim\Log::DEBUG);
 //     }
 // });
 // print_r($app);
+
+$app->notFound(function () use ($app) {
+    $req = $app->request();
+    $res = $app->response();
+    error_log('[404] '.$req->getResourceUri());
+});
+
 $app->run();
