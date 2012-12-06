@@ -1,0 +1,1122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1520"
+   height="1500"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="es-lyt2.svg"
+   enable-background="new">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0074671"
+     inkscape:cx="976.72575"
+     inkscape:cy="430.18545"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer6"
+     showgrid="false"
+     inkscape:showpageshadow="false"
+     borderlayer="true"
+     inkscape:window-width="1280"
+     inkscape:window-height="744"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     showborder="false"
+     inkscape:object-nodes="true"
+     inkscape:snap-smooth-nodes="true">
+    <inkscape:grid
+       originy="20px"
+       spacingy="40px"
+       spacingx="40px"
+       snapvisiblegridlinesonly="true"
+       enabled="true"
+       visible="true"
+       empspacing="10"
+       id="grid3813"
+       type="xygrid" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4">
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter4726">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.3"
+         id="feFlood4728" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite4730" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="6"
+         id="feGaussianBlur4732" />
+      <feOffset
+         result="offset"
+         dy="5"
+         dx="-10"
+         id="feOffset4734" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite4736" />
+    </filter>
+    <filter
+       color-interpolation-filters="sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter4738">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.3"
+         id="feFlood4740" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite4742" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="6"
+         id="feGaussianBlur4744" />
+      <feOffset
+         result="offset"
+         dy="5"
+         dx="-10"
+         id="feOffset4746" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite4748" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5101">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5103" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5105" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5107" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5109" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5111" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5125">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5127" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5129" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5131" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5133" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5135" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5137">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5139" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5141" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5143" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5145" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5147" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5782">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5784" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5786" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5788" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5790" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5792" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5794">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5796" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5798" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5800" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5802" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5804" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5806">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5808" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5810" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5812" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5814" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5816" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5818">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5820" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5822" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5824" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5826" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5828" />
+    </filter>
+    <filter
+       inkscape:label="Drop Shadow"
+       style="color-interpolation-filters:sRGB;"
+       id="filter5830">
+      <feFlood
+         result="flood"
+         flood-color="rgb(0,0,0)"
+         flood-opacity="0.4"
+         id="feFlood5832" />
+      <feComposite
+         result="composite1"
+         operator="in"
+         in="flood"
+         in2="SourceGraphic"
+         id="feComposite5834" />
+      <feGaussianBlur
+         result="blur"
+         stdDeviation="2.5"
+         in="composite"
+         id="feGaussianBlur5836" />
+      <feOffset
+         result="offset"
+         dy="3"
+         dx="2"
+         id="feOffset5838" />
+      <feComposite
+         result="composite2"
+         operator="over"
+         in="SourceGraphic"
+         in2="offset"
+         id="feComposite5840" />
+    </filter>
+    <filter
+       inkscape:label="filter9252"
+       id="filter9252"
+       inkscape:collect="always">
+      <feGaussianBlur
+         id="feGaussianBlur9254"
+         stdDeviation="0.01"
+         inkscape:collect="always" />
+    </filter>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     style="display:inline"
+     transform="translate(0,447.63782)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <flowRoot
+       transform="translate(-1985.1073,-3158.3406)"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot3263"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3265"><rect
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="341.76974"
+           width="519.98657"
+           id="rect3267" /></flowRegion><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3269">« Il faut que tout soit vivant. </flowPara><flowPara
+         id="flowPara3271"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  Si l’histoire est portée par des personnages </flowPara><flowPara
+         id="flowPara3273"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  forts, l’image arrivera.» </flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3275">  Emilie a publié plusieurs albums pour enfants.</flowPara><flowPara
+         id="flowPara3277"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  Elle travaille aussi pour Victoire,</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3279">  le supplément du journal Le Soir. </flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3281">  Ses dessins sont colorés, minutieux et plein</flowPara><flowPara
+         id="flowPara3283"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  d’humour. Un peu féroce, parfois.</flowPara><flowPara
+         id="flowPara3285"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /><flowPara
+         id="flowPara3287"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">emilieseron@yahoo.fr  </flowPara><flowPara
+         id="flowPara3289" /><flowPara
+         id="flowPara3291" /><flowPara
+         id="flowPara3293" /><flowPara
+         id="flowPara3295" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3297"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       transform="translate(-1985.1073,-3231.0826)"><flowRegion
+         id="flowRegion3299"><rect
+           id="rect3301"
+           width="189.92842"
+           height="38.473034"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /></flowRegion><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3303">Émilie Seron  </flowPara><flowPara
+         id="flowPara3305" /><flowPara
+         id="flowPara3307" /><flowPara
+         id="flowPara3309" /><flowPara
+         id="flowPara3311" /></flowRoot>    <flowRoot
+       transform="translate(-1625.1073,-3239.3176)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       id="flowRoot3313"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3315"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+           y="114.28571"
+           x="262.85715"
+           height="32.647789"
+           width="118.08378"
+           id="rect3317" /></flowRegion><flowPara
+         id="flowPara3319"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">Édition  </flowPara><flowPara
+         id="flowPara3321" /><flowPara
+         id="flowPara3323" /><flowPara
+         id="flowPara3325" /><flowPara
+         id="flowPara3327" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3361"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       transform="translate(-1745.1073,-3239.3176)"><flowRegion
+         id="flowRegion3363"><rect
+           id="rect3365"
+           width="118.08378"
+           height="32.647789"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3367">News</flowPara><flowPara
+         id="flowPara3369" /><flowPara
+         id="flowPara3371" /><flowPara
+         id="flowPara3373" /><flowPara
+         id="flowPara3375" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3381"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       transform="translate(-1330.1073,-3160.3406)"><flowRegion
+         id="flowRegion3383"><rect
+           id="rect3385"
+           width="519.98657"
+           height="341.76974"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /></flowRegion><flowPara
+         id="flowPara3387"
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi">« Il faut que tout soit vivant. </flowPara><flowPara
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi"
+         id="flowPara3389">  Si l’histoire est portée par des personnages </flowPara><flowPara
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi"
+         id="flowPara3391">  forts, l’image arrivera.» </flowPara><flowPara
+         id="flowPara3393"
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi">  Emilie a publié plusieurs albums pour enfants.</flowPara><flowPara
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi"
+         id="flowPara3395">  Elle travaille aussi pour Victoire,</flowPara><flowPara
+         id="flowPara3397"
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi">  le supplément du journal Le Soir. </flowPara><flowPara
+         id="flowPara3399"
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi">  Ses dessins sont colorés, minutieux et plein</flowPara><flowPara
+         style="font-size:19px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:129.99999523%;writing-mode:lr-tb;text-anchor:start;font-family:Trocchi;-inkscape-font-specification:Trocchi"
+         id="flowPara3401">  d’humour. Un peu féroce, parfois.</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3403" /><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3405">emilieseron@yahoo.fr  </flowPara><flowPara
+         id="flowPara3407" /><flowPara
+         id="flowPara3409" /><flowPara
+         id="flowPara3411" /><flowPara
+         id="flowPara3413" /></flowRoot>    <flowRoot
+       transform="translate(-1330.1073,-3233.0826)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot3415"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3417"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="38.473034"
+           width="189.92842"
+           id="rect3419" /></flowRegion><flowPara
+         id="flowPara3421"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">Émilie Seron  </flowPara><flowPara
+         id="flowPara3423" /><flowPara
+         id="flowPara3425" /><flowPara
+         id="flowPara3427" /><flowPara
+         id="flowPara3429" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3431"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       transform="translate(-970.10731,-3241.3176)"><flowRegion
+         id="flowRegion3433"><rect
+           id="rect3435"
+           width="118.08378"
+           height="32.647789"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3437">Édition  </flowPara><flowPara
+         id="flowPara3439" /><flowPara
+         id="flowPara3441" /><flowPara
+         id="flowPara3443" /><flowPara
+         id="flowPara3445" /></flowRoot>    <flowRoot
+       transform="translate(-1090.1073,-3241.3176)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       id="flowRoot3447"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3449"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+           y="114.28571"
+           x="262.85715"
+           height="32.647789"
+           width="118.08378"
+           id="rect3451" /></flowRegion><flowPara
+         id="flowPara3453"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">News</flowPara><flowPara
+         id="flowPara3455" /><flowPara
+         id="flowPara3457" /><flowPara
+         id="flowPara3459" /><flowPara
+         id="flowPara3461" /></flowRoot>    <flowRoot
+       transform="translate(-802.60561,-3160.3406)"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot3463"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3465"><rect
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="341.76974"
+           width="519.98657"
+           id="rect3467" /></flowRegion><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle"
+         id="flowPara3469">« Il faut que tout soit vivant. </flowPara><flowPara
+         id="flowPara3471"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle">  Si l’histoire est portée par des personnages </flowPara><flowPara
+         id="flowPara3473"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle">  forts, l’image arrivera.» </flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle"
+         id="flowPara3475">  Emilie a publié plusieurs albums pour enfants.</flowPara><flowPara
+         id="flowPara3477"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle">  Elle travaille aussi pour Victoire,</flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle"
+         id="flowPara3479">  le supplément du journal Le Soir. </flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle"
+         id="flowPara3481">  Ses dessins sont colorés, minutieux et plein</flowPara><flowPara
+         id="flowPara3483"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Chicle;-inkscape-font-specification:Chicle">  d’humour. Un peu féroce, parfois.</flowPara><flowPara
+         id="flowPara3485"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /><flowPara
+         id="flowPara3487"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">emilieseron@yahoo.fr  </flowPara><flowPara
+         id="flowPara3489" /><flowPara
+         id="flowPara3491" /><flowPara
+         id="flowPara3493" /><flowPara
+         id="flowPara3495" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3497"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       transform="translate(-802.60561,-3233.0826)"><flowRegion
+         id="flowRegion3499"><rect
+           id="rect3501"
+           width="189.92842"
+           height="38.473034"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /></flowRegion><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3503">Émilie Seron  </flowPara><flowPara
+         id="flowPara3505" /><flowPara
+         id="flowPara3507" /><flowPara
+         id="flowPara3509" /><flowPara
+         id="flowPara3511" /></flowRoot>    <flowRoot
+       transform="translate(-442.60561,-3241.3176)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       id="flowRoot3513"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3515"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+           y="114.28571"
+           x="262.85715"
+           height="32.647789"
+           width="118.08378"
+           id="rect3517" /></flowRegion><flowPara
+         id="flowPara3519"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">Édition  </flowPara><flowPara
+         id="flowPara3521" /><flowPara
+         id="flowPara3523" /><flowPara
+         id="flowPara3525" /><flowPara
+         id="flowPara3527" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3529"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       transform="translate(-562.60561,-3241.3176)"><flowRegion
+         id="flowRegion3531"><rect
+           id="rect3533"
+           width="118.08378"
+           height="32.647789"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3535">News</flowPara><flowPara
+         id="flowPara3537" /><flowPara
+         id="flowPara3539" /><flowPara
+         id="flowPara3541" /><flowPara
+         id="flowPara3543" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3545"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       transform="translate(-262.37596,-3160.3406)"><flowRegion
+         id="flowRegion3547"><rect
+           id="rect3549"
+           width="519.98657"
+           height="341.76974"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /></flowRegion><flowPara
+         id="flowPara3551"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '">« Il faut que tout soit vivant. </flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '"
+         id="flowPara3553">  Si l’histoire est portée par des personnages </flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '"
+         id="flowPara3555">  forts, l’image arrivera.» </flowPara><flowPara
+         id="flowPara3557"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '">  Emilie a publié plusieurs albums pour enfants.</flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '"
+         id="flowPara3559">  Elle travaille aussi pour Victoire,</flowPara><flowPara
+         id="flowPara3561"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '">  le supplément du journal Le Soir. </flowPara><flowPara
+         id="flowPara3563"
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '">  Ses dessins sont colorés, minutieux et plein</flowPara><flowPara
+         style="font-size:21px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:'Vidaloka ';-inkscape-font-specification:'Vidaloka '"
+         id="flowPara3565">  d’humour. Un peu féroce, parfois.</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3567" /><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3569">emilieseron@yahoo.fr  </flowPara><flowPara
+         id="flowPara3571" /><flowPara
+         id="flowPara3573" /><flowPara
+         id="flowPara3575" /><flowPara
+         id="flowPara3577" /></flowRoot>    <flowRoot
+       transform="translate(-262.37596,-3233.0826)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot3579"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3581"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="38.473034"
+           width="189.92842"
+           id="rect3583" /></flowRegion><flowPara
+         id="flowPara3585"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">Émilie Seron  </flowPara><flowPara
+         id="flowPara3587" /><flowPara
+         id="flowPara3589" /><flowPara
+         id="flowPara3591" /><flowPara
+         id="flowPara3593" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3595"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       transform="translate(97.624039,-3241.3176)"><flowRegion
+         id="flowRegion3597"><rect
+           id="rect3599"
+           width="118.08378"
+           height="32.647789"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3601">Édition  </flowPara><flowPara
+         id="flowPara3603" /><flowPara
+         id="flowPara3605" /><flowPara
+         id="flowPara3607" /><flowPara
+         id="flowPara3609" /></flowRoot>    <flowRoot
+       transform="translate(-22.375961,-3241.3176)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       id="flowRoot3611"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3613"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+           y="114.28571"
+           x="262.85715"
+           height="32.647789"
+           width="118.08378"
+           id="rect3615" /></flowRegion><flowPara
+         id="flowPara3617"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium">News</flowPara><flowPara
+         id="flowPara3619" /><flowPara
+         id="flowPara3621" /><flowPara
+         id="flowPara3623" /><flowPara
+         id="flowPara3625" /></flowRoot>    <text
+       xml:space="preserve"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="160"
+       y="6339.7915"
+       id="text4232"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4234"
+         x="160"
+         y="6339.7915"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">Titre</tspan></text>
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="up1"
+     id="layer3"
+     inkscape:groupmode="layer">
+    <image
+       width="1837.7935"
+       height="1309.0039"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/carnaval.jpg"
+       id="image4238"
+       x="699.41888"
+       y="5181.3018"
+       style="display:inline" />
+  </g>
+  <g
+     style="display:none"
+     inkscape:label="up2"
+     id="layer4"
+     inkscape:groupmode="layer" />
+  <g
+     style="display:inline;filter:url(#filter9252)"
+     inkscape:label="up3"
+     id="layer5"
+     inkscape:groupmode="layer">
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3072"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       transform="translate(159.2389,618.73462)"><flowRegion
+         id="flowRegion3074"><rect
+           id="rect3076"
+           width="519.98657"
+           height="341.76974"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /></flowRegion><flowPara
+         id="flowPara3078"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">« Il faut que tout soit vivant. </flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3080">  Si l’histoire est portée par des personnages </flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3082">  forts, l’image arrivera.» </flowPara><flowPara
+         id="flowPara3084"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  Emilie a publié plusieurs albums pour enfants.</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3086">  Elle travaille aussi pour Victoire,</flowPara><flowPara
+         id="flowPara3088"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  le supplément du journal Le Soir. </flowPara><flowPara
+         id="flowPara3090"
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">  Ses dessins sont colorés, minutieux et plein</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3092">  d’humour. Un peu féroce, parfois.</flowPara><flowPara
+         style="font-size:25px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara3094" /><flowPara
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         id="flowPara3096">emilieseron@yahoo.fr  </flowPara><flowPara
+         id="flowPara3098" /><flowPara
+         id="flowPara3100" /><flowPara
+         id="flowPara3102" /><flowPara
+         id="flowPara3104" /></flowRoot>    <g
+       transform="matrix(0.71060113,0,0,0.71060113,2966.3102,468.29062)"
+       id="g9226">
+      <image
+         y="2420.0754"
+         x="-313.81952"
+         id="image4532"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/loup%20de%20minuit%201.jpg"
+         height="1063"
+         width="1211" />
+      <image
+         style="display:inline"
+         y="2421.3413"
+         x="920.08698"
+         id="image4894"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/alors%205-6.jpg"
+         height="1064.0588"
+         width="1695.9044" />
+      <image
+         style="display:inline"
+         y="2424.1323"
+         x="2650.1804"
+         id="image5287"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/alors%203-4.jpg"
+         height="1044"
+         width="1716" />
+    </g>
+    <g
+       transform="translate(-4877.9173,1044.758)"
+       id="g9221">
+      <image
+         style="display:inline"
+         y="516.19238"
+         x="8353.2627"
+         id="image5427"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/ca360d13505f76.jpg"
+         height="610.95605"
+         width="594.28406" />
+      <image
+         style="display:inline"
+         y="53.126053"
+         x="7737.4888"
+         id="image5049"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/c25f87dc53b1a0.jpg"
+         height="610.95605"
+         width="594.28406" />
+      <image
+         style="display:inline"
+         y="4.7647476"
+         x="8350.9453"
+         id="image5349"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/from-web/56839be91f9abf.jpg"
+         height="610.95605"
+         width="594.28406" />
+    </g>
+    <image
+       width="1590.5"
+       height="628"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/garden%20of%20delays/garden%20of%20delays%20def%20de%20def.jpg"
+       id="image3260"
+       x="1010.7419"
+       y="841.25403"
+       style="display:inline" />
+    <image
+       width="703"
+       height="500"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/carnavalrvb.jpg"
+       id="image4906"
+       x="1432.6232"
+       y="1620.104" />
+    <image
+       width="703"
+       height="500"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/dans%20les%20choux%20rvb.jpg"
+       id="image4984"
+       x="1432.1124"
+       y="2148.9768" />
+    <image
+       width="500"
+       height="703"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/automnervb.jpg"
+       id="image5192"
+       x="2168.5696"
+       y="1620.4972" />
+    <image
+       width="703"
+       height="500"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/mane%CC%80gervb.jpg"
+       id="image5621"
+       x="1434.3698"
+       y="2672.7756" />
+    <g
+       transform="translate(-4937.9173,1044.758)"
+       id="g9209">
+      <image
+         y="542.65161"
+         x="4795.5093"
+         id="image5062"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/Fiesta%20dans%20les%20sous-bois.jpg"
+         height="500"
+         width="715"
+         style="filter:url(#filter5101)" />
+      <image
+         y="1076.7885"
+         x="5754.3442"
+         id="image5270"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/L'attente.jpg"
+         height="715"
+         width="500"
+         style="filter:url(#filter5818)" />
+      <image
+         y="1075.6654"
+         x="5005.311"
+         id="image5412"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/Les%20bonnes%20fe%CC%81es.jpg"
+         height="500"
+         width="715"
+         style="filter:url(#filter5794)" />
+      <image
+         y="547.08936"
+         x="5563.3018"
+         id="image5779"
+         xlink:href="file:///home/ludi/wrk/emilie-seron/pict/cartes%20postales/small/Naissance.jpg"
+         height="500"
+         width="715"
+         style="filter:url(#filter5782)" />
+    </g>
+    <image
+       width="107.64884"
+       height="90.257111"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/small/boom1.jpg"
+       id="image9334"
+       x="729.04071"
+       y="1073.0052"
+       style="display:inline" />
+    <image
+       width="186.67491"
+       height="139.28819"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/small/course1.jpg"
+       id="image9396"
+       x="2786.668"
+       y="1727.7585"
+       style="display:inline" />
+    <image
+       width="102.82654"
+       height="92.543884"
+       xlink:href="file:///home/ludi/wrk/emilie-seron/pict/small/fleur1.jpg"
+       id="image9458"
+       x="2597.6404"
+       y="2401.9717" />
+  </g>
+  <g
+     style="display:inline"
+     transform="translate(0,520)"
+     inkscape:label="g"
+     id="layer2"
+     inkscape:groupmode="layer" />
+  <g
+     style="display:inline"
+     inkscape:label="frame "
+     id="layer6"
+     inkscape:groupmode="layer">
+    <path
+       style="fill:#cccccc;fill-opacity:1;fill-rule:nonzero;stroke:none;display:inline"
+       d="m -174.0204,-53.51605 0,2282.80085 2246.5462,0 0,-2282.80085 z m 581.016,735.53793 1120.0002,0 0,750.00002 -1120.0002,0 z"
+       id="path12169"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccc" />
+    <rect
+       y="681.02936"
+       x="407.02899"
+       height="40"
+       width="1120.9592"
+       id="rect8741"
+       style="fill:#ffffff;fill-opacity:1;stroke:none;display:inline" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text8718"
+       y="712.38702"
+       x="870.15326"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         y="712.38702"
+         x="870.15326"
+         id="tspan8720"
+         sodipodi:role="line">Titre</tspan></text>
+    <flowRoot
+       transform="translate(163.2389,582.37978)"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot3108"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3110"><rect
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="38.473034"
+           width="189.92842"
+           id="rect3112" /></flowRegion><flowPara
+         id="flowPara3114"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">Émilie Seron  </flowPara><flowPara
+         id="flowPara3116" /><flowPara
+         id="flowPara3118" /><flowPara
+         id="flowPara3120" /><flowPara
+         id="flowPara3122" /></flowRoot>    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3124"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       transform="translate(1163.2389,570.14478)"><flowRegion
+         id="flowRegion3126"><rect
+           id="rect3128"
+           width="118.08378"
+           height="32.647789"
+           x="262.85715"
+           y="114.28571"
+           style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
+         id="flowPara3138">Infos</flowPara></flowRoot>    <rect
+       y="1396.5073"
+       x="2898.8938"
+       height="761.46069"
+       width="293.46356"
+       id="rect4173"
+       style="fill:#f5f1f4;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9252)"
+       transform="matrix(0.12405021,0,0,0.9856616,1132.6884,-695.93074)" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text4330"
+       y="707.02936"
+       x="1509.9882"
+       style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+       xml:space="preserve"><tspan
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:104.99999523%;writing-mode:lr-tb;text-anchor:middle;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         y="707.02936"
+         x="1509.9882"
+         id="tspan4332"
+         sodipodi:role="line">I</tspan><tspan
+         id="tspan4768"
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:104.99999523%;writing-mode:lr-tb;text-anchor:middle;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         y="735.37933"
+         x="1509.9882"
+         sodipodi:role="line">N</tspan><tspan
+         id="tspan4770"
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:104.99999523%;writing-mode:lr-tb;text-anchor:middle;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         y="763.72937"
+         x="1509.9882"
+         sodipodi:role="line">D</tspan><tspan
+         id="tspan4772"
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:104.99999523%;writing-mode:lr-tb;text-anchor:middle;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         y="792.07935"
+         x="1509.9882"
+         sodipodi:role="line">E</tspan><tspan
+         id="tspan4774"
+         style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:center;line-height:104.99999523%;writing-mode:lr-tb;text-anchor:middle;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
+         y="820.42938"
+         x="1509.9882"
+         sodipodi:role="line">X</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="etiquette"
+     style="display:inline">
+    <path
+       sodipodi:type="arc"
+       style="fill:#ff4f39;fill-opacity:1;stroke:none"
+       id="path5621"
+       sodipodi:cx="1581.1931"
+       sodipodi:cy="1809.6875"
+       sodipodi:rx="84.370003"
+       sodipodi:ry="84.370003"
+       d="m 1665.5631,1809.6875 a 84.370003,84.370003 0 1 1 -168.74,0 84.370003,84.370003 0 1 1 168.74,0 z"
+       transform="matrix(1.1264706,0,0,1.1264706,-156.54869,-347.83845)" />
+    <flowRoot
+       transform="matrix(0.99999951,9.9084378e-4,-9.9084378e-4,0.99999951,1292.8,1519.2215)"
+       style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;filter:url(#filter9252);font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+       id="flowRoot5414"
+       xml:space="preserve"><flowRegion
+         id="flowRegion5416"><rect
+           style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+           y="114.28571"
+           x="262.85715"
+           height="199.62744"
+           width="177.33734"
+           id="rect5418" /></flowRegion><flowPara
+         id="flowPara5434"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium">Bonjour !</flowPara><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara5483">Je dédicace samedi à </flowPara><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara5623">la librairie Tropisme </flowPara><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara5485">venez me voir entre </flowPara><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara5625">16 et 19h!</flowPara><flowPara
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
+         id="flowPara5487" /><flowPara
+         id="flowPara5436"
+         style="font-size:18px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium" /><flowPara
+         id="flowPara5438"
+         style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:116.99999571%;writing-mode:lr-tb;text-anchor:start;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /><flowPara
+         id="flowPara5440" /><flowPara
+         id="flowPara5442" /><flowPara
+         id="flowPara5444" /><flowPara
+         id="flowPara5446" /></flowRoot>  </g>
+</svg>
