@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0074671"
-     inkscape:cx="976.72575"
-     inkscape:cy="430.18545"
+     inkscape:zoom="0.50373355"
+     inkscape:cx="1399.5683"
+     inkscape:cy="295.19345"
      inkscape:document-units="px"
      inkscape:current-layer="layer6"
      showgrid="false"
@@ -994,16 +994,16 @@
        sodipodi:linespacing="125%"
        id="text8718"
        y="712.38702"
-       x="870.15326"
+       x="431.42926"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
          y="712.38702"
-         x="870.15326"
+         x="431.42926"
          id="tspan8720"
          sodipodi:role="line">Titre</tspan></text>
     <flowRoot
-       transform="translate(163.2389,582.37978)"
+       transform="translate(1102.6721,582.37978)"
        style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
        id="flowRoot3108"
        xml:space="preserve"><flowRegion
@@ -1023,7 +1023,7 @@
        xml:space="preserve"
        id="flowRoot3124"
        style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium"
-       transform="translate(1163.2389,570.14478)"><flowRegion
+       transform="translate(1125.906,605.92243)"><flowRegion
          id="flowRegion3126"><rect
            id="rect3128"
            width="118.08378"
@@ -1031,7 +1031,8 @@
            x="262.85715"
            y="114.28571"
            style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;stroke:none;font-family:LetsTrace;-inkscape-font-specification:LetsTrace Medium" /></flowRegion><flowPara
-         id="flowPara3138">Infos</flowPara></flowRoot>    <rect
+         id="flowPara3138"
+         style="font-size:15px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:1.33000004px;writing-mode:lr-tb;text-anchor:start;font-family:Quicksand;-inkscape-font-specification:Quicksand">INFOS</flowPara></flowRoot>    <rect
        y="1396.5073"
        x="2898.8938"
        height="761.46069"
