@@ -6,22 +6,41 @@
     <title> Emilie Seron - header-index </title>
     <meta name="ES" content="portfolio">
     <link rel="stylesheet" type="text/css" media="all" href="styles.css"/></style>
-   
+    
 </head>
 
 <body>  
 
 <div id="header">
+
+    <div id="name-box">
+        <a class="name-link" href="http://emilieseron.ultra-book.com/">Emilie Seron</a>
+    </div>
    
     <div id="titre-box"> 
         <div class="job">Titre</div>
     </div>
     
-     <div id="name-box">
-        <a class="name-link" href="http://emilieseron.ultra-book.com/">Emilie Seron</a>
-        <span class="about-link"> about</span>
-    </div>
+    <div id="about-box"> 
+        <p class="about-link">about</p>
+    </div>    
     
-    
-    
+</div>
+
+
+<div id="onglet-index-box">
+        <div class="onglet-txt">I</div>
+        <div class="onglet-txt">N</div>
+        <div class="onglet-txt">D</div>
+        <div class="onglet-txt">E</div>
+        <div class="onglet-txt">X</div>
+     </div>
+
+</div>
+
+<div id="index-box">
+            <div class="index parts">Livres</div>
+            <div class="index parts">Gravures</div>
+            <div class="index parts">Presse</div>
+            <div class="index parts">Autres</div>
 </div>

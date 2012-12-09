@@ -9,10 +9,13 @@ Version: 0000
 xxx
 .
 */
+html { 
+    font-size: 100%; 
+} 
 
 @font-face {
-    font-family: Goud;
-    src: url("./EBGaramond-Regular.ttf") format('truetype');
+    font-family: Sorts Mill Goudy;
+    src: url("./GoudyStM-webfont.ttf");
 }
 @font-face {
     font-family: Quick;
@@ -24,7 +27,7 @@ xxx
 *  border: 0px;
 *  margin: 0;
 *  padding: 0px;
-*  font-family: Goud, Nimbus Roman, serif;
+*  font-family: Sorts Mill Goudy;
 *  color: black;
 }
 ul, li {
@@ -46,43 +49,46 @@ a{
     position: absolute;
     z-index:100;
     background-color:yellow;
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
     margin-bottom: 15px;
     width: 99%;
-    height: 55px;
-}
-
-#titre-box {
-    float: left;
-    width: 200px;
-    margin-left: 15px;
-    margin-top:5px;
-}
-.job {
-    font-family: Goud, serif;
-    font-size: 30px;
-    text-decoration: none;
+    height: 45px;
+    z-index:-1;
 }
 
 #name-box {
-    float: right;
-    width: 120px;
-    margin-right: 30px;
-    margin-top:15px;
+    float: left;
+    width: 110px;
+    margin-left: 15px;
+    margin-top:20px;
     text-align : center;
-    
 }
 .name-link {
-    font-family: Goud;
+    font-family: Sorts Mill Goudy;
     font-size: 15px;
     text-decoration: none;
 }
 
+#titre-box {
+    position: absolute;
+    width: 30%;
+    margin-top: 10px;
+}
+.job {
+    font-family: Sorts Mill Goudy;
+    font-size: 27px;
+    text-align: center;
+}
+  
+
+#about-box {
+      float: right;
+      width: 200px;
+      margin-left: 15px;
+      margin-top: 5px;
+  }
 .about-link {
     font-family: Quick, sans;
-    font-size: 13px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     text-decoration: none;
@@ -90,3 +96,34 @@ a{
 
 
 /* Index ------------------------------------------------------------- */*
+
+
+#onglet-index-box {
+    cursor:pointer;
+    float: right;
+    height: 100%;
+    width : 50px;
+    background : gray;
+}
+.onglet-txt {
+    font-family: Quick;
+    font-size: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+#index-box {
+    float: right;
+    height: 100%;
+    width : 300px;
+    background : blue;
+}
+
+.index-parts{
+    font-family: Quick;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top : 15px;
+}
+
