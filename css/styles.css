@@ -1,1 +1,129 @@
-* { margin:0; border:none; padding:0; }
+/ **
+Theme Name: Micro jungle
+Theme URI: http://ludi.be
+Description: Custom theme for Emilie Seron
+Author: Ludi Loiseau, Pierre Marchand
+Author URI: http://ludi.be 
+Version: 0000
+.
+xxx
+.
+*/
+html { 
+    font-size: 100%; 
+} 
+
+@font-face {
+    font-family: Sorts Mill Goudy;
+    src: url("./GoudyStM-webfont.ttf");
+}
+@font-face {
+    font-family: Quick;
+    src: url("./QuicksandBook-Regular.ttf") format('truetype');
+}
+
+* {
+*  background: transparent;
+*  border: 0px;
+*  margin: 0;
+*  padding: 0px;
+*  font-family: Sorts Mill Goudy;
+*  color: black;
+}
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+a span{
+    display:none;
+}
+a{
+    text-decoration: none;
+}
+
+/* Header ------------------------------------------------------------- */*
+
+#header {
+    position: absolute;
+    z-index:100;
+    background-color:yellow;
+    margin-bottom: 15px;
+    width: 99%;
+    height: 45px;
+    z-index:-1;
+}
+
+#name-box {
+    float: left;
+    width: 110px;
+    margin-left: 15px;
+    margin-top:20px;
+    text-align : center;
+}
+.name-link {
+    font-family: Sorts Mill Goudy;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+#titre-box {
+    position: absolute;
+    width: 30%;
+    margin-top: 10px;
+}
+.job {
+    font-family: Sorts Mill Goudy;
+    font-size: 27px;
+    text-align: center;
+}
+  
+
+#about-box {
+      float: right;
+      width: 200px;
+      margin-left: 15px;
+      margin-top: 5px;
+  }
+.about-link {
+    font-family: Quick, sans;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+}
+
+
+/* Index ------------------------------------------------------------- */*
+
+
+#onglet-index-box {
+    cursor:pointer;
+    float: right;
+    height: 100%;
+    width : 50px;
+    background : gray;
+}
+.onglet-txt {
+    font-family: Quick;
+    font-size: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+#index-box {
+    float: right;
+    height: 100%;
+    width : 300px;
+    background : blue;
+}
+
+.index-parts{
+    font-family: Quick;
+    font-size: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top : 15px;
+}
+
