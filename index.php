@@ -1,5 +1,7 @@
 <?php
 session_start();
+define('IS_APPLICATION', true);
+
 require 'Slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
@@ -13,12 +15,18 @@ $app = new \Slim\Slim(array(
     ));
 
 $app->get('/', 'index');
+$app->get('/get_images', 'get_images');
 $app->get('/salt', 'salt');
 $app->get('/login', 'login');
-$app->get('/logout', 'logout');
+// if(is_logged())
+{
+    $app->get('/logout', 'logout');
+    $app->post('/upload', 'upload_image');
+}
 
-$api = new API($app);
-$api->setup_routes(is_logged());
+$api = new API($app, '127.0.0.1', 'root', 'plokplok', 'elodie');
+$api->setup_routes(true);
+// $api->setup_routes(is_logged());
 
 function index() 
 {
@@ -81,6 +89,23 @@ function logout()
 function is_logged()
 {
     return isset($_SESSION['login']);
+}
+
+function get_images()
+{
+    global $app;
+    $res = $app->response();
+    $res['Content-Type'] = 'application/json';
+    $res->body(json_encode(glob('images/*.{jpg,jpeg,png}')));
+}
+
+function upload_image()
+{
+    global $app;
+    require('upload.php');
+    $u = new Upload();
+//     $app->render('debug.php', array('debug' => $_FILES));
+    $u->handle_upload('file');
 }
 
 // $app->hook('slim.before.dispatch', function () use ($app) {

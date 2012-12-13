@@ -1,5 +1,8 @@
 <?php
 
+if(!defined('IS_APPLICATION'))
+    return;
+
 class Users
 {
     private $users = array();

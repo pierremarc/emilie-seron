@@ -1,21 +1,23 @@
 <?php
 
+if(!defined('IS_APPLICATION'))
+    return;
 
 class API
 {
     
-    public function __construct($app)
+    public function __construct($app, $dbhost, $dbuser, $dbpass, $dbname)
     {
         $this->app = $app;
-        $this->setup_db();
+        $this->setup_db($dbhost, $dbuser, $dbpass, $dbname);
     }
     
-    private function setup_db()
+    private function setup_db($dbhost, $dbuser, $dbpass, $dbname)
     {
-        $dbhost="127.0.0.1";
-        $dbuser="root";
-        $dbpass="plokplok";
-        $dbname="seron";
+//         $dbhost="127.0.0.1";
+//         $dbuser="root";
+//         $dbpass="plokplok";
+//         $dbname="seron";
         $this->db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);  
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
@@ -26,12 +28,12 @@ class API
         //         $this->app->get('/api/:table', function(){ $that->gets($table); });
         $this->app->get('/api/:table', array(&$this, 'gets'));
         $this->app->get('/api/:table/:id', array(&$this, 'get'));
-        $this->app->get('/api/:table/search/:query', array(&$this, 'findByName'));
+        $this->app->get('/api/:table/search/:column/:query', array(&$this, 'find'));
         if($auth)
         {
-            $this->app->post('/api/:table', array(&$this, 'add'));
-            $this->app->put('/api/:table/:id', array(&$this, 'update'));
-            $this->app->delete('/api/:table/:id',  array(&$this, 'delete'));
+            $this->app->post('/api/:table/add', array(&$this, 'add'));
+            $this->app->put('/api/:table/update/:id', array(&$this, 'update'));
+            $this->app->delete('/api/:table/delete/:id',  array(&$this, 'delete'));
         }
     }
     
@@ -44,7 +46,7 @@ class API
     }
     
     public function gets($table) {
-        $sql = "select * FROM ". $table." ORDER BY name";
+        $sql = "select * FROM ". $table;
         try {
             $stmt = $this->db->query($sql);  
             $results = $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -69,10 +71,11 @@ class API
 
     public function add($table) {
         $request = $this->app->request();
-        $req_data = json_decode($request->getBody());
+        $req_data = json_decode($request->getBody(), true);
         $cols0 = array();
         $cols1 = array();
         $vals = array();
+        var_dump($req_data);
         foreach($req_data['insert'] as $cv)
         {
             $cols0[] = $cv[0];
@@ -84,7 +87,9 @@ class API
             $stmt = $this->db->prepare($sql); 
             foreach($req_data['insert'] as $cv)
             {
-                $stmt->bindParam($cv[0], $cv[1]);
+                $paramName = $cv[0];
+                $paramValue = $cv[1];
+                $stmt->bindParam($paramName, $paramValue);
             }
             $stmt->execute();
             $req_data->id = $this->db->lastInsertId();
@@ -128,12 +133,14 @@ class API
         }
     }
 
-    public function findByName($table,$query) {
-        $sql = "SELECT * FROM ". $table." WHERE UPPER(name) LIKE :query ORDER BY name";
+    public function find($table,$column,$query) {
+        $sql = "SELECT * FROM ". $table." WHERE :column LIKE :query ORDER BY id";
         try {
             $stmt = $this->db->prepare($sql);
             $query = "%".$query."%";  
+            $stmt->bindParam("column", $column);
             $stmt->bindParam("query", $query);
+            error_log($stmt->queryString);
             $stmt->execute();
             $results = $stmt->fetchAll(PDO::FETCH_OBJ);
             $this->result( '{"result": ' . json_encode($results) . '}');

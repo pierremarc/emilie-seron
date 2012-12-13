@@ -10,7 +10,6 @@
     };
     
     ns.api.findAll = function(cb) {
-        console.log('findAll');
         $.ajax({
             type: 'GET',
             url: this.root_url,
@@ -28,8 +27,7 @@
         });
     };
 
-    ns.api.findById = function(id, cb) {
-        console.log('findById: ' + id);
+    ns.api.get = function(id, cb) {
         $.ajax({
             type: 'GET',
             url: this.root_url + '/' + id,
