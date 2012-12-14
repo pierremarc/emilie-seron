@@ -38,15 +38,7 @@ function PostItem(id, container, map, index)
                     });
                     
                     // insert in index
-                    var iit = $('<div class="index-item">'+data.title+'</div>');
-                    iit.on('click', function(evt){
-                        container.css({
-                            left:(-that.x)+'px',
-                            top:(-that.y)+'px'
-                        });
-                        that.show();
-                    });
-            index.append(iit);
+                    index.add(that, container);
                 }
             });
         },
@@ -60,6 +52,37 @@ function PostItem(id, container, map, index)
     
     var ret = Object.create(proto);
     ret.init(id);
+    return ret;
+}
+
+function Index(container)
+{
+    var proto = {
+        init:function(container){
+            this.container = container;
+            this.categories = {};
+        },
+        add:function(post_item, layer){
+            var cat = post_item.data.category;
+            if(this.categories[cat] === undefined)
+            {
+                this.categories[cat] = $('<div class="index-category"></div>');
+                this.categories[cat].append('<div class="index-category-name">'+cat+'</div>');
+                this.container.append(this.categories[cat]);
+            }
+            var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
+            iit.on('click', function(evt){
+                layer.animate({
+                    left:(-post_item.x)+'px',
+                    top:(-post_item.y)+'px'
+                });
+                post_item.show();
+            });
+            this.categories[cat].append(iit);
+        },
+    };
+    var ret = Object.create(proto);
+    ret.init(container);
     return ret;
 }
 
@@ -99,8 +122,9 @@ $(document).ready(function(){
     var map = $('#map');
     var layer = $('#layer');
     layer.draggable();
-    var index = $('#index');
+    var index = Index($('#index'));
     api.set_table('objs');
+    
     api.findAll(function(data){
         var result = data.result;
         for(var i=0; i< result.length; i++)

@@ -299,6 +299,15 @@ Geom.Rect.prototype.translate = function(dx, dy)
 Geom.Rect.prototype.move = function(x, y)
 {this._x = x; this._y = y;}
 
+Geom.Rect.prototype.united = function(r){
+    vat l = Math.min(this.left(), r.left());
+    var t = Math.min(this.top(), r.top());
+    var w = Math.max(this.right(), r.right()) - l;
+    var h = Math.max(this.bottom(), r.bottom()) - t;
+    var ret = new Rect(l,t,w,h);
+    return ret;
+}
+
 Geom.Rect.prototype.intersects = function(r) 
 {
     return (
