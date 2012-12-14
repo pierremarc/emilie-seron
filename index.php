@@ -18,7 +18,7 @@ $app->get('/', 'index');
 $app->get('/get_images', 'get_images');
 $app->get('/salt', 'salt');
 $app->get('/login', 'login');
-// if(is_logged())
+if(is_logged())
 {
     $app->get('/logout', 'logout');
     $app->post('/upload', 'upload_image');
@@ -31,7 +31,7 @@ $api->setup_routes(true);
 function index() 
 {
     global $app;
-    $app->render('base.php', array('title' => 'Emile Seron'));
+    $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged()));
 }
 
 function salt()
@@ -88,6 +88,7 @@ function logout()
 
 function is_logged()
 {
+    return true;
     return isset($_SESSION['login']);
 }
 
@@ -96,7 +97,12 @@ function get_images()
     global $app;
     $res = $app->response();
     $res['Content-Type'] = 'application/json';
-    $res->body(json_encode(glob('images/*.{jpg,jpeg,png}')));
+    $images = array();
+    foreach(glob("images/*.{jpg,jpeg,png}", GLOB_BRACE) as $fn)
+    {
+        $images[] = basename($fn);
+    }
+    $res->body(json_encode($images));
 }
 
 function upload_image()

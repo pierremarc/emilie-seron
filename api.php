@@ -71,28 +71,28 @@ class API
 
     public function add($table) {
         $request = $this->app->request();
-        $req_data = json_decode($request->getBody(), true);
+        $req_data = json_decode($request->post('insert'), true);
         $cols0 = array();
         $cols1 = array();
         $vals = array();
-        var_dump($req_data);
-        foreach($req_data['insert'] as $cv)
+        foreach($req_data as $key=>$rec)
         {
-            $cols0[] = $cv[0];
-            $cols1[] = ':'.$cv[0];
-            $vals[] = $cv[1];
+            $cols0[] = '`'.$key.'`';
+            $cols1[] = ':'.$key;
         }
         $sql = "INSERT INTO ".$table." (".implode(',',$cols0).") VALUES (".implode(',',$cols1).")";
+//         echo('<pre>'.$sql.'</pre>');
         try {
             $stmt = $this->db->prepare($sql); 
-            foreach($req_data['insert'] as $cv)
+            foreach($req_data as $key=>$val)
             {
-                $paramName = $cv[0];
-                $paramValue = $cv[1];
-                $stmt->bindParam($paramName, $paramValue);
+                $paramName = ':'.$key;
+//                 $paramValue = $val;
+//                 echo('<pre>BIND('.$paramName.', '.$paramValue.')</pre>');
+                $stmt->bindParam($paramName, $req_data[$key]);
             }
             $stmt->execute();
-            $req_data->id = $this->db->lastInsertId();
+            $req_data['id'] = $this->db->lastInsertId();
             $this->result( json_encode($req_data) ); 
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 

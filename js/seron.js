@@ -61,9 +61,11 @@ function Index(container)
         init:function(container){
             this.container = container;
             this.categories = {};
+            this.data = [];
         },
         add:function(post_item, layer){
             var cat = post_item.data.category;
+            this.data.push(post_item);
             if(this.categories[cat] === undefined)
             {
                 this.categories[cat] = $('<div class="index-category"></div>');
@@ -80,6 +82,21 @@ function Index(container)
             });
             this.categories[cat].append(iit);
         },
+        go:function(name, layer){
+            for(var i = 0; i < this.data.length; i++)
+            {
+                var p_i = this.data[i];
+                if(p_i.data.title === name)
+                {
+                    layer.animate({
+                        left:(-p_i.x)+'px',
+                        top:(-p_i.y)+'px'
+                    });
+                    p_i.show();
+                    break;
+                }
+            }
+        },
     };
     var ret = Object.create(proto);
     ret.init(container);
@@ -94,28 +111,83 @@ function form_to_json(form)
     inputs.each(function(idx, html_elem){
         var elem = $(html_elem);
         var name = elem.attr('name');
-        var val = elem.val();
-        if(elem.hasClass('integer'))
+        if(name !== undefined)
         {
-            val = parseInt(val);
+            var val = elem.val();
+            if(elem.hasClass('integer'))
+            {
+                val = parseInt(val);
+            }
+            ret[name] = val;
         }
-        ret[name] = val;
         
     });
-    return JSON.stringify({insert:ret});
-}
-
-function save(form)
-{
-    var json_data = form_to_json(form);
-    $.post('/api/objs/add', json_data, function(data){
-        console.log(data);
-    }, 'json');
+    return JSON.stringify(ret);
 }
 
 function upload_file()
 {
     
+}
+
+function FormManager(map, layer)
+{
+    $('.form').hide();
+    var proto = {
+        init:function(map, layer){
+            this.type_txt = 'text_t';
+            this.type_img = 'image_t';
+            this.map = map;
+            this.layer = layer;
+            var that = this;
+            $.get('/get_images', function(data){
+                that.images = data;
+                $('#form-button-text').on('click', function(evt){that.show(that.type_txt);});
+                $('#form-button-image').on('click', function(evt){that.show(that.type_img);});
+            });
+            
+        },
+        show:function(form_t){
+            var form = $('#text-form');
+            if(form_t === this.type_img)
+            {
+                form = $('#image-form');
+                var mediabox = $('#media-item-box');
+                mediabox.empty();
+                var i_img = form.children('input[name="image_file"]');
+                $.each(this.images, function(idx, obj){
+                    var img = $('<div class="media-item"><img src="/images/thumbnails/'+obj+'"/></div>');
+                    img.on('click', {fn:obj}, function(evt){
+                        i_img.val(evt.data.fn);
+                        var thb = $('#form-thumbnail');
+                        thb.empty();
+                        thb.append('<img src="/images/thumbnails/'+evt.data.fn+'"/>');
+                    });
+                    mediabox.append(img);
+                });
+            }
+            var ix = form.children('input[name="x"]');
+            var iy = form.children('input[name="y"]');
+            ix.val(-this.layer.offset().left);
+            iy.val(-this.layer.offset().top);
+            var submit = form.children('.submit');
+            submit.off();
+            var that = this;
+            submit.on('click', function(evt){
+                that.save(form);
+            });
+            form.show();
+        },
+        save:function(form){
+            var json_data = form_to_json(form);
+            $.post('/api/objs/add', {insert:json_data}, function(data){
+                console.log(data);
+            }, 'json');
+        },
+    };
+    var ret = Object.create(proto);
+    ret.init(map, layer);
+    return ret;
 }
 
 $(document).ready(function(){
@@ -124,6 +196,8 @@ $(document).ready(function(){
     layer.draggable();
     var index = Index($('#index'));
     api.set_table('objs');
+    
+    var FM = FormManager(map,layer);
     
     api.findAll(function(data){
         var result = data.result;

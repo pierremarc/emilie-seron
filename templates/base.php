@@ -5,6 +5,7 @@
 ?><!DOCTYPE HTML>
 <html>
 <head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title></title>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.js"></script>
@@ -45,6 +46,26 @@
     z-index:6;
 }
 
+.form{
+    position:absolute;
+    top:22px;
+    left:22px;
+    border:3px solid black;
+    padding:12px;
+    background-color:rgba(255,255,255,.8);
+    width:800px;
+    height:600px;
+    
+}
+
+#medias{
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    overflow:auto;
+}
+
 </style>
 </head>
 
@@ -58,8 +79,11 @@
 <div id="index">
 </div>
 
-<div id="form">
+<?php if($is_logged): ?>
+<div id="text-form" class="form">
 <input type="hidden" name="obj_type" value="text_t" />
+<input type="hidden" name="x" value="0" class="integer" />
+<input type="hidden" name="y" value="0" class="integer" />
 <div>
 title:
 <input type="text" name="title" />
@@ -69,15 +93,37 @@ title:
 content:
 <input type="text" name="text_content" />
 </div>
-<div id="submit">save</div>
+<div class="submit">save</div>
 </div>
 
+<div id="image-form" class="form">
+<input type="hidden" name="obj_type" value="image_t" />
+<input type="hidden" name="x" value="0" class="integer" />
+<input type="hidden" name="y" value="0" class="integer" />
+<input type="hidden" name="image_file" value="" />
 
-<div id="upload">
-<div id="upload_file">[ADD FILE]</div>
-<div id="filelist"></div>
-<div id="submit_upload">upload</div>
+<div> Nom: <input type="text" name="title" /> </div>
+<div> Catégorie: <input type="text" name="category" /> </div>
+<div id="form-thumbnail"></div>
+<div class="submit">Enregistrer</div>
+<div id="medias">
+    <div id="media-item-box"></div>
+    <div id="upload">
+    <div id="upload_file">[ADD FILE]</div>
+    <div id="filelist"></div>
+    <div id="submit_upload">upload</div>
 </div>
+</div>
+</div>
+
+<div id="form-button-box">
+<div id="form-button-text"> Nouveau Texte </div>
+<div id="form-button-image"> Nouvelle Image </div>
+</div>
+<?php endif ?>
+
+
+
 
 
 </body>

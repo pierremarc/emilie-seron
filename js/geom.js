@@ -300,7 +300,7 @@ Geom.Rect.prototype.move = function(x, y)
 {this._x = x; this._y = y;}
 
 Geom.Rect.prototype.united = function(r){
-    vat l = Math.min(this.left(), r.left());
+    var l = Math.min(this.left(), r.left());
     var t = Math.min(this.top(), r.top());
     var w = Math.max(this.right(), r.right()) - l;
     var h = Math.max(this.bottom(), r.bottom()) - t;
