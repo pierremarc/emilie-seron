@@ -203,7 +203,18 @@ function FormManager(map, layer)
             {
                 form = $('#image-form');
                 this.update_images(form);
+                $('#form-thumbnail').empty();
             }
+            
+            var inputs = form.find('input');
+            inputs.each(function(idx, html_elem){
+                var elem = $(html_elem);
+                if(elem.attr('name') !== 'obj_type')
+                {
+                    elem.val('');
+                }
+            });
+            
             var ix = form.find('input[name="x"]');
             var iy = form.find('input[name="y"]');
             ix.val(-this.layer.position().left);
@@ -243,7 +254,9 @@ function FormManager(map, layer)
                 var that = this;
                 submit.on('click', function(evt){
                     var json_data = form_to_json(form);
-                    
+                    api.update(that.data.id, {update:json_data}, function(){
+                        form.hide();
+                    });
                 });
                 form.show();
                     
@@ -251,10 +264,11 @@ function FormManager(map, layer)
         },
         save:function(form){
             var json_data = form_to_json(form);
-            api.add({insert:json_data});
-//             $.post('/api/objs/add', {insert:json_data}, function(data){
-//                 console.log(data);
-//             }, 'json');
+            var that = this;
+            api.add({insert:json_data}, function(data){
+                PostItem(data.id, that.layer, that.map, that.index);
+                form.hide();
+            });
         },
     };
     var ret = Object.create(proto);
@@ -268,6 +282,7 @@ $(document).ready(function(){
     layer.draggable();
     var FM = FormManager(map, layer);
     var index = Index($('#index'), FM);
+    FM.index = index;
     api.set_table('objs');
     
     
@@ -277,7 +292,7 @@ $(document).ready(function(){
         {
             var w = result[i];
             try{
-                var pit = PostItem(w.id, layer, map, index);
+                PostItem(w.id, layer, map, index);
             }
             catch(e)
             {
