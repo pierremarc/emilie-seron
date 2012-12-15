@@ -32,7 +32,7 @@ class API
         if($auth)
         {
             $this->app->post('/api/:table/add', array(&$this, 'add'));
-            $this->app->put('/api/:table/update/:id', array(&$this, 'update'));
+            $this->app->post('/api/:table/update/:id', array(&$this, 'update'));
             $this->app->delete('/api/:table/delete/:id',  array(&$this, 'delete'));
         }
     }
@@ -74,52 +74,57 @@ class API
         $req_data = json_decode($request->post('insert'), true);
         $cols0 = array();
         $cols1 = array();
-        $vals = array();
         foreach($req_data as $key=>$rec)
         {
             $cols0[] = '`'.$key.'`';
             $cols1[] = ':'.$key;
         }
         $sql = "INSERT INTO ".$table." (".implode(',',$cols0).") VALUES (".implode(',',$cols1).")";
-//         echo('<pre>'.$sql.'</pre>');
-        try {
+        try 
+        {
             $stmt = $this->db->prepare($sql); 
             foreach($req_data as $key=>$val)
             {
                 $paramName = ':'.$key;
-//                 $paramValue = $val;
-//                 echo('<pre>BIND('.$paramName.', '.$paramValue.')</pre>');
                 $stmt->bindParam($paramName, $req_data[$key]);
             }
             $stmt->execute();
             $req_data['id'] = $this->db->lastInsertId();
             $this->result( json_encode($req_data) ); 
-        } catch(PDOException $e) {
+        } 
+        catch(PDOException $e) 
+        {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }
     }
 
     public function update($table,$id) {
-//         $request = Slim::getInstance()->request();
-//         $body = $request->getBody();
-//         $wine = json_decode($body);
-//         $sql = "UPDATE wine SET name=:name, grapes=:grapes, country=:country, region=:region, year=:year, description=:description WHERE id=:id";
-//         try {
-//             $db = getConnection();
-//             $stmt = $db->prepare($sql);  
-//             $stmt->bindParam("name", $wine->name);
-//             $stmt->bindParam("grapes", $wine->grapes);
-//             $stmt->bindParam("country", $wine->country);
-//             $stmt->bindParam("region", $wine->region);
-//             $stmt->bindParam("year", $wine->year);
-//             $stmt->bindParam("description", $wine->description);
-//             $stmt->bindParam("id", $id);
-//             $stmt->execute();
-//             $db = null;
-//             $this->result( json_encode($wine)); 
-//         } catch(PDOException $e) {
-//             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
-//         }
+        $request = $this->app->request();
+        $req_data = json_decode($request->post('update'), true);
+        $cols0 = array();
+        var_dump($req_data);
+        foreach($req_data as $key=>$val)
+        {
+            $cols0[] = '`'.$key.'`=:'.$key;
+        }
+        $sql = "UPDATE ".$table." SET ".implode(',',$cols0)." WHERE `id`=:id";
+        try 
+        {
+            $stmt = $this->db->prepare($sql); 
+            $stmt->bindParam('id', $id);
+            foreach($req_data as $key=>$val)
+            {
+                $paramName = ':'.$key;
+                $stmt->bindParam($paramName, $req_data[$key]);
+            }
+            $stmt->execute();
+            $req_data['id'] = $this->db->lastInsertId();
+            $this->result( json_encode($req_data) ); 
+        } 
+        catch(PDOException $e) 
+        {
+            $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
+        }
     }
 
     public function delete($table,$id) {

@@ -100,7 +100,8 @@ function get_images()
     $images = array();
     foreach(glob("images/*.{jpg,jpeg,png}", GLOB_BRACE) as $fn)
     {
-        $images[] = basename($fn);
+        $sz = getimagesize($fn);
+        $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1]);
     }
     $res->body(json_encode($images));
 }

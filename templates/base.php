@@ -7,12 +7,20 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <title></title>
+<script>
+<?php
+
+echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
+
+?>
+</script>
 <script src="js/jquery-1.8.3.js"></script>
 <script src="js/jquery-ui-1.9.2.custom.js"></script>
 <script src="js/api.js"></script>
 <script src="js/plupload.full.js"></script>
 <script src="js/geom.js"></script>
 <script src="js/seron.js"></script>
+
 <style>
 
 #map{
@@ -80,6 +88,11 @@
 </div>
 
 <?php if($is_logged): ?>
+
+<!-- 
+    TEXT FORM
+-->
+
 <div id="text-form" class="form">
 <input type="hidden" name="obj_type" value="text_t" />
 <input type="hidden" name="x" value="0" class="integer" />
@@ -94,18 +107,27 @@ content:
 <input type="text" name="text_content" />
 </div>
 <div class="submit">save</div>
+<div class="form-close">close</div>
+
 </div>
+
+<!-- 
+    IMAGE FORM
+-->
 
 <div id="image-form" class="form">
 <input type="hidden" name="obj_type" value="image_t" />
 <input type="hidden" name="x" value="0" class="integer" />
 <input type="hidden" name="y" value="0" class="integer" />
+<input type="hidden" name="image_width" value="0" class="integer" />
+<input type="hidden" name="image_height" value="0" class="integer" />
 <input type="hidden" name="image_file" value="" />
 
 <div> Nom: <input type="text" name="title" /> </div>
 <div> Catégorie: <input type="text" name="category" /> </div>
 <div id="form-thumbnail"></div>
 <div class="submit">Enregistrer</div>
+<div class="form-close">close</div>
 <div id="medias">
     <div id="media-item-box"></div>
     <div id="upload">

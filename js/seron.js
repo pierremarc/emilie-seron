@@ -7,6 +7,7 @@ function PostItem(id, container, map, index)
     var proto = {
         init: function(id){
             var that = this;
+            this.loaded = false; 
             api.get(id, function(data){
                 that.x = data.x;
                 that.y = data.y;
@@ -29,16 +30,38 @@ function PostItem(id, container, map, index)
                     container.append(that.elem);
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
                     container.on('drag', function(evt, ui){
-                        var cr = new Geom.Rect(-ui.position.left, -ui.position.top, map.width(), map.height());
-                        console.log(ui.position.left+' x '+ ui.position.top)
-                        if(cr.intersects(that.rect))
+                        if(!that.loaded)
                         {
-                            that.show();
+                            var cr = new Geom.Rect(-ui.position.left, -ui.position.top, map.width(), map.height());
+                            console.log(ui.position.left+' x '+ ui.position.top)
+                            if(cr.intersects(that.rect))
+                            {
+                                that.show();
+                            }
                         }
                     });
                     
                     // insert in index
                     index.add(that, container);
+                    
+                    if(IS_LOGGED)
+                    {
+                        that.elem.draggable();
+                        that.elem.on('dragstop', {post_item:that}, function(evt,ui){
+                            var fdata = evt.data.post_item.data;
+                            fdata.x = ui.position.left;
+                            fdata.y = ui.position.top;
+                            var udata = {};
+                            for(var key in fdata)
+                            {
+                                if(key !== 'id')
+                                {
+                                    udata[key] = fdata[key];
+                                }
+                            }
+                            api.update(fdata.id, {update:JSON.stringify(udata)});
+                        });
+                    }
                 }
             });
         },
@@ -46,6 +69,7 @@ function PostItem(id, container, map, index)
             if(this.t === 'image_t')
             {
                 this.image.attr('src', '/images/'+this.data.image_file);
+                this.loaded = true; 
             }
         },
     };
@@ -55,7 +79,7 @@ function PostItem(id, container, map, index)
     return ret;
 }
 
-function Index(container)
+function Index(container, fmgr)
 {
     var proto = {
         init:function(container){
@@ -74,13 +98,19 @@ function Index(container)
             }
             var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
             iit.on('click', function(evt){
-                layer.animate({
-                    left:(-post_item.x)+'px',
-                    top:(-post_item.y)+'px'
-                });
+                layer.animate({ left:(-post_item.x)+'px', top:(-post_item.y)+'px' });
                 post_item.show();
             });
             this.categories[cat].append(iit);
+            if(IS_LOGGED)
+            {
+                var et = $(' <span class="index-item-edit">edit</span> ');
+                et.on('click', {id:post_item.data.id}, function(evt){
+                    layer.css({ left:(-post_item.x)+'px', top:(-post_item.y)+'px' });
+                    fmgr.edit(evt.data.id);
+                });
+                iit.append(et);
+            }
         },
         go:function(name, layer){
             for(var i = 0; i < this.data.length; i++)
@@ -120,7 +150,6 @@ function form_to_json(form)
             }
             ret[name] = val;
         }
-        
     });
     return JSON.stringify(ret);
 }
@@ -145,32 +174,41 @@ function FormManager(map, layer)
                 $('#form-button-text').on('click', function(evt){that.show(that.type_txt);});
                 $('#form-button-image').on('click', function(evt){that.show(that.type_img);});
             });
+            $('.form-close').on('click', function(evt){
+                $('.form').hide();
+            });
             
+        },
+        update_images:function(form)
+        {
+            var mediabox = $('#media-item-box');
+            mediabox.empty();
+            var i_img = form.children('input[name="image_file"]');
+            $.each(this.images, function(idx, obj){
+                var img = $('<div class="media-item"><img src="/images/thumbnails/'+obj.filename+'"/></div>');
+                img.on('click', {img_obj:obj}, function(evt){
+                    i_img.val(evt.data.img_obj.filename);
+                    var thb = $('#form-thumbnail');
+                    thb.empty();
+                    thb.append('<img src="/images/thumbnails/'+evt.data.img_obj.filename+'"/>');
+                    form.find('input[name="image_width"]').val(evt.data.img_obj.width);
+                    form.find('input[name="image_height"]').val(evt.data.img_obj.height);
+                });
+                    mediabox.append(img);
+            });
         },
         show:function(form_t){
             var form = $('#text-form');
             if(form_t === this.type_img)
             {
                 form = $('#image-form');
-                var mediabox = $('#media-item-box');
-                mediabox.empty();
-                var i_img = form.children('input[name="image_file"]');
-                $.each(this.images, function(idx, obj){
-                    var img = $('<div class="media-item"><img src="/images/thumbnails/'+obj+'"/></div>');
-                    img.on('click', {fn:obj}, function(evt){
-                        i_img.val(evt.data.fn);
-                        var thb = $('#form-thumbnail');
-                        thb.empty();
-                        thb.append('<img src="/images/thumbnails/'+evt.data.fn+'"/>');
-                    });
-                    mediabox.append(img);
-                });
+                this.update_images(form);
             }
-            var ix = form.children('input[name="x"]');
-            var iy = form.children('input[name="y"]');
-            ix.val(-this.layer.offset().left);
-            iy.val(-this.layer.offset().top);
-            var submit = form.children('.submit');
+            var ix = form.find('input[name="x"]');
+            var iy = form.find('input[name="y"]');
+            ix.val(-this.layer.position().left);
+            iy.val(-this.layer.position().top);
+            var submit = form.find('.submit');
             submit.off();
             var that = this;
             submit.on('click', function(evt){
@@ -178,11 +216,45 @@ function FormManager(map, layer)
             });
             form.show();
         },
+        edit:function(id){
+            api.get(id, function(data){
+                var that = this;
+                if(data.obj_type === that.type_img)
+                {
+                    form = $('#image-form');
+                    this.update_images(form);
+                    form.find('input[name="image_file"]').val(data.image_file);
+                    var thb = $('#form-thumbnail');
+                    thb.empty();
+                    thb.append('<img src="/images/thumbnails/'+data.image_file+'"/>');
+                    form.find('input[name="image_width"]').val(data.image_width);
+                    form.find('input[name="image_height"]').val(data.image_height);
+                }
+                var title = form.find('input[name="title"]');
+                var cat = form.find('input[name="category"]');
+                var ix = form.find('input[name="x"]');
+                var iy = form.find('input[name="y"]');
+                title.val(data.title);
+                cat.val(data.category);
+                ix.val(data.x);
+                iy.val(data.y);
+                var submit = form.find('.submit');
+                submit.off();
+                var that = this;
+                submit.on('click', function(evt){
+                    var json_data = form_to_json(form);
+                    
+                });
+                form.show();
+                    
+            }, this);
+        },
         save:function(form){
             var json_data = form_to_json(form);
-            $.post('/api/objs/add', {insert:json_data}, function(data){
-                console.log(data);
-            }, 'json');
+            api.add({insert:json_data});
+//             $.post('/api/objs/add', {insert:json_data}, function(data){
+//                 console.log(data);
+//             }, 'json');
         },
     };
     var ret = Object.create(proto);
@@ -194,10 +266,10 @@ $(document).ready(function(){
     var map = $('#map');
     var layer = $('#layer');
     layer.draggable();
-    var index = Index($('#index'));
+    var FM = FormManager(map, layer);
+    var index = Index($('#index'), FM);
     api.set_table('objs');
     
-    var FM = FormManager(map,layer);
     
     api.findAll(function(data){
         var result = data.result;
