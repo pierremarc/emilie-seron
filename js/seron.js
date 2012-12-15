@@ -27,7 +27,6 @@ function PostItem(id, container, map, index)
                     });
                     that.image = $('<img witdh='+data.image_width+' height='+data.image_height+' src="/images/thumbnails/'+data.image_file+'" />');
                     that.elem.append(that.image);
-                    container.append(that.elem);
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
                     container.on('drag', function(evt, ui){
                         if(!that.loaded)
@@ -51,6 +50,8 @@ function PostItem(id, container, map, index)
                     });
                     that.elem.append('<div class="text-title">'+data.title+'</div><div class="text-content">'+data.text_content+'</div>');
                 }
+                
+                container.append(that.elem);
                 
                 // insert in index
                 index.add(that, container);
@@ -238,11 +239,14 @@ function FormManager(map, layer)
             submit.on('click', function(evt){
                 that.save(form);
             });
+            var delete_ = form.find('.delete');
+            delete_.hide();
             form.show();
         },
         edit:function(id){
             api.get(id, function(data){
                 var that = this;
+                form = $('#text-form');
                 if(data.obj_type === that.type_img)
                 {
                     form = $('#image-form');
@@ -264,12 +268,16 @@ function FormManager(map, layer)
                 iy.val(data.y);
                 var submit = form.find('.submit');
                 submit.off();
-                var that = this;
                 submit.on('click', function(evt){
                     var json_data = form_to_json(form);
-                    api.update(that.data.id, {update:json_data}, function(){
+                    api.update(data.id, {update:json_data}, function(){
                         form.hide();
                     });
+                });
+                var delete_ = form.find('.delete');
+                delete_.off();
+                delete_.on('click', function(evt){
+                    api.delete(data.pid);
                 });
                 form.show();
                     

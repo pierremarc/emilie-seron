@@ -20,7 +20,7 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
 <script src="js/plupload.full.js"></script>
 <script src="js/geom.js"></script>
 <script src="js/seron.js"></script>
-
+<link rel="stylesheet" href="/css/styles.css">
 <style>
 *{
     margin:0;
@@ -127,10 +127,10 @@ title:
 <input type="text" name="title" />
 </div>
 
-<div>
-content:
-<input type="text" name="text_content" />
-</div>
+<div> Nom: <input type="text" name="title" /> </div>
+<div> Catégorie: <input type="text" name="category" /> </div>
+<textarea class="content-editor"></textarea>
+
 <div class="submit">save</div>
 <div class="form-close">close</div>
 
@@ -152,6 +152,7 @@ content:
 <div> Catégorie: <input type="text" name="category" /> </div>
 <div id="form-thumbnail"></div>
 <div class="submit">Enregistrer</div>
+<div class="delete">Effacer</div>
 <div class="form-close">close</div>
 <div id="medias">
     <div id="media-item-box"></div>
