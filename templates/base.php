@@ -40,8 +40,8 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
     position:absolute;
     left:0;
     top:0;
-    width:99999999px;
-    height:99999999px;
+    width:999999px;
+    height:999999px;
     background-color:#eee;
 }
 
