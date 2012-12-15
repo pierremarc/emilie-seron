@@ -277,7 +277,7 @@ function FormManager(map, layer)
                 var delete_ = form.find('.delete');
                 delete_.off();
                 delete_.on('click', function(evt){
-                    api.delete(data.pid);
+                    api.delete(data.id);
                 });
                 form.show();
                     

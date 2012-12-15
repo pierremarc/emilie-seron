@@ -72,10 +72,9 @@
     };
 
     ns.api.delete = function(id, cb) {
-        console.log('deleteWine');
         $.ajax({
             type: 'DELETE',
-            url: this.root_url() + '/' + id,
+            url: this.root_url() + '/delete/' + id,
             success: cb || console.log,
             error: function(jqXHR, textStatus, errorThrown){
                 console.log('delete error: '+textStatus);
