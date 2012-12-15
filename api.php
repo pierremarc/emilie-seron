@@ -14,11 +14,13 @@ class API
     
     private function setup_db($dbhost, $dbuser, $dbpass, $dbname)
     {
-//         $dbhost="127.0.0.1";
-//         $dbuser="root";
-//         $dbpass="plokplok";
-//         $dbname="seron";
+        try {
         $this->db = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass);  
+        }
+        catch(PDOException $e)
+        {
+            echo '{"error":{"text":'. $e->getMessage() .'}}'; 
+        }
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     

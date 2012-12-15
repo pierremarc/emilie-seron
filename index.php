@@ -1,7 +1,6 @@
 <?php
 session_start();
 define('IS_APPLICATION', true);
-
 require 'Slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
@@ -24,9 +23,10 @@ if(is_logged())
     $app->post('/upload', 'upload_image');
 }
 
-$api = new API($app, '127.0.0.1', 'root', 'plokplok', 'elodie');
-$api->setup_routes(true);
-// $api->setup_routes(is_logged());
+// $api = new API($app, '127.0.0.1', 'root', 'plokplok', 'elodie');
+$api = new API($app, '127.0.0.1', 'root', 'dudu', 'emilie');
+$api->setup_routes(is_logged());
+
 
 function index() 
 {
