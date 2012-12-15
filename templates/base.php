@@ -53,8 +53,9 @@ title:
 <div> Catégorie: <input type="text" name="category" /> </div>
 <textarea class="content-editor"></textarea>
 
-<div class="submit">save</div>
-<div class="form-close">close</div>
+<div class="submit">Enregistrer</div>
+<div class="delete">Effacer</div>
+<div class="form-close">Fermer</div>
 
 </div>
 
@@ -75,7 +76,7 @@ title:
 <div id="form-thumbnail"></div>
 <div class="submit">Enregistrer</div>
 <div class="delete">Effacer</div>
-<div class="form-close">close</div>
+<div class="form-close">Fermer</div>
 <div id="medias">
     <div id="media-item-box"></div>
     <div id="upload">

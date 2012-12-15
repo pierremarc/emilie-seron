@@ -23,8 +23,8 @@ if(is_logged())
     $app->post('/upload', 'upload_image');
 }
 
-// $api = new API($app, '127.0.0.1', 'root', 'plokplok', 'elodie');
-$api = new API($app, '127.0.0.1', 'root', 'dudu', 'emilie');
+require_once('config.php');
+$api = new API($app, $DB_INFO['host'], $DB_INFO['user'], $DB_INFO['password'], $DB_INFO['table']);
 $api->setup_routes(is_logged());
 
 
