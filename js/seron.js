@@ -13,11 +13,11 @@ function PostItem(id, container, map, index)
                 that.y = data.y;
                 that.t = data.obj_type;
                 that.data = data;
+                that.elem = $('<div />');
+                that.elem.addClass('post-item');
                 if(that.t === 'image_t')
                 {
-                    that.elem = $('<div />');
                     that.elem.attr('id', 'img_'+data.id);
-                    that.elem.addClass('post-item');
                     that.elem.addClass('post-image');
                     that.elem.css({
                         left: that.x +'px',
@@ -40,28 +40,41 @@ function PostItem(id, container, map, index)
                             }
                         }
                     });
-                    
-                    // insert in index
-                    index.add(that, container);
-                    
-                    if(IS_LOGGED)
-                    {
-                        that.elem.draggable();
-                        that.elem.on('dragstop', {post_item:that}, function(evt,ui){
-                            var fdata = evt.data.post_item.data;
-                            fdata.x = ui.position.left;
-                            fdata.y = ui.position.top;
-                            var udata = {};
-                            for(var key in fdata)
+                }
+                else // text item
+                {
+                    that.elem.attr('id', 'txt_'+data.id);
+                    that.elem.addClass('post-text');
+                    that.elem.css({
+                        left: that.x +'px',
+                        top: that.y +'px',
+                    });
+                    that.elem.append('<div class="text-title">'+data.title+'</div><div class="text-content">'+data.text_content+'</div>');
+                }
+                
+                // insert in index
+                index.add(that, container);
+                
+                if(IS_LOGGED)
+                {
+                    that.elem.draggable();
+                    that.elem.on('dragstop', {post_item:that}, function(evt,ui){
+                        var fdata = evt.data.post_item.data;
+                        fdata.x = ui.position.left;
+                        fdata.y = ui.position.top;
+                        var udata = {};
+                        for(var key in fdata)
+                        {
+                            if(key !== 'id')
                             {
-                                if(key !== 'id')
-                                {
-                                    udata[key] = fdata[key];
-                                }
+                                udata[key] = fdata[key];
                             }
-                            api.update(fdata.id, {update:JSON.stringify(udata)});
+                        }
+                        api.update(fdata.id, {update:JSON.stringify(udata)}, function(data){
+                            evt.data.post_item.x = data.x;
+                            evt.data.post_item.y = data.y;
                         });
-                    }
+                    });
                 }
             });
         },

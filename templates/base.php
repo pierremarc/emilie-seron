@@ -22,13 +22,18 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
 <script src="js/seron.js"></script>
 
 <style>
-
+*{
+    margin:0;
+    border:none;
+    margin:0;
+    font-family:sans-serif;
+}
 #map{
-    position:relative;
+    position:absolute;
     overflow:hidden;
-    width:1200px;
-    height:800px;
-    background-color:#ddd;
+    width:100%;
+    height:100%;
+    background-color:#eee;
 }
 
 #layer{
@@ -37,7 +42,7 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
     top:0;
     width:99999999px;
     height:99999999px;
-    background-color:blue;
+    background-color:#eee;
 }
 
 .post-item{
@@ -52,6 +57,7 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
     height:100%;
     border:1px solid black;
     z-index:6;
+    background-color:white;
 }
 
 .form{
@@ -72,6 +78,25 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
     top:0;
     height:100%;
     overflow:auto;
+}
+
+#form-button-box{
+    position:absolute;
+    z-index:9;
+    bottom:0;
+    left:32px;
+    height:34px;
+    padding:12px;
+    background-color:#ccc;
+    cursor:pointer;
+}
+.form-button{
+    display:inline-block;
+    padding:6px;
+    border:1px solid #ccc;
+}
+.form-button:hover{
+    border:1px solid #fff;
 }
 
 </style>
@@ -139,8 +164,8 @@ content:
 </div>
 
 <div id="form-button-box">
-<div id="form-button-text"> Nouveau Texte </div>
-<div id="form-button-image"> Nouvelle Image </div>
+<div id="form-button-text" class="form-button"> Nouveau Texte </div>
+<div id="form-button-image" class="form-button"> Nouvelle Image </div>
 </div>
 <?php endif ?>
 
