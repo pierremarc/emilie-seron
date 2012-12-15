@@ -11,12 +11,12 @@ xxx
 */
 
 @font-face {
-    font-family: Sorts Mill Goudy;
-    src: url("./GoudyStM-webfont.ttf");
+    font-family: SortsMillGoudy;
+    src: url("GoudyStM-Italic-webfont.ttf");
 }
 @font-face {
     font-family: Quick;
-    src: url("./QuicksandBook-Regular.ttf") format('truetype');
+    src: url("QuicksandBook-Regular.ttf") format('truetype');
 }
 
 *{
@@ -132,7 +132,7 @@ a{
     text-align : center;
 }
 .name-link {
-    font-family: Sorts Mill Goudy;
+    font-family: SortsMillGoudy;
     font-size: 15px;
     text-decoration: none;
 }
@@ -143,7 +143,7 @@ a{
     margin-top: 10px;
 }
 .job {
-    font-family: Sorts Mill Goudy;
+    font-family: SortsMillGoudy;
     font-size: 27px;
     text-align: center;
 }
@@ -156,7 +156,7 @@ a{
       margin-top: 5px;
   }
 .about-link {
-    font-family: Quick, sans;
+    font-family: Quick, sans-serif;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -181,22 +181,46 @@ a{
     text-transform: uppercase;
     margin-top: 20px;
 }
-#index-box {
+#index {
     float: right;
     height: 100%;
-    width : 300px;
-    background : blue;
+    width : 200px;
+    background : #f0f0ef;
+    border : none;
 }
 
-.index-parts{
+.index-category-name{
+       margin: 10px 0px 0px 10px;
+}
+
+
+.index-category-name{
     font-family: Quick;
-    font-size: 15px;
-    text-align: center;
+    font-size: 18px;
     text-transform: uppercase;
     margin-top : 15px;
 }
 
-/* Index ------------------------------------------------------------- */*
+.index-item-edit{
+    color:transparent;
+}
+
+div.index-item{
+    font-family: SortsMillGoudy;
+    font-size: 15px;
+    margin-top : 5px;
+    margin-left : 15px;
+    cursor:pointer;
+}
+
+.item-index:hover > .index-item-edit{
+    color:black;
+}
+
+
+
+
+/* Text ------------------------------------------------------------- */*
 
 .post-text{
     width : 300px;
