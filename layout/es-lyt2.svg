@@ -24,16 +24,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.0074671"
-     inkscape:cx="1079.459"
-     inkscape:cy="497.79185"
+     inkscape:zoom="0.40280466"
+     inkscape:cx="1159.5148"
+     inkscape:cy="353.87633"
      inkscape:document-units="px"
      inkscape:current-layer="layer6"
      showgrid="false"
      inkscape:showpageshadow="false"
      borderlayer="true"
-     inkscape:window-width="1680"
-     inkscape:window-height="994"
+     inkscape:window-width="1280"
+     inkscape:window-height="744"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -965,6 +965,13 @@
        id="image9458"
        x="2597.6404"
        y="2401.9717" />
+    <rect
+       style="fill:#f0f0ef;fill-opacity:1;stroke:none;stroke-width:1.50000000000000000;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-opacity:0.98823529000000021;stroke-dasharray:none;stroke-dashoffset:0"
+       id="rect3293"
+       width="162.98866"
+       height="199.40103"
+       x="-598.20306"
+       y="669.45135" />
   </g>
   <g
      style="display:inline"
@@ -993,17 +1000,17 @@
     <text
        sodipodi:linespacing="125%"
        id="text8718"
-       y="714.35736"
-       x="636.89508"
+       y="714.46625"
+       x="432.00854"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:27px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
-         y="714.35736"
-         x="636.89508"
+         y="714.46625"
+         x="432.00854"
          id="tspan8720"
          sodipodi:role="line">Titre</tspan></text>
     <flowRoot
-       transform="translate(169.16478,585.66884)"
+       transform="translate(621.71842,581.40276)"
        style="font-size:30px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:OFL Sorts Mill Goudy;-inkscape-font-specification:OFL Sorts Mill Goudy Medium"
        id="flowRoot3108"
        xml:space="preserve"><flowRegion

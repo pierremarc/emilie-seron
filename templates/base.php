@@ -30,6 +30,14 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
 <div id="layer"></div>
 </div>
 <div id="header">
+ <div id="name-box">
+        <a class="name-link" href="http://emilieseron.ultra-book.com/">Emilie Seron</a>
+    </div>
+   
+    <div id="titre-box"> 
+        <div class="job">Titre</div>
+    </div>
+
 </div>
 <div id="index">
 </div>

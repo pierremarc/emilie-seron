@@ -87,6 +87,17 @@ xxx
     background-color:#ccc;
     cursor:pointer;
 }
+
+#form-button-text{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
+#form-button-image{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
 .form-button{
     display:inline-block;
     padding:6px;
@@ -115,13 +126,13 @@ a{
 /* Header ------------------------------------------------------------- */*
 
 #header {
+    display:none;
     position: absolute;
     z-index:100;
-    background-color:yellow;
     margin-bottom: 15px;
     width: 99%;
     height: 45px;
-    z-index:-1;
+    background: white;
 }
 
 #name-box {
@@ -207,13 +218,13 @@ a{
 
 div.index-item{
     font-family: SortsMillGoudy;
-    font-size: 15px;
+    font-size: 18px;
     margin-top : 5px;
     margin-left : 15px;
     cursor:pointer;
 }
 
-.item-index:hover > .index-item-edit{
+.item-index:hover span.index-item-edit{
     color:black;
 }
 
@@ -226,3 +237,20 @@ div.index-item{
     width : 300px;
 }
 
+.text-title{
+    font-family: SortsMillGoudy;
+    font-size: 21px;
+}
+
+
+.text-content{
+    font-family: SortsMillGoudy;
+    font-size: 15px;
+}
+
+
+    
+    
+    
+    
+    
