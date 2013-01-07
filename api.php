@@ -65,7 +65,8 @@ class API
             $stmt->bindParam("id", $id);
             $stmt->execute();
             $result = $stmt->fetchObject();
-            $this->result( json_encode($result) ); 
+//             error_log(var_export($result, true));
+            $this->result( json_encode($result, JSON_NUMERIC_CHECK) ); 
         } catch(PDOException $e) {
             $this->result( '{"error":{"text":'. $e->getMessage() .'}}'); 
         }

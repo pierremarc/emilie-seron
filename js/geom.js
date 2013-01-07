@@ -310,6 +310,11 @@ Geom.Rect.prototype.united = function(r){
 
 Geom.Rect.prototype.intersects = function(r) 
 {
+    console.log('==INTERSECTS==========================');
+    console.log(this.left() +' <= '+ r.right() +' => '+(this.left() <= r.right() ? 'true':'false'));
+    console.log(r.left() +' <= '+ this.right() +' => '+(r.left() <= this.right() ? 'true':'false'));
+    console.log(this.top() +' <= '+ r.bottom() +' => '+(this.top() <= r.bottom() ? 'true':'false'));
+    console.log(r.top() +' <= '+ this.bottom() +' => '+(r.top() <= this.bottom() ? 'true':'false'));
     return (
         this.left() <= r.right() 
         && r.left() <= this.right()

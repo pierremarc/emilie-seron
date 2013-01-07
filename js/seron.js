@@ -2,7 +2,7 @@
 
 
 
-function PostItem(id, container, map, index)
+function PostItem(id, container, map, index, titlebar)
 {
     var proto = {
         init: function(id){
@@ -29,13 +29,21 @@ function PostItem(id, container, map, index)
                     that.elem.append(that.image);
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
                     container.on('drag', function(evt, ui){
-                        if(!that.loaded)
+//                         if(!that.loaded)
                         {
                             var cr = new Geom.Rect(-ui.position.left, -ui.position.top, map.width(), map.height());
-                            console.log(ui.position.left+' x '+ ui.position.top)
+                            
                             if(cr.intersects(that.rect))
                             {
-                                that.show();
+                                console.log(that.data.image_file+' => ' + that.rect +' <> '+ cr);
+                                if(!that.loaded)
+                                    that.show();
+                                titlebar.add(that.data.title);
+                            }
+                            else
+                            {
+//                                 console.log(that.data.title+' => NOT INTERSECTS');
+                                titlebar.remove(that.data.title);
                             }
                         }
                     });
@@ -139,6 +147,42 @@ function Index(container, fmgr)
                     p_i.show();
                     break;
                 }
+            }
+        },
+    };
+    var ret = Object.create(proto);
+    ret.init(container);
+    return ret;
+}
+
+
+function TitleBar(container)
+{
+    var proto = {
+        init:function(container){
+            this.container = container;
+            this.data = {};
+        },
+        add:function(title){
+            this.data[title] = true;
+            this.update();
+        },
+        remove:function(title){
+            this.data[title] = false;
+            this.update();
+        },
+        remove_all:function(){
+            for(var key in this.data)
+            {
+                this.data[key] = false;
+            }
+        },
+        update:function(){
+            container.empty();
+            for(var key in this.data)
+            {
+                if(this.data[key] === true)
+                    container.append('<div class="job">'+key+'</div>');
             }
         },
     };
@@ -300,7 +344,9 @@ function FormManager(map, layer)
 $(document).ready(function(){
     var map = $('#map');
     var layer = $('#layer');
+    var tb = TitleBar($('#titre-box'));
     layer.draggable();
+//     layer.on('drag', function(evt, ui){tb.remove_all()});
     var FM = FormManager(map, layer);
     var index = Index($('#index'), FM);
     FM.index = index;
@@ -313,7 +359,7 @@ $(document).ready(function(){
         {
             var w = result[i];
             try{
-                PostItem(w.id, layer, map, index);
+                PostItem(w.id, layer, map, index, tb);
             }
             catch(e)
             {
@@ -350,6 +396,4 @@ $(document).ready(function(){
     uploader.bind('FileUploaded', function(up, file){
         $('#'+file.id).remove();
     });
-    
-    
 });

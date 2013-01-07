@@ -126,7 +126,7 @@ a{
 /* Header ------------------------------------------------------------- */*
 
 #header {
-    display:none;
+/*     display:none; */
     position: absolute;
     z-index:100;
     margin-bottom: 15px;
