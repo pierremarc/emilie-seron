@@ -11,8 +11,8 @@ xxx
 */
 
 @font-face {
-    font-family: SortsMillGoudy;
-    src: url("GoudyStM-Italic-webfont.ttf");
+    font-family: OFLGoudy;
+    src: url("GoudyBookletter1911.ttf") format('truetype');
 }
 @font-face {
     font-family: Quick;
@@ -23,7 +23,7 @@ xxx
     margin:0;
     border:none;
     margin:0;
-    font-family:sans-serif;
+/*    font-family:OFLGoudy, serif;*/
 }
 #map{
     position:absolute;
@@ -57,59 +57,6 @@ xxx
     background-color:white;
 }
 
-.form{
-    position:absolute;
-    top:22px;
-    left:22px;
-    border:3px solid black;
-    padding:12px;
-    background-color:rgba(255,255,255,.8);
-    width:800px;
-    height:600px;
-    
-}
-
-#medias{
-    position:absolute;
-    right:0;
-    top:0;
-    height:100%;
-    overflow:auto;
-}
-
-#form-button-box{
-    position:absolute;
-    z-index:9;
-    bottom:0;
-    left:32px;
-    height:34px;
-    padding:12px;
-    background-color:#ccc;
-    cursor:pointer;
-}
-
-#form-button-text{
-    font-family: Quick, sans-serif;
-    font-size: 15px;
-}
-
-#form-button-image{
-    font-family: Quick, sans-serif;
-    font-size: 15px;
-}
-
-.form-button{
-    display:inline-block;
-    padding:6px;
-    border:1px solid #ccc;
-}
-.form-button:hover{
-    border:1px solid #fff;
-}
-
-
-
-
 ul, li {
     margin: 0;
     padding: 0;
@@ -123,10 +70,103 @@ a{
     text-decoration: none;
 }
 
+
+/* Formulaire------------------------------------------------------------- */*
+
+#form-button-text{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
+#form-button-image{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
+.form-button{
+    display:inline-block;
+    padding:12px;
+    border:2px solid black;
+    background-color:white;
+}
+.form-button:hover{
+    border:2px solid blue;
+    background-color:blue;
+    color:white; 
+}
+
+
+
+.form{
+    position:absolute;
+    top:22px;
+    left:22px;
+    border:2px solid black;
+    padding:12px;
+    background-color:white;
+    box-shadow: 10px 12px 6px 3px rgba(0, 0, 0, 0.5);
+    width:600px;
+    height:500px;
+    
+}
+
+#medias{
+    position:absolute;
+    right:0;
+    top:200px;
+    height:100%;
+    width: 500px;
+/*    overflow:auto;*/
+}
+
+/*#media-item-box {
+    height:20px;   
+}*/
+
+.media-item {
+    float : left;
+}
+
+#form-button-box{
+    position:absolute;
+    z-index:9;
+    bottom:15px;
+    left:30px;
+    height:30px;
+    padding:12px;
+    cursor:pointer;
+}
+
+#upload_file{
+    color:red; 
+    position:absolute;
+    top:-30px;
+    left:30px;
+}
+
+#submit_upload{
+    color:blue;
+    position:absolute;
+    top:-30px;
+    left:90px;
+}
+
+.submit{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
+
+.form-close{
+    font-family: Quick, sans-serif;
+    font-size: 15px;
+}
+
+
 /* Header ------------------------------------------------------------- */*
 
 #header {
-    display:none;
+/*    display:none;*/
     position: absolute;
     z-index:100;
     margin-bottom: 15px;
@@ -143,7 +183,7 @@ a{
     text-align : center;
 }
 .name-link {
-    font-family: SortsMillGoudy;
+    font-family: OFLGoudy;
     font-size: 15px;
     text-decoration: none;
 }
@@ -154,7 +194,7 @@ a{
     margin-top: 10px;
 }
 .job {
-    font-family: SortsMillGoudy;
+    font-family: OFLGoudy;
     font-size: 27px;
     text-align: center;
 }
@@ -210,6 +250,8 @@ a{
     font-size: 18px;
     text-transform: uppercase;
     margin-top : 20px;
+    margin-left : 20px;
+    
 }
 
 .index-item-edit{
@@ -217,9 +259,9 @@ a{
 }
 
 div.index-item{
-    font-family: SortsMillGoudy;
-    font-size: 18px;
-    margin-left : 15px;
+    font-family: OFLGoudy;
+    font-size: 15px;
+    margin-left : 10px;
     cursor:pointer;
 }
 
@@ -237,13 +279,13 @@ div.index-item{
 }
 
 .text-title{
-    font-family: SortsMillGoudy;
+    font-family: OFLGoudy;
     font-size: 21px;
 }
 
 
 .text-content{
-    font-family: SortsMillGoudy;
+    font-family: OFLGoudy;
     font-size: 15px;
 }
 
