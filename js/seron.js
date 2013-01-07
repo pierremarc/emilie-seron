@@ -101,7 +101,7 @@ function PostItem(id, container, map, index, titlebar)
     return ret;
 }
 
-function Index(container, fmgr)
+function Index(container, map, fmgr, titlebar)
 {
     var proto = {
         init:function(container){
@@ -120,8 +120,12 @@ function Index(container, fmgr)
             }
             var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
             iit.on('click', function(evt){
-                layer.animate({ left:(-post_item.x)+'px', top:(-post_item.y)+'px' });
+                var cleft = ((map.width() - post_item.elem.width()) / 2) - post_item.x;
+                var ctop = ((map.height() - post_item.elem.height()) / 2) - post_item.y;
+                layer.animate({ left:cleft+'px', top:ctop+'px' });
                 post_item.show();
+                titlebar.remove_all();
+                titlebar.add(post_item.data.title);
             });
             this.categories[cat].append(iit);
             if(IS_LOGGED)
@@ -145,6 +149,8 @@ function Index(container, fmgr)
                         top:(-p_i.y)+'px'
                     });
                     p_i.show();
+                    titlebar.remove_all();
+                    titlebar.add(p_i.data.title);
                     break;
                 }
             }
@@ -164,6 +170,8 @@ function TitleBar(container)
             this.data = {};
         },
         add:function(title){
+            if(title.length == 0)
+                return;
             this.data[title] = true;
             this.update();
         },
@@ -179,10 +187,14 @@ function TitleBar(container)
         },
         update:function(){
             container.empty();
+            var sep = '';
             for(var key in this.data)
             {
                 if(this.data[key] === true)
-                    container.append('<div class="job">'+key+'</div>');
+                {
+                    container.append(sep+'<span class="job">'+key+'</span>');
+                    sep = ', ';
+                }
             }
         },
     };
@@ -346,9 +358,8 @@ $(document).ready(function(){
     var layer = $('#layer');
     var tb = TitleBar($('#titre-box'));
     layer.draggable();
-//     layer.on('drag', function(evt, ui){tb.remove_all()});
     var FM = FormManager(map, layer);
-    var index = Index($('#index'), FM);
+    var index = Index($('#index'), map, FM, tb);
     FM.index = index;
     api.set_table('objs');
     
