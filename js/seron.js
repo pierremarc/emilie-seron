@@ -207,8 +207,9 @@ function TitleBar(container)
 function form_to_json(form)
 {
     var inputs = form.find('input');
+    var texts = form.find('textarea');
     var ret = {};
-    inputs.each(function(idx, html_elem){
+    function extract(idx, html_elem){
         var elem = $(html_elem);
         var name = elem.attr('name');
         if(name !== undefined)
@@ -220,7 +221,9 @@ function form_to_json(form)
             }
             ret[name] = val;
         }
-    });
+    }
+    inputs.each(extract);
+    texts.each(extract);
     return JSON.stringify(ret);
 }
 
@@ -358,6 +361,7 @@ $(document).ready(function(){
     var layer = $('#layer');
     var tb = TitleBar($('#titre-box'));
     layer.draggable();
+    layer.css({ left:(layer.width() / -2)+'px', top:(layer.height() / -2)+'px' });
     var FM = FormManager(map, layer);
     var index = Index($('#index'), map, FM, tb);
     FM.index = index;

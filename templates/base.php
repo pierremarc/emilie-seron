@@ -53,13 +53,12 @@ echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
 <input type="hidden" name="x" value="0" class="integer" />
 <input type="hidden" name="y" value="0" class="integer" />
 <div>
-title:
+Titre:
 <input type="text" name="title" />
 </div>
-
-<div> Nom: <input type="text" name="title" /> </div>
 <div> Catégorie: <input type="text" name="category" /> </div>
-<textarea class="content-editor"></textarea>
+<div> Texte:</div>
+<textarea class="content-editor" name="text_content"></textarea>
 
 <div class="submit">Enregistrer</div>
 <div class="delete">Effacer</div>
