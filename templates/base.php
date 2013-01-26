@@ -12,15 +12,20 @@
 
 echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
 
+if(isset($start_id))
+{
+    echo 'var start_id="'.$start_id.'";';
+}
+
 ?>
 </script>
-<script src="js/jquery-1.8.3.js"></script>
-<script src="js/jquery-ui-1.9.2.custom.js"></script>
-<script src="js/api.js"></script>
-<script src="js/plupload.full.js"></script>
-<script src="js/geom.js"></script>
-<script src="js/seron.js"></script>
-<link rel="stylesheet" href="/css/styles.css">
+<script src="<?php echo $ROOT_URI; ?>/js/jquery-1.8.3.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/jquery-ui-1.9.2.custom.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/api.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/plupload.full.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/geom.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/seron.js"></script>
+<link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/css/styles.css">
 
 </head>
 

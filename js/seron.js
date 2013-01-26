@@ -104,14 +104,18 @@ function PostItem(id, container, map, index, titlebar)
 function Index(container, map, fmgr, titlebar)
 {
     var proto = {
-        init:function(container){
+        init:function(container, map, fmgr, titlebar){
             this.container = container;
+            this.map = map;
+            this.fmgr = fmgr;
+            this.titlebar = titlebar;
             this.categories = {};
             this.data = [];
         },
         add:function(post_item, layer){
             var cat = post_item.data.category;
             this.data.push(post_item);
+            var that = this;
             if(this.categories[cat] === undefined)
             {
                 this.categories[cat] = $('<div class="index-category"></div>');
@@ -120,20 +124,21 @@ function Index(container, map, fmgr, titlebar)
             }
             var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
             iit.on('click', function(evt){
-                var cleft = ((map.width() - post_item.elem.width()) / 2) - post_item.x;
-                var ctop = ((map.height() - post_item.elem.height()) / 2) - post_item.y;
+                var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x;
+                var ctop = ((that.map.height() - post_item.elem.height()) / 2) - post_item.y;
                 layer.animate({ left:cleft+'px', top:ctop+'px' });
                 post_item.show();
-                titlebar.remove_all();
-                titlebar.add(post_item.data.title);
+                that.titlebar.remove_all();
+                that.titlebar.add(post_item.data.title);
             });
             this.categories[cat].append(iit);
             if(IS_LOGGED)
             {
                 var et = $(' <span class="index-item-edit">edit</span> ');
+                var that = this;
                 et.on('click', {id:post_item.data.id}, function(evt){
                     layer.css({ left:(-post_item.x)+'px', top:(-post_item.y)+'px' });
-                    fmgr.edit(evt.data.id);
+                    that.fmgr.edit(evt.data.id);
                 });
                 iit.append(et);
             }
@@ -144,20 +149,20 @@ function Index(container, map, fmgr, titlebar)
                 var p_i = this.data[i];
                 if(p_i.data.title === name)
                 {
-                    layer.animate({
-                        left:(-p_i.x)+'px',
-                        top:(-p_i.y)+'px'
-                    });
+                    var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x;
+                    var ctop = ((this.map.height() - p_i.elem.height()) / 2) - p_i.y;
+                    layer.animate({ left:cleft+'px', top:ctop+'px' });
                     p_i.show();
                     titlebar.remove_all();
                     titlebar.add(p_i.data.title);
-                    break;
+                    return true;
                 }
             }
+            return false;
         },
     };
     var ret = Object.create(proto);
-    ret.init(container);
+    ret.init(container, map, fmgr, titlebar);
     return ret;
 }
 
@@ -368,6 +373,14 @@ $(document).ready(function(){
     api.set_table('objs');
     
     
+    function go_to_start(id, layer)
+    {
+        if(!index.go(id, layer))
+        {
+            window.setTimeout(function(){go_to_start(id, layer)}, 500);
+        }
+    }
+    
     api.findAll(function(data){
         var result = data.result;
         for(var i=0; i< result.length; i++)
@@ -380,6 +393,10 @@ $(document).ready(function(){
             {
                 console.log(e);
             }
+        }
+        if(start_id !== undefined)
+        {
+            go_to_start(start_id, layer)
         }
     });
     

@@ -12,8 +12,9 @@ $app = new \Slim\Slim(array(
     'log.level' => \Slim\Log::DEBUG,
     'templates.path' => './templates'
     ));
-
+    
 $app->get('/', 'index');
+$app->get('/at/:id', 'at');
 $app->get('/get_images', 'get_images');
 $app->get('/salt', 'salt');
 $app->get('/login-page', 'login_page');
@@ -32,8 +33,18 @@ $api->setup_routes(is_logged());
 function index() 
 {
     global $app;
-    $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged()));
+    $req = $app->request();
+    $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged(), 'ROOT_URI'=>$req->getRootUri()));
 }
+
+
+function at($id) 
+{
+    global $app;
+    $req = $app->request();
+    $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged(), 'ROOT_URI'=>$req->getRootUri(), 'start_id'=>$id));
+}
+
 
 
 function login_page()

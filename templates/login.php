@@ -43,8 +43,8 @@ body{
 }
 
 </style>
-<script src="js/jquery-1.8.3.js"></script>
-<script src="js/md5.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/jquery-1.8.3.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/md5.js"></script>
 <script>
 <?php
 echo 'var IS_LOGGED = '. ($is_logged ? 'true' : 'false') .';';
