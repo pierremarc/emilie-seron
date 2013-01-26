@@ -9,7 +9,7 @@ class Users
     
     public function __construct()
     {
-        $this->users['emilie'] = md5('plokplok');  //  FIXME
+        $this->users['emilie'] = '3a5951e726fae996f15192f15ff756ab';
     }
     
     public function authenticate($u, $ph, $salt)

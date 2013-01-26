@@ -16,6 +16,7 @@ $app = new \Slim\Slim(array(
 $app->get('/', 'index');
 $app->get('/get_images', 'get_images');
 $app->get('/salt', 'salt');
+$app->get('/login-page', 'login_page');
 $app->get('/login', 'login');
 if(is_logged())
 {
@@ -34,49 +35,46 @@ function index()
     $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged()));
 }
 
-function salt()
+
+function login_page()
 {
     global $app;
-    $res = $app->response();
-    $res['Content-Type'] = 'application/json';
-    if(!isset($_SESSION['salt']))
-    {
-        $_SESSION['salt'] = md5(mt_rand());
-    }    
-    $res->body(json_encode(array('salt'=>$_SESSION['salt'])));
+    $app->render('login.php', array('title' => 'Login', 'is_logged' => is_logged()));
 }
 
 function login()
 {
     global $app;
-    if(!isset($_SESSION['salt']))
+    $res = $app->response();
+    if(session_id() === '')
     {
-        $app->halt(403, 'No salt');
+        $res['Content-Type'] = 'application/json';
+        $res->body(json_encode(array('status'=>'error', 'message'=>'Not Interactive login')));
     }
     require 'users.php';
     $req = $app->request();
-    $user = $req->get('u');
-    $pass_h = $req->get('p');
-        $res = $app->response();
+    $user = $req->params('u');
+    $pass_h = $req->params('p');
     
     if($user && $pass_h)
     {
         $usrs = new Users();
-        if($usrs->authenticate($user, $pass_h, $_SESSION['salt']))
+        if($usrs->authenticate($user, $pass_h, session_id()))
         {
             $_SESSION['login'] = md5(mt_rand());
             $res['Content-Type'] = 'application/json';
-            $res->body(json_encode(array('token'=>$_SESSION['login'])));
+            $res->body(json_encode(array('status'=>'ok','token'=>$_SESSION['login'])));
         }
         else
         {
-            $app->halt(403, 'Wrong credentials');
+            $res['Content-Type'] = 'application/json';
+            $res->body(json_encode(array('status'=>'error', 'message'=>'wrong credentials')));
         }
         return;
     }
     else
     {
-        $app->render('login.php');
+        $app->render('login.php', array('title' => 'Login', 'is_logged' => is_logged()));
     }
     
 }
@@ -88,7 +86,7 @@ function logout()
 
 function is_logged()
 {
-    return true;
+//     return true;
     return isset($_SESSION['login']);
 }
 
