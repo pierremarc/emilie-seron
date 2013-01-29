@@ -96,14 +96,6 @@ a{
     color:white; 
 }
 
-.form input {
-    background-color:white;
-    border-bottom : solid 1px black;
-    width : 596px;
-}
-
-
-
 .form{
     position:absolute;
     top:22px;
@@ -120,9 +112,22 @@ a{
     font-family: Quick;
     text-transform : uppercase;
     font-size: 12px;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom : 5px;
 }
 
+.text-box-form-up {
+    font-family: Quick;
+    text-transform : uppercase;
+    font-size: 12px;
+    margin-bottom : 5px;
+}
+
+.form input {
+    background-color:white;
+    border-bottom : solid 1px black;
+    width : 596px;
+}
 
 #medias{
     position:absolute;
@@ -130,12 +135,7 @@ a{
     top:200px;
     height:100%;
     width: 500px;
-/*    overflow:auto;*/
 }
-
-/*#media-item-box {
-    height:20px;   
-}*/
 
 .media-item {
     float : left;
@@ -152,10 +152,10 @@ a{
 }
 
 #upload_file{
-    color:red; 
+    color:blue; 
     position:absolute;
     top:-30px;
-    left:30px;
+    text-decoration : underline;
 }
 
 #submit_upload{
@@ -166,21 +166,52 @@ a{
 }
 
 .submit{
+    display:inline-block;
     font-family: Quick;
-    font-size: 15px;
+    font-size: 12px;
+    text-transform : uppercase;
     margin-top: 15px;
+    padding:12px;
+    border:2px solid black;
+    background-color:white;
 }
 
-.submit a{
-    text-decoration : underline;
+.submit:hover{
+    border:none;
+    background-color:#FFFFC0;
+    border:2px solid black;
+    
 }
-
 
 .form-close{
-    font-family: Quick, Goudy;
-    font-size: 15px;
+    display:inline-block;
+    font-family: Quick;
+    font-size: 12px;
+    text-transform : uppercase;
     margin-top: 15px;
+    padding:12px;
+    border:2px solid black;
+    background-color:white;
 }
+
+.form-close:hover{
+    border:none;
+    background-color:#FFFFC0;
+    border:2px solid black;
+    
+}
+
+.delete{
+    display:inline-block;
+    font-family: Quick;
+    font-size: 12px;
+    text-transform : uppercase;
+    margin-top: 15px;
+    padding:12px;
+    border:2px solid black;
+    background-color:white;
+}
+
 
 .content-editor{
     width : 596px;

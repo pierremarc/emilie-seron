@@ -57,12 +57,12 @@ if(isset($start_id))
 <input type="hidden" name="obj_type" value="text_t" />
 <input type="hidden" name="x" value="0" class="integer" />
 <input type="hidden" name="y" value="0" class="integer" />
-<div class="text-box-form">
-Titre:
+<div class="text-box-form-up">
+Titre
 <input type="text" name="title" />
 </div>
-<div class="text-box-form"> Catégorie: <input type="text" name="category" /> </div>
-<div class="text-box-form"> Texte:</div>
+<div class="text-box-form"> Catégorie <input type="text" name="category" /> </div>
+<div class="text-box-form"> Texte</div>
 <textarea class="content-editor" name="text_content"></textarea>
 
 <div class="submit">Enregistrer</div>
@@ -83,8 +83,8 @@ Titre:
 <input type="hidden" name="image_height" value="0" class="integer" />
 <input type="hidden" name="image_file" value="" />
 
-<div> Nom: <input type="text" name="title" /> </div>
-<div> Catégorie: <input type="text" name="category" /> </div>
+<div class="text-box-form"> Nom <input type="text" name="title" /> </div>
+<div class="text-box-form"> Catégorie <input type="text" name="category" /> </div>
 <div id="form-thumbnail"></div>
 <div class="submit">Enregistrer</div>
 <div class="delete">Effacer</div>
@@ -92,7 +92,7 @@ Titre:
 <div id="medias">
     <div id="media-item-box"></div>
     <div id="upload">
-    <div id="upload_file">[ADD FILE]</div>
+    <div id="upload_file">Ajouter une nouvelle image</div>
     <div id="filelist"></div>
     <div id="submit_upload">upload</div>
 </div>
