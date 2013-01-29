@@ -1,5 +1,12 @@
 // seron.js
 
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) 
+{
+    var rest = this.slice((to || from) + 1 || this.length);
+    this.length = from < 0 ? this.length + from : from;
+    return this.push.apply(this, rest);
+};
 
 
 function PostItem(id, container, map, index, titlebar)
@@ -133,6 +140,7 @@ function Index(container, map, fmgr, titlebar)
             this.titlebar = titlebar;
             this.categories = {};
             this.data = [];
+            this.items = [];
         },
         add:function(post_item, layer){
             var cat = post_item.data.category;
@@ -153,7 +161,21 @@ function Index(container, map, fmgr, titlebar)
                 that.titlebar.remove_all();
                 that.titlebar.add(post_item.data.title);
             });
+            this.items[post_item.data.id] = iit;
             this.categories[cat].append(iit);
+        },
+        delete:function(id){
+            this.items[id].remove()
+            for(var i = 0; i < this.data.length; i++)
+            {
+                var p_i = this.data[i];
+                if(p_i.data.id === id)
+                {
+                    p_i.elem.remove();
+                    this.data.remove(i);
+                    break;
+                }
+            }
         },
         go:function(name, layer){
             for(var i = 0; i < this.data.length; i++)
@@ -249,7 +271,7 @@ function upload_file()
     
 }
 
-function FormManager(map, layer)
+function FormManager(map, layer, index)
 {
     $('.form').hide();
     var proto = {
@@ -316,8 +338,8 @@ function FormManager(map, layer)
             submit.on('click', function(evt){
                 that.save(form);
             });
-            var delete_ = form.find('.delete');
-            delete_.hide();
+//             var delete_ = form.find('.delete');
+//             delete_.hide();
             form.show();
         },
         edit:function(id){
@@ -359,7 +381,8 @@ function FormManager(map, layer)
                 var delete_ = form.find('.delete');
                 delete_.off();
                 delete_.on('click', function(evt){
-                    api.delete(data.id);
+                    that.index.delete(data.id);
+                    form.hide();
                 });
                 form.show();
                     
