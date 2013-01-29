@@ -12,9 +12,8 @@ xxx
 
 @font-face {
     font-family: Goudy;
-    src: url("CrimsonText-Roman.ttf") format('truetype');
+    src: url("GoudyStM-webfont.ttf") format('truetype');
 }
-
 
 }
 @font-face {
@@ -238,7 +237,7 @@ a{
     float: right;
     height: 100%;
     width : 200px;
-    background : #f0f0ef;
+    background : #FFFFC0;
     border : none;
 }
 
