@@ -11,8 +11,11 @@ xxx
 */
 
 @font-face {
-    font-family: OFLGoudy;
-    src: url("GoudyBookletter1911.ttf") format('truetype');
+    font-family: Goudy;
+    src: url("CrimsonText-Roman.ttf") format('truetype');
+}
+
+
 }
 @font-face {
     font-family: Quick;
@@ -23,7 +26,7 @@ xxx
     margin:0;
     border:none;
     margin:0;
-/*    font-family:OFLGoudy, serif;*/
+    font-family:Goudy;
 }
 #map{
     position:absolute;
@@ -74,12 +77,12 @@ a{
 /* Formulaire------------------------------------------------------------- */*
 
 #form-button-text{
-    font-family: Quick, sans-serif;
+    font-family: Quick, sans-Goudy;
     font-size: 15px;
 }
 
 #form-button-image{
-    font-family: Quick, sans-serif;
+    font-family: Quick, sans-Goudy;
     font-size: 15px;
 }
 
@@ -152,13 +155,13 @@ a{
 }
 
 .submit{
-    font-family: Quick, sans-serif;
+    font-family: Quick, sans-Goudy;
     font-size: 15px;
 }
 
 
 .form-close{
-    font-family: Quick, sans-serif;
+    font-family: Quick, sans-Goudy;
     font-size: 15px;
 }
 
@@ -167,7 +170,7 @@ a{
 
 #header {
     position: absolute;
-    z-index:100;
+    z-index:0;
     margin-bottom: 15px;
     width: 99%;
     height: 45px;
@@ -182,7 +185,7 @@ a{
     text-align : center;
 }
 .name-link {
-    font-family: OFLGoudy;
+    font-family: Goudy;
     font-size: 15px;
     text-decoration: none;
 }
@@ -193,7 +196,7 @@ a{
     margin-top: 10px;
 }
 .job {
-    font-family: OFLGoudy;
+    font-family: Goudy;
     font-size: 27px;
     text-align: center;
 }
@@ -206,7 +209,7 @@ a{
       margin-top: 5px;
   }
 .about-link {
-    font-family: Quick, sans-serif;
+    font-family: Quick, sans-Goudy;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -222,7 +225,7 @@ a{
     float: right;
     height: 100%;
     width : 50px;
-    background : gray;
+    background : #FFFFC0;
 }
 .onglet-txt {
     font-family: Quick;
@@ -235,7 +238,7 @@ a{
     float: right;
     height: 100%;
     width : 200px;
-    background : #f0f0ef;
+    background : #FFFFC0;
     border : none;
 }
 
@@ -258,7 +261,7 @@ a{
 }
 
 div.index-item{
-    font-family: OFLGoudy;
+    font-family: Goudy;
     font-size: 15px;
     margin-left : 10px;
     cursor:pointer;
@@ -278,13 +281,13 @@ div.index-item{
 }
 
 .text-title{
-    font-family: OFLGoudy;
+    font-family: Goudy;
     font-size: 21px;
 }
 
 
 .text-content{
-    font-family: OFLGoudy;
+    font-family: Goudy;
     font-size: 15px;
 }
 
