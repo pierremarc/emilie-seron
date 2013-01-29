@@ -146,11 +146,14 @@ function Index(container, map, fmgr, titlebar)
             var cat = post_item.data.category;
             this.data.push(post_item);
             var that = this;
-            if(this.categories[cat] === undefined)
+            if(cat.length > 0)
             {
-                this.categories[cat] = $('<div class="index-category"></div>');
-                this.categories[cat].append('<div class="index-category-name">'+cat+'</div>');
-                this.container.append(this.categories[cat]);
+                if(this.categories[cat] === undefined)
+                {
+                    this.categories[cat] = $('<div class="index-category"></div>');
+                    this.categories[cat].append('<div class="index-category-name">'+cat+'</div>');
+                    this.container.append(this.categories[cat]);
+                }
             }
             var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
             iit.on('click', function(evt){
@@ -162,15 +165,21 @@ function Index(container, map, fmgr, titlebar)
                 that.titlebar.add(post_item.data.title);
             });
             this.items[post_item.data.id] = iit;
-            this.categories[cat].append(iit);
+            if(cat.length > 0)
+            {
+                this.categories[cat].append(iit);
+            }
         },
         delete:function(id){
-            this.items[id].remove()
             for(var i = 0; i < this.data.length; i++)
             {
                 var p_i = this.data[i];
                 if(p_i.data.id === id)
                 {
+                    if(p_i.data.category.length > 0)
+                    {
+                        this.items[id].remove()
+                    }
                     p_i.elem.remove();
                     this.data.remove(i);
                     break;
@@ -383,8 +392,10 @@ function FormManager(map, layer, index)
                 var delete_ = form.find('.delete');
                 delete_.off();
                 delete_.on('click', function(evt){
-                    that.index.delete(data.id);
-                    form.hide();
+                    api.delete(data.id, function(){
+                        that.index.delete(data.id);
+                        form.hide();
+                    });
                 });
                 var delete_ = form.find('.delete');
                 delete_.show();
