@@ -4,6 +4,25 @@
 
 function PostItem(id, container, map, index, titlebar)
 {
+    
+    function EditBox(id, fmgr){
+            var edit = $('<span class="tool-item-edit">Éditer</span> ');
+//             var del = $('<span class="tool-item-delete">Supprimer</span> ');
+            
+            edit.on('click', {id:id, fmgr:fmgr}, function(evt){
+                evt.data.fmgr.edit(evt.data.id);
+            });
+            
+//             del.on('click', {id:id, fmgr:fmgr}, function(evt){
+//                 evt.data.fmgr.delete(evt.data.id);
+//             });
+            
+            var toolbox = $('<div class="tool-box" />');
+            toolbox.append(edit);
+//             toolbox.append(del);
+            return toolbox;
+    };
+    
     var proto = {
         init: function(id){
             var that = this;
@@ -27,6 +46,7 @@ function PostItem(id, container, map, index, titlebar)
                     });
                     that.image = $('<img witdh='+data.image_width+' height='+data.image_height+' src="/images/thumbnails/'+data.image_file+'" />');
                     that.elem.append(that.image);
+                    that.elem.append('');
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
                     container.on('drag', function(evt, ui){
 //                         if(!that.loaded)
@@ -84,6 +104,8 @@ function PostItem(id, container, map, index, titlebar)
                             evt.data.post_item.y = data.y;
                         });
                     });
+                    
+                    that.elem.append(EditBox(data.id, index.fmgr));
                 }
             });
         },
@@ -132,16 +154,6 @@ function Index(container, map, fmgr, titlebar)
                 that.titlebar.add(post_item.data.title);
             });
             this.categories[cat].append(iit);
-            if(IS_LOGGED)
-            {
-                var et = $(' <span class="index-item-edit">edit</span> ');
-                var that = this;
-                et.on('click', {id:post_item.data.id}, function(evt){
-                    layer.css({ left:(-post_item.x)+'px', top:(-post_item.y)+'px' });
-                    that.fmgr.edit(evt.data.id);
-                });
-                iit.append(et);
-            }
         },
         go:function(name, layer){
             for(var i = 0; i < this.data.length; i++)
@@ -322,6 +334,11 @@ function FormManager(map, layer)
                     thb.append('<img src="/images/thumbnails/'+data.image_file+'"/>');
                     form.find('input[name="image_width"]').val(data.image_width);
                     form.find('input[name="image_height"]').val(data.image_height);
+                }
+                else
+                {
+                    var content = form.find('textarea[name="text_content"]');
+                    content.val(data.text_content);
                 }
                 var title = form.find('input[name="title"]');
                 var cat = form.find('input[name="category"]');
