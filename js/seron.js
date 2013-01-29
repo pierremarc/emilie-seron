@@ -310,6 +310,7 @@ function FormManager(map, layer, index)
             });
         },
         show:function(form_t){
+            $('.form').hide();
             var form = $('#text-form');
             if(form_t === this.type_img)
             {
@@ -338,11 +339,12 @@ function FormManager(map, layer, index)
             submit.on('click', function(evt){
                 that.save(form);
             });
-//             var delete_ = form.find('.delete');
-//             delete_.hide();
+            var delete_ = form.find('.delete');
+            delete_.hide();
             form.show();
         },
         edit:function(id){
+            $('.form').hide();
             api.get(id, function(data){
                 var that = this;
                 form = $('#text-form');
@@ -384,6 +386,8 @@ function FormManager(map, layer, index)
                     that.index.delete(data.id);
                     form.hide();
                 });
+                var delete_ = form.find('.delete');
+                delete_.show();
                 form.show();
                     
             }, this);
