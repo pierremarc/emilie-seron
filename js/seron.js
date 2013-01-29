@@ -292,6 +292,7 @@ function FormManager(map, layer)
                     elem.val('');
                 }
             });
+            form.find('textarea').val('');
             
             var ix = form.find('input[name="x"]');
             var iy = form.find('input[name="y"]');
