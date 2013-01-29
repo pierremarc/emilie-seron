@@ -50,7 +50,8 @@ function at($id)
 function login_page()
 {
     global $app;
-    $app->render('login.php', array('title' => 'Login', 'is_logged' => is_logged()));
+    $req = $app->request();
+    $app->render('login.php', array('title' => 'Login', 'ROOT_URI'=>$req->getRootUri(),'is_logged' => is_logged()));
 }
 
 function login()
