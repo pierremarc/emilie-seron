@@ -92,7 +92,7 @@ Titre
 <div id="medias">
     <div id="media-item-box"></div>
     <div id="upload">
-    <div id="upload_file">Ajouter une nouvelle image</div>
+    <div id="upload_file">nouvelle image</div>
     <div id="filelist"></div>
     <div id="submit_upload">upload</div>
 </div>
