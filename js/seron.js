@@ -31,9 +31,14 @@ function PostItem(id, container, map, index, titlebar)
     };
     
     var proto = {
-        init: function(id){
+        init: function(id, container, map, index, titlebar){
             var that = this;
-            this.loaded = false; 
+            that.id = id;
+            that.container = container;
+            that.map = map;
+            that.index = index;
+            that.titlebar = titlebar;
+            that.loaded = false; 
             api.get(id, function(data){
                 that.x = data.x;
                 that.y = data.y;
@@ -53,10 +58,8 @@ function PostItem(id, container, map, index, titlebar)
                     });
                     that.image = $('<img witdh='+data.image_width+' height='+data.image_height+' src="/images/thumbnails/'+data.image_file+'" />');
                     that.elem.append(that.image);
-                    that.elem.append('');
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
-                    container.on('drag', function(evt, ui){
-//                         if(!that.loaded)
+                    that.container.on('drag', function(evt, ui){
                         {
                             var cr = new Geom.Rect(-ui.position.left, -ui.position.top, map.width(), map.height());
                             
@@ -65,12 +68,11 @@ function PostItem(id, container, map, index, titlebar)
                                 console.log(that.data.image_file+' => ' + that.rect +' <> '+ cr);
                                 if(!that.loaded)
                                     that.show();
-                                titlebar.add(that.data.title);
+                                that.titlebar.add(that.data.title);
                             }
                             else
                             {
-//                                 console.log(that.data.title+' => NOT INTERSECTS');
-                                titlebar.remove(that.data.title);
+                                that.titlebar.remove(that.data.title);
                             }
                         }
                     });
@@ -86,8 +88,8 @@ function PostItem(id, container, map, index, titlebar)
                     that.elem.append('<div class="text-title">'+data.title+'</div><div class="text-content">'+data.text_content+'</div>');
                 }
                 
+                // append to layer
                 container.append(that.elem);
-                
                 // insert in index
                 index.add(that, container);
                 
@@ -116,6 +118,16 @@ function PostItem(id, container, map, index, titlebar)
                 }
             });
         },
+        update_image:function(){
+            var that = this;
+            api.get(id, function(data){
+                that.elem.attr({width:data.image_width,
+                               height:data.image_height});
+                that.image.attr({src:'/images/'+data.image_file,
+                                width:data.image_width,
+                                height:data.image_height});
+            });
+        },
         show: function(){
             if(this.t === 'image_t')
             {
@@ -126,7 +138,7 @@ function PostItem(id, container, map, index, titlebar)
     };
     
     var ret = Object.create(proto);
-    ret.init(id);
+    ret.init(id, container, map, index, titlebar);
     return ret;
 }
 
@@ -289,12 +301,10 @@ function FormManager(map, layer, index)
             this.type_img = 'image_t';
             this.map = map;
             this.layer = layer;
+            this.images= [];
             var that = this;
-            $.get('/get_images', function(data){
-                that.images = data;
-                $('#form-button-text').on('click', function(evt){that.show(that.type_txt);});
-                $('#form-button-image').on('click', function(evt){that.show(that.type_img);});
-            });
+            $('#form-button-text').on('click', function(evt){that.show(that.type_txt);});
+            $('#form-button-image').on('click', function(evt){that.show(that.type_img);});
             $('.form-close').on('click', function(evt){
                 $('.form').hide();
             });
@@ -304,18 +314,29 @@ function FormManager(map, layer, index)
         {
             var mediabox = $('#media-item-box');
             mediabox.empty();
-            var i_img = form.children('input[name="image_file"]');
-            $.each(this.images, function(idx, obj){
-                var img = $('<div class="media-item"><img src="/images/thumbnails/'+obj.filename+'"/></div>');
-                img.on('click', {img_obj:obj}, function(evt){
-                    i_img.val(evt.data.img_obj.filename);
-                    var thb = $('#form-thumbnail');
-                    thb.empty();
-                    thb.append('<img src="/images/thumbnails/'+evt.data.img_obj.filename+'"/>');
-                    form.find('input[name="image_width"]').val(evt.data.img_obj.width);
-                    form.find('input[name="image_height"]').val(evt.data.img_obj.height);
+            this.images = [];
+            var that = this;
+            $.get('/get_images', function(data){
+                that.images = data;
+                var i_img = form.children('input[name="image_file"]');
+                $.each(that.images, function(idx, obj){
+                    var img = $('<div class="media-item">\
+                    <img src="'+obj.thumbnail.url+'" height="'+obj.thumbnail.height+'" width="'+obj.thumbnail.width+'"/>\
+                    </div>');
+                    img.on('click', {img_obj:obj}, function(evt){
+                        i_img.val(evt.data.img_obj.filename);
+                        var thb = $('#form-thumbnail');
+                        thb.empty();
+                        thb.append('<img src="/images/thumbnails/'+evt.data.img_obj.filename+'"/>');
+                        form.find('input[name="image_width"]').val(evt.data.img_obj.width);
+                        form.find('input[name="image_height"]').val(evt.data.img_obj.height);
+                    });
+                        mediabox.append(img);
                 });
-                    mediabox.append(img);
+                mediabox.masonry({
+                    itemSelector : '.media-item',
+                    gutterWidth: 3,
+                }).masonry( 'reload' );
             });
         },
         show:function(form_t){
@@ -386,6 +407,7 @@ function FormManager(map, layer, index)
                 submit.on('click', function(evt){
                     var json_data = form_to_json(form);
                     api.update(data.id, {update:json_data}, function(){
+                        window._ES_POST_ITEMS[data.id].update_image();
                         form.hide();
                     });
                 });
@@ -436,14 +458,14 @@ $(document).ready(function(){
             window.setTimeout(function(){go_to_start(id, layer)}, 500);
         }
     }
-    
+    window._ES_POST_ITEMS = {};
     api.findAll(function(data){
         var result = data.result;
         for(var i=0; i< result.length; i++)
         {
             var w = result[i];
             try{
-                PostItem(w.id, layer, map, index, tb);
+                window._ES_POST_ITEMS[w.id] = PostItem(w.id, layer, map, index, tb);
             }
             catch(e)
             {
@@ -487,5 +509,7 @@ $(document).ready(function(){
     });
     uploader.bind('FileUploaded', function(up, file){
         $('#'+file.id).remove();
+        console.log('Uploaded => '+file.name);
+        FM.update_images($('#image-form'));
     });
 });

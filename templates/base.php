@@ -23,9 +23,16 @@ if(isset($start_id))
 <script src="<?php echo $ROOT_URI; ?>/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/api.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/plupload.full.js"></script>
+<?php
+if($is_logged)
+{
+    echo '<script src="'.$ROOT_URI.'/js/jquery.masonry.min.js"></script>';
+}
+?>
 <script src="<?php echo $ROOT_URI; ?>/js/geom.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/seron.js"></script>
 <link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/css/styles.css">
+
 
 </head>
 
@@ -84,19 +91,23 @@ Titre
 <input type="hidden" name="image_file" value="" />
 
 <div class="text-box-form"> Nom <input type="text" name="title" /> </div>
-<div class="text-box-form"> Catégorie <input type="text" name="category" /> </div>
-<div id="form-thumbnail"></div>
-<div class="submit">Enregistrer</div>
-<div class="delete">Effacer</div>
-<div class="form-close">Fermer</div>
-<div id="medias">
-    <div id="media-item-box"></div>
-    <div id="upload_file"><span>Ajouter des images à la collection</span></div>
-    <div id="upload">
-        <div id="filelist"></div>
-<!--         <div id="submit_upload">Valider</div> -->
+    <div class="text-box-form"> 
+        Catégorie <input type="text" name="category" /> 
     </div>
-</div>
+    <div id="form-thumbnail"></div>
+    <div id="medias">
+        <div id="media-item-box-wrapper">
+            <div id="media-item-box"></div>
+        </div>
+        <div id="upload_file"><span>Ajouter des images à la collection</span></div>
+        <div id="upload">
+            <div id="filelist"></div>
+    <!--         <div id="submit_upload">Valider</div> -->
+        </div>
+    </div>
+    <div class="submit">Enregistrer</div>
+    <div class="delete">Effacer</div>
+    <div class="form-close">Fermer</div>
 </div>
 
 <div id="form-button-box">

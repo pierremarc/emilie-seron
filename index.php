@@ -111,7 +111,13 @@ function get_images()
     foreach(glob("images/*.{jpg,jpeg,png}", GLOB_BRACE) as $fn)
     {
         $sz = getimagesize($fn);
-        $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1]);
+        $thname = basename($fn);
+        $thsz = getimagesize('images/thumbnails/'.$thname);
+        $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1], 
+                            'thumbnail'=>array(
+                                'url'=>'/images/thumbnails/'.$thname,
+                                'width' => $thsz[0], 'height' => $thsz[1]
+                                ));
     }
     $res->body(json_encode($images));
 }
@@ -119,10 +125,13 @@ function get_images()
 function upload_image()
 {
     global $app;
+    $res = $app->response();
     require('upload.php');
     $u = new Upload();
 //     $app->render('debug.php', array('debug' => $_FILES));
-    $u->handle_upload('file');
+    $result =  $u->handle_upload('file');
+    $res['Content-Type'] = 'application/json';
+    $res->body(json_encode($result, JSON_NUMERIC_CHECK));
 }
 
 // $app->hook('slim.before.dispatch', function () use ($app) {

@@ -43,7 +43,7 @@ class API
     {
         $res = $this->app->response();
         $res['Content-Type'] = 'application/json';
-        error_log('[RESULT]' .$body);
+//         error_log('[RESULT]' .$body);
         $res->body($body);
     }
     
@@ -105,7 +105,7 @@ class API
         $request = $this->app->request();
         $req_data = json_decode($request->post('update'), true);
         $cols0 = array();
-        var_dump($req_data);
+//         var_dump($req_data);
         foreach($req_data as $key=>$val)
         {
             $cols0[] = '`'.$key.'`=:'.$key;

@@ -65,6 +65,7 @@ class Upload{
         $results = array();
         $error = null;
         $resultsSent = false;
+        $url = '';
         
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $image_name = $_FILES[$post_name]["name"];
@@ -123,11 +124,14 @@ class Upload{
                     }
                 }
                 
-                if ($error) {
-                    return false;
+                if ($error) 
+                {
+                    return array('status'=>'error');
                 }
-                else {
-                    return true;
+                else 
+                {
+                    $results['status'] = 'ok';
+                    return $results;
                 }
                 
             }
