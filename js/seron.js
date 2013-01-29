@@ -394,7 +394,7 @@ $(document).ready(function(){
                 console.log(e);
             }
         }
-        if(start_id !== undefined)
+        if(window.start_id !== undefined)
         {
             go_to_start(start_id, layer)
         }

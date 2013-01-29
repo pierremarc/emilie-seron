@@ -1,4 +1,4 @@
-/ **
+/**
 Theme Name: Micro jungle
 Theme URI: http://ludi.be
 Description: Custom theme for Emilie Seron
@@ -11,14 +11,13 @@ xxx
 */
 
 @font-face {
-    font-family: Goudy;
-    src: url("GoudyStM-webfont.ttf") format('truetype');
+    font-family:Goudy;
+    src: url("GoudyStM-webfont.ttf");
 }
 
-}
 @font-face {
-    font-family: Quick;
-    src: url("QuicksandBook-Regular.ttf") format('truetype');
+    font-family:Quick;
+    src: url("QuicksandBook-Regular.ttf");
 }
 
 *{
@@ -76,12 +75,12 @@ a{
 /* Formulaire------------------------------------------------------------- */*
 
 #form-button-text{
-    font-family: Quick, sans-Goudy;
+    font-family: Quick, Goudy;
     font-size: 15px;
 }
 
 #form-button-image{
-    font-family: Quick, sans-Goudy;
+    font-family: Quick, Goudy;
     font-size: 15px;
 }
 
@@ -154,13 +153,13 @@ a{
 }
 
 .submit{
-    font-family: Quick, sans-Goudy;
+    font-family: Quick, Goudy;
     font-size: 15px;
 }
 
 
 .form-close{
-    font-family: Quick, sans-Goudy;
+    font-family: Quick, Goudy;
     font-size: 15px;
 }
 
@@ -208,7 +207,7 @@ a{
       margin-top: 5px;
   }
 .about-link {
-    font-family: Quick, sans-Goudy;
+    font-family: Quick, Goudy;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
