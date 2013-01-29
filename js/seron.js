@@ -469,17 +469,21 @@ $(document).ready(function(){
             filters : [ {title : "Image files", extensions : "jpg,gif,png"} ]
         });
     
-    $('#submit_upload').click(function(e) {
-        uploader.start();
-        e.preventDefault();
-    });
+//     $('#submit_upload').click(function(e) {
+//         uploader.start();
+//         e.preventDefault();
+//     });
     
     uploader.init();
     uploader.bind('FilesAdded', function(up, files){
+        var up_box = $('#upload');
+        up_box.show();
+        uploader.start();
         $.each(files, function(i, file) {
             $('#filelist').append( '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' + '</div>' );
             
         });
+        up_box.hide();
     });
     uploader.bind('FileUploaded', function(up, file){
         $('#'+file.id).remove();

@@ -91,11 +91,11 @@ Titre
 <div class="form-close">Fermer</div>
 <div id="medias">
     <div id="media-item-box"></div>
+    <div id="upload_file"><span>Ajouter des images à la collection</span></div>
     <div id="upload">
-    <div id="upload_file">nouvelle image</div>
-    <div id="filelist"></div>
-    <div id="submit_upload">upload</div>
-</div>
+        <div id="filelist"></div>
+<!--         <div id="submit_upload">Valider</div> -->
+    </div>
 </div>
 </div>
 
