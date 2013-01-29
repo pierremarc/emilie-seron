@@ -75,7 +75,7 @@ a{
 /* Formulaire------------------------------------------------------------- */*
 
 #form-button-text{
-    font-family: Quick, Goudy;
+    font-family: Quick;
     font-size: 15px;
 }
 
@@ -96,6 +96,12 @@ a{
     color:white; 
 }
 
+.form input {
+    background-color:white;
+    border-bottom : solid 1px black;
+    width : 596px;
+}
+
 
 
 .form{
@@ -105,11 +111,20 @@ a{
     border:2px solid black;
     padding:12px;
     background-color:white;
-    box-shadow: 10px 12px 6px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 9px 12px 10px 5px rgba(0, 0, 0, 0.2);
     width:600px;
     height:500px;
-    
 }
+
+.text-box-form {
+    font-family: Quick;
+    text-transform : uppercase;
+    font-size: 12px;
+    margin-top: 20px;
+    margin-bottom : 5px;
+}
+
+
 
 #medias{
     position:absolute;
@@ -153,15 +168,28 @@ a{
 }
 
 .submit{
-    font-family: Quick, Goudy;
+    font-family: Quick;
     font-size: 15px;
+    margin-top: 15px;
+}
+
+.submit a{
+    text-decoration : underline;
 }
 
 
 .form-close{
     font-family: Quick, Goudy;
     font-size: 15px;
+    margin-top: 15px;
 }
+
+.content-editor{
+    width : 596px;
+    height : 300px;
+    border: 1px solid black;
+}
+
 
 
 /* Header ------------------------------------------------------------- */*
@@ -241,7 +269,7 @@ a{
 }
 
 .index-category-name{
-       margin: 10px 0px 0px 10px;
+       margin: 15px 0px 0px 10px;
 }
 
 
@@ -250,7 +278,6 @@ a{
     font-size: 18px;
     text-transform: uppercase;
     margin-top : 20px;
-    margin-left : 20px;
     
 }
 

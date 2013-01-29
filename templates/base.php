@@ -57,12 +57,12 @@ if(isset($start_id))
 <input type="hidden" name="obj_type" value="text_t" />
 <input type="hidden" name="x" value="0" class="integer" />
 <input type="hidden" name="y" value="0" class="integer" />
-<div>
+<div class="text-box-form">
 Titre:
 <input type="text" name="title" />
 </div>
-<div> Catégorie: <input type="text" name="category" /> </div>
-<div> Texte:</div>
+<div class="text-box-form"> Catégorie: <input type="text" name="category" /> </div>
+<div class="text-box-form"> Texte:</div>
 <textarea class="content-editor" name="text_content"></textarea>
 
 <div class="submit">Enregistrer</div>
