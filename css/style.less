@@ -12,7 +12,14 @@ xxx
 
 @font-face {
     font-family:Goudy;
-    src: url("OpenBaskerville-0.0.53.otf");
+    src: url("SortsMillGoudy-Regular.ttf");
+}
+
+@font-face {
+    font-family:Goudy;
+    src: url("SortsMillGoudy-Italic.ttf");
+    font-weight: normal;
+    font-style: italic;
 }
 
 @font-face {
@@ -24,8 +31,9 @@ xxx
     margin:0;
     border:none;
     margin:0;
-    font-family:Goudy;
+    font-family: Goudy, serif;
 }
+
 #map{
     position:absolute;
     overflow:hidden;
@@ -315,7 +323,7 @@ a{
     text-align : center;
 }
 .name-link {
-    font-family: Goudy;
+    font-family: Goudy, serif;
     font-size: 15px;
     text-decoration: none;
 }
@@ -326,7 +334,7 @@ a{
     margin-top: 10px;
 }
 .job {
-    font-family: Goudy;
+    font-family: Goudy, serif;
     font-size: 27px;
     text-align: center;
 }
@@ -339,7 +347,7 @@ a{
       margin-top: 5px;
   }
 .about-link {
-    font-family: Quick, Goudy;
+    font-family: Quick;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -367,31 +375,30 @@ a{
 #index {
     float: right;
     height: 100%;
-    width : 200px;
-    background : #FFFFC0;
-    border : none;
+    width : 300px;
+    background : white;
+    border-left : 3px solid;
 }
 
 .index-category
 {
-    &.index-category-on{
+    &.index-category-off{
         >.index-category-name{
-            font-weight:bold;
+            text-decoration: underline;
         }
     }
     .index-category-name{
         font-family: Quick;
         font-size: 18px;
         text-transform: uppercase;
-        margin-top : 20px;
-        margin: 15px 0px 0px 10px;
+        margin: 20px 0px 5px 10px;
         
     }
     .index-category-content{
         .index-item{
-            font-family: Goudy;
-            font-size: 15px;
-            margin-left : 20px;
+            font-family: Goudy, serif;
+            font-size: 18px;
+            margin-left : 30px;
             cursor:pointer;
         }
 
@@ -403,9 +410,9 @@ a{
     &.index-category-2{
         .index-category-name{
             font-family: Quick;
-            font-size: 15px;
+            font-size: 18px;
             text-transform: uppercase;
-            margin-left:20px;
+            margin-left:30px;
             cursor:pointer;
             
         }
@@ -421,18 +428,19 @@ a{
 /* Text ------------------------------------------------------------- */*
 
 .post-text{
-    width : 300px;
+    width : 350px;
 }
 
 .text-title{
-    font-family: Goudy;
-    font-size: 21px;
+    font-family: Goudy, serif;
+    font-size: 25px;
 }
 
 
 .text-content{
-    font-family: Goudy;
-    font-size: 15px;
+    font-family: Goudy, serif;
+    font-size: 18px;
+    line-height: 23px;
 }
 
 
