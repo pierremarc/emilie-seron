@@ -153,6 +153,9 @@ function Index(container, map, fmgr, titlebar)
             this.categories = {};
             this.data = [];
             this.items = [];
+            var cc = $('<div>');
+            this.container.append(cc);
+            this.container._content = cc;
         },
         add_cat:function(cats){
             for(var i=0; i < cats.length; i++)
@@ -169,17 +172,47 @@ function Index(container, map, fmgr, titlebar)
             }
             var cat_container = $('<div class="index-category index-category-'+cats.length+'"></div>');
             var cat_title = $('<div class="index-category-name">'+cats[cats.length - 1]+'</div>');
+            var cat_content = $('<div class="index-category-content"></div>');
             cat_container.append(cat_title);
+            cat_container.append(cat_content);
+            cat_container._content = cat_content;
             this.categories[fn_cat] = cat_container;
-            if(cats.length === 1)
+            var parent = this.container;
+            var is_bound_to_root = true;
+            if(cats.length > 1)
             {
-                this.container.append(cat_container);
+                var pname = cats.slice(0, cats.length - 1).join('/');
+                parent = this.categories[pname];
+                is_bound_to_root = false;
+            }
+            
+            parent._content.append(cat_container) ;
+            cat_title.on('click',{ctnr:cat_container}, function(evt){
+                var ctnr = evt.data.ctnr;
+                if(ctnr.hasClass('index-category-off'))
+                {
+                    ctnr.removeClass('index-category-off');
+                    ctnr.addClass('index-category-on');
+                    ctnr._content.show(600);
+                }
+                else
+                {
+                    ctnr.removeClass('index-category-on');
+                    ctnr.addClass('index-category-off');
+                    ctnr._content.hide(600);
+                }
+            });
+            
+            if(!is_bound_to_root)
+            {
+                cat_content.hide();
+                cat_container.addClass('index-category-off');
             }
             else
             {
-                var pname = cats.slice(0, cats.length - 1).join('/');
-                this.categories[pname].append(cat_container) ;
+                cat_container.addClass('index-category-on');
             }
+            
             return cat_container;
         },
         add:function(post_item, layer){
@@ -201,7 +234,7 @@ function Index(container, map, fmgr, titlebar)
                 });
                 
                 var container = this.add_cat(cats);
-                container.append(iit);
+                container._content.append(iit);
             }
         },
         delete:function(id){
