@@ -12,7 +12,7 @@ xxx
 
 @font-face {
     font-family:Goudy;
-    src: url("GoudyStM-webfont.ttf");
+    src: url("OpenBaskerville-0.0.53.otf");
 }
 
 @font-face {
@@ -372,32 +372,47 @@ a{
     border : none;
 }
 
-.index-category-name{
-       margin: 15px 0px 0px 10px;
-}
+.index-category
+{
+    &.index-category-on{
+        >.index-category-name{
+            font-weight:bold;
+        }
+    }
+    .index-category-name{
+        font-family: Quick;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-top : 20px;
+        margin: 15px 0px 0px 10px;
+        
+    }
+    .index-category-content{
+        .index-item{
+            font-family: Goudy;
+            font-size: 15px;
+            margin-left : 20px;
+            cursor:pointer;
+        }
 
-
-.index-category-name{
-    font-family: Quick;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top : 20px;
+        .item-index:hover span.index-item-edit{
+            color:black;
+        }
+    }
     
-}
-
-.index-item-edit{
-    color:transparent;
-}
-
-div.index-item{
-    font-family: Goudy;
-    font-size: 15px;
-    margin-left : 10px;
-    cursor:pointer;
-}
-
-.item-index:hover span.index-item-edit{
-    color:black;
+    &.index-category-2{
+        .index-category-name{
+            font-family: Quick;
+            font-size: 15px;
+            text-transform: uppercase;
+            margin-left:20px;
+            cursor:pointer;
+            
+        }
+        .index-item{
+            margin-left : 30px;
+        }
+    }
 }
 
 

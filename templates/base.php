@@ -43,7 +43,7 @@ if($is_logged)
 </div>
 <div id="header">
  <div id="name-box">
-        <a class="name-link" href="http://emilieseron.ultra-book.com/">Emilie Seron</a>
+        <a class="name-link" href="http://emilieseron.com/">Emilie Seron</a>
     </div>
    
     <div id="titre-box"> 

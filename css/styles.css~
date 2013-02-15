@@ -12,7 +12,7 @@ xxx
 
 @font-face {
     font-family:Goudy;
-    src: url("GoudyStM-webfont.ttf");
+    src: url("OpenBaskerville-0.0.53.otf");
 }
 
 @font-face {
@@ -60,6 +60,7 @@ xxx
     border:1px solid black;
     z-index:6;
     background-color:white;
+    overflow:auto;
 }
 
 ul, li {
@@ -137,17 +138,54 @@ a{
     width : 596px;
 }
 
-#medias{
+#form-thumbnail{
     position:absolute;
-    right:0;
-    top:200px;
+    top:10px;
+    right:10px;
+    z-index:9;
+}
+
+#medias{
+/*    top:200px;
     height:100%;
-    width: 500px;
+    width: 500px;*/
+}
+
+#media-item-box-wrapper{
+    height:300px;
+    overflow:auto;
+}
+
+#media-item-box{
+/*     width:300px; */
+    height:8000px;
 }
 
 .media-item {
-    float : left;
+    padding:2px;
+    margin:2px;
+    background-color:#777;
+    border:1px solid black;
 }
+
+#upload_file{
+    text-align:right;
+}
+
+#upload_file span{
+    font-family: Quick;
+    text-transform : uppercase;
+    font-size: 12px;
+    letter-spacing : 0.02em;
+    color:blue; 
+    text-decoration : underline;
+    cursor:pointer;
+}
+
+#upload{
+    
+}
+
 
 #form-button-box{
     position:absolute;
@@ -157,13 +195,6 @@ a{
     height:30px;
     padding:12px;
     cursor:pointer;
-}
-
-#upload_file{
-    color:blue; 
-    position:absolute;
-    top:-30px;
-    text-decoration : underline;
 }
 
 #submit_upload{
@@ -341,32 +372,47 @@ a{
     border : none;
 }
 
-.index-category-name{
-       margin: 15px 0px 0px 10px;
-}
+.index-category
+{
+    &.index-category-on{
+        .index-category-name{
+            font-weight:bold;
+        }
+    }
+    .index-category-name{
+        font-family: Quick;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-top : 20px;
+        margin: 15px 0px 0px 10px;
+        
+    }
+    .index-category-content{
+        .index-item{
+            font-family: Goudy;
+            font-size: 15px;
+            margin-left : 20px;
+            cursor:pointer;
+        }
 
-
-.index-category-name{
-    font-family: Quick;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-top : 20px;
+        .item-index:hover span.index-item-edit{
+            color:black;
+        }
+    }
     
-}
-
-.index-item-edit{
-    color:transparent;
-}
-
-div.index-item{
-    font-family: Goudy;
-    font-size: 15px;
-    margin-left : 10px;
-    cursor:pointer;
-}
-
-.item-index:hover span.index-item-edit{
-    color:black;
+    &.index-category-2{
+        .index-category-name{
+            font-family: Quick;
+            font-size: 15px;
+            text-transform: uppercase;
+            margin-left:20px;
+            cursor:pointer;
+            
+        }
+        .index-item{
+            margin-left : 30px;
+        }
+    }
 }
 
 

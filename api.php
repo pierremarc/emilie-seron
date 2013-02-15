@@ -50,6 +50,7 @@ class API
     public function gets($table) {
         $sql = "select * FROM ". $table;
         try {
+        error_log($sql);
             $stmt = $this->db->query($sql);  
             $results = $stmt->fetchAll(PDO::FETCH_OBJ);
             $this->result( '{"result": ' . json_encode($results) . '}');
