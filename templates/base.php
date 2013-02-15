@@ -22,10 +22,10 @@ if(isset($start_id))
 <script src="<?php echo $ROOT_URI; ?>/js/jquery-1.8.3.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/jquery-ui-1.9.2.custom.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/api.js"></script>
-<script src="<?php echo $ROOT_URI; ?>/js/plupload.full.js"></script>
 <?php
 if($is_logged)
 {
+    echo '<script src="'.$ROOT_URI.'/js/plupload.full.js"></script>';
     echo '<script src="'.$ROOT_URI.'/js/jquery.masonry.min.js"></script>';
 }
 ?>

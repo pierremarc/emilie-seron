@@ -154,32 +154,54 @@ function Index(container, map, fmgr, titlebar)
             this.data = [];
             this.items = [];
         },
-        add:function(post_item, layer){
-            var cat = post_item.data.category;
-            this.data.push(post_item);
-            var that = this;
-            if(cat.length > 0)
+        add_cat:function(cats){
+            for(var i=0; i < cats.length; i++)
             {
-                if(this.categories[cat] === undefined)
+                if(i > 0 && this.categories[cats.slice(0,i).join('/')] === undefined)
                 {
-                    this.categories[cat] = $('<div class="index-category"></div>');
-                    this.categories[cat].append('<div class="index-category-name">'+cat+'</div>');
-                    this.container.append(this.categories[cat]);
+                    this.add_cat(cats.slice(0,i));
                 }
             }
-            var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
-            iit.on('click', function(evt){
-                var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x;
-                var ctop = ((that.map.height() - post_item.elem.height()) / 2) - post_item.y;
-                layer.animate({ left:cleft+'px', top:ctop+'px' });
-                post_item.show();
-                that.titlebar.remove_all();
-                that.titlebar.add(post_item.data.title);
-            });
-            this.items[post_item.data.id] = iit;
-            if(cat.length > 0)
+            var fn_cat = cats.join('/');
+            if(this.categories[fn_cat] !== undefined)
             {
-                this.categories[cat].append(iit);
+                return this.categories[fn_cat];
+            }
+            var cat_container = $('<div class="index-category index-category-'+cats.length+'"></div>');
+            var cat_title = $('<div class="index-category-name">'+cats[cats.length - 1]+'</div>');
+            cat_container.append(cat_title);
+            this.categories[fn_cat] = cat_container;
+            if(cats.length === 1)
+            {
+                this.container.append(cat_container);
+            }
+            else
+            {
+                var pname = cats.slice(0, cats.length - 1).join('/');
+                this.categories[pname].append(cat_container) ;
+            }
+            return cat_container;
+        },
+        add:function(post_item, layer){
+            var cats = post_item.data.category.split('/');
+            var that = this;
+            if(cats.length > 0)
+            {
+                this.data.push(post_item);
+                this.items[post_item.data.id] = iit;
+                    
+                var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
+                iit.on('click', function(evt){
+                    var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x;
+                    var ctop = ((that.map.height() - post_item.elem.height()) / 2) - post_item.y;
+                    layer.animate({ left:cleft+'px', top:ctop+'px' });
+                    post_item.show();
+                    that.titlebar.remove_all();
+                    that.titlebar.add(post_item.data.title);
+                });
+                
+                var container = this.add_cat(cats);
+                container.append(iit);
             }
         },
         delete:function(id){
@@ -482,34 +504,32 @@ $(document).ready(function(){
         save($('#form'));
     });
     
-    var uploader = new plupload.Uploader({
-            runtimes : 'html5',
-            browse_button : 'upload_file',
-            container : 'upload',
-            max_file_size : '10mb',
-            url : '/upload',
-            filters : [ {title : "Image files", extensions : "jpg,gif,png"} ]
+    if(IS_LOGGED)
+    {
+        var uploader = new plupload.Uploader({
+                runtimes : 'html5',
+                browse_button : 'upload_file',
+                container : 'upload',
+                max_file_size : '10mb',
+                url : '/upload',
+                filters : [ {title : "Image files", extensions : "jpg,gif,png"} ]
+            });
+        
+        uploader.init();
+        uploader.bind('FilesAdded', function(up, files){
+            var up_box = $('#upload');
+            up_box.show();
+            uploader.start();
+            $.each(files, function(i, file) {
+                $('#filelist').append( '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' + '</div>' );
+                
+            });
+            up_box.hide();
         });
-    
-//     $('#submit_upload').click(function(e) {
-//         uploader.start();
-//         e.preventDefault();
-//     });
-    
-    uploader.init();
-    uploader.bind('FilesAdded', function(up, files){
-        var up_box = $('#upload');
-        up_box.show();
-        uploader.start();
-        $.each(files, function(i, file) {
-            $('#filelist').append( '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b>' + '</div>' );
-            
+        uploader.bind('FileUploaded', function(up, file){
+            $('#'+file.id).remove();
+            console.log('Uploaded => '+file.name);
+            FM.update_images($('#image-form'));
         });
-        up_box.hide();
-    });
-    uploader.bind('FileUploaded', function(up, file){
-        $('#'+file.id).remove();
-        console.log('Uploaded => '+file.name);
-        FM.update_images($('#image-form'));
-    });
+    }
 });

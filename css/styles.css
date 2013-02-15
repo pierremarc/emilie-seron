@@ -60,6 +60,7 @@ xxx
     border:1px solid black;
     z-index:6;
     background-color:white;
+    overflow:auto;
 }
 
 ul, li {
