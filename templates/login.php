@@ -1,6 +1,6 @@
 <?php
 
-// base.php
+// login.php
 
 ?><!DOCTYPE HTML>
 <html>
