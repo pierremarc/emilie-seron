@@ -21,7 +21,7 @@ xxx
 }
 @font-face {
   font-family: Quick;
-  src: url("QuicksandBook-Regular.ttf");
+  src: url("DidactGothic.ttf");
 }
 * {
   margin: 0;
@@ -267,23 +267,24 @@ a {
 #name-box {
   float: left;
   width: 110px;
-  margin-left: 15px;
-  margin-top: 20px;
+  margin-left: 10px;
+  margin-top: 15px;
   text-align: center;
 }
 .name-link {
-  font-family: Goudy, serif;
-  font-size: 15px;
+  font-family: Quick, sans;
+  font-size: 27px;
+  line-height : 29px;
   text-decoration: none;
 }
 #titre-box {
   position: absolute;
   left: 192px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .job {
   font-family: Goudy, serif;
-  font-size: 27px;
+  font-size: 21px;
   text-align: center;
 }
 #about-box {
@@ -317,32 +318,41 @@ a {
   float: right;
   height: 100%;
   width: 300px;
-  background: white;
-  border-left: 3px solid;
+  background: WhiteSmoke;
+  border: none;
 }
 .index-category.index-category-off > .index-category-name {
   text-decoration: underline;
 }
+
+.index-category.index-category-off > .index-category-name :after {
+    content:"↷";
+}
+
+
 .index-category .index-category-name {
   font-family: Quick;
-  font-size: 18px;
   text-transform: uppercase;
-  margin: 20px 0px 5px 10px;
+  font-size: 15px;
+  letter-spacing :0.05em;
+  margin: 20px 0px 5px 40px;
 }
 .index-category .index-category-content .index-item {
-  font-family: Goudy, serif;
-  font-size: 18px;
-  margin-left: 30px;
+  font-family: Goudy;
+  font-size: 21px;
+  margin: 0px 0px 0px 18px;
   cursor: pointer;
+  line-height: 25px;
 }
 .index-category .index-category-content .item-index:hover span.index-item-edit {
   color: black;
 }
 .index-category.index-category-2 .index-category-name {
-  font-family: Quick;
-  font-size: 18px;
-  text-transform: uppercase;
-  margin-left: 30px;
+  font-family: Goudy, serif;
+  font-size: 15px;
+  font-style: italic;
+  text-transform : none;
+  margin: 0px 0px 0px 18px;
   cursor: pointer;
 }
 .index-category.index-category-2 .index-item {
