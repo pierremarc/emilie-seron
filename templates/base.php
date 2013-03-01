@@ -113,6 +113,7 @@ Titre
 <div id="form-button-box">
 <div id="form-button-text" class="form-button"> Nouveau Texte </div>
 <div id="form-button-image" class="form-button"> Nouvelle Image </div>
+<div id="form-button-logout" class="form-button"> <a href="/logout" title="logout">Quitter le mode édition</a> </div>
 </div>
 <?php endif ?>
 

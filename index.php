@@ -86,7 +86,7 @@ function login()
     }
     else
     {
-        $app->render('login.php', array('title' => 'Login', 'is_logged' => is_logged()));
+        $app->render('login.php', array('title' => 'Login', 'ROOT_URI'=>$req->getRootUri(), 'is_logged' => is_logged()));
     }
     
 }
@@ -94,6 +94,7 @@ function login()
 function logout()
 {
     unset($_SESSION['login']);
+    return index();
 }
 
 function is_logged()
