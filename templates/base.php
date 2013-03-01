@@ -19,8 +19,8 @@ if(isset($start_id))
 
 ?>
 </script>
-<script src="<?php echo $ROOT_URI; ?>/js/jquery-1.8.3.js"></script>
-<script src="<?php echo $ROOT_URI; ?>/js/jquery-ui-1.9.2.custom.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/jquery-1.9.1.js"></script>
+<script src="<?php echo $ROOT_URI; ?>/js/ui/jquery/js/jquery-ui-1.10.1.custom.min.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/api.js"></script>
 <?php
 if($is_logged)
@@ -31,6 +31,7 @@ if($is_logged)
 ?>
 <script src="<?php echo $ROOT_URI; ?>/js/geom.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/seron.js"></script>
+<link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/js/ui/jquery/css/smoothness/jquery-ui-1.10.1.custom.min.css">
 <link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/css/styles.css">
 
 

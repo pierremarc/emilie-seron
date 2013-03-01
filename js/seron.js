@@ -363,12 +363,38 @@ function FormManager(map, layer, index)
             this.type_img = 'image_t';
             this.map = map;
             this.layer = layer;
-            this.images= [];
+            this.images = [];
+            this.current_form = undefined; 
             var that = this;
-            $('#form-button-text').on('click', function(evt){that.show(that.type_txt);});
-            $('#form-button-image').on('click', function(evt){that.show(that.type_img);});
+            $('#form-button-text').on('click', function(evt){
+                that.show(that.type_txt);
+                that.current_form.dialog('open');
+            });
+            $('#form-button-image').on('click', function(evt){
+                that.show(that.type_img);
+                that.current_form.dialog('open');
+            });
             $('.form-close').on('click', function(evt){
                 $('.form').hide();
+            });
+            
+            $('.form').dialog({
+                autoOpen: false,
+                height: 300,
+                width: 350,
+                modal: true,
+                buttons:{
+                    Enregistrer:function(){
+                        that.save();
+                        $(this).dialog( "close" );
+                    },
+                    Fermer:function(){
+                        $(this).dialog( "close" );
+                    }
+                },
+                close:function(){
+                    that.current_form = undefined;
+                }
             });
             
         },
@@ -402,7 +428,6 @@ function FormManager(map, layer, index)
             });
         },
         show:function(form_t){
-            $('.form').hide();
             var form = $('#text-form');
             if(form_t === this.type_img)
             {
@@ -410,6 +435,8 @@ function FormManager(map, layer, index)
                 this.update_images(form);
                 $('#form-thumbnail').empty();
             }
+            
+            this.current_form = form;
             
             var inputs = form.find('input');
             inputs.each(function(idx, html_elem){
@@ -433,7 +460,6 @@ function FormManager(map, layer, index)
             });
             var delete_ = form.find('.delete');
             delete_.hide();
-            form.show();
         },
         edit:function(id){
             $('.form').hide();
@@ -487,12 +513,14 @@ function FormManager(map, layer, index)
                     
             }, this);
         },
-        save:function(form){
+        save:function(){
+            if(that.current_form === undefined)
+                return;
+            var form = this.current_form;
             var json_data = form_to_json(form);
             var that = this;
             api.add({insert:json_data}, function(data){
                 PostItem(data.id, that.layer, that.map, that.index);
-                form.hide();
             });
         },
     };
