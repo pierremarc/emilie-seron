@@ -365,6 +365,7 @@ function FormManager(map, layer, index)
             this.layer = layer;
             this.images = [];
             this.current_form = undefined; 
+            this.current_edit_id = undefined;
             var that = this;
             $('#form-button-text').on('click', function(evt){
                 that.show(that.type_txt);
@@ -388,12 +389,20 @@ function FormManager(map, layer, index)
                         that.save();
                         $(this).dialog( "close" );
                     },
-                    Fermer:function(){
+                    Supprimer:function(){
+                        var id = that.current_edit_id;
+                        api.delete(id, function(){
+                            that.index.delete(id);
+                        });
+                        $(this).dialog( "close" );
+                    },
+                    Annuler:function(){
                         $(this).dialog( "close" );
                     }
                 },
                 close:function(){
                     that.current_form = undefined;
+                    that.current_edit_id = undefined;
                 }
             });
             
@@ -458,18 +467,20 @@ function FormManager(map, layer, index)
             submit.on('click', function(evt){
                 that.save(form);
             });
-            var delete_ = form.find('.delete');
-            delete_.hide();
+            
+            var widget = this.current_form.dialog( 'widget' );
+            var suppr = widget.find("button:contains('Supprimer')");
+            suppr.button("disable");
         },
         edit:function(id){
             $('.form').hide();
+            var that = this;
             api.get(id, function(data){
-                var that = this;
-                form = $('#text-form');
+                var form = $('#text-form');
                 if(data.obj_type === that.type_img)
                 {
                     form = $('#image-form');
-                    this.update_images(form);
+                    that.update_images(form);
                     form.find('input[name="image_file"]').val(data.image_file);
                     var thb = $('#form-thumbnail');
                     thb.empty();
@@ -482,6 +493,9 @@ function FormManager(map, layer, index)
                     var content = form.find('textarea[name="text_content"]');
                     content.val(data.text_content);
                 }
+                that.current_form = form;
+                that.current_edit_id = id;
+                
                 var title = form.find('input[name="title"]');
                 var cat = form.find('input[name="category"]');
                 var ix = form.find('input[name="x"]');
@@ -499,18 +513,12 @@ function FormManager(map, layer, index)
                         form.hide();
                     });
                 });
-                var delete_ = form.find('.delete');
-                delete_.off();
-                delete_.on('click', function(evt){
-                    api.delete(data.id, function(){
-                        that.index.delete(data.id);
-                        form.hide();
-                    });
-                });
-                var delete_ = form.find('.delete');
-                delete_.show();
-                form.show();
-                    
+                
+                
+                that.current_form.dialog('open');
+                var widget = that.current_form.dialog( 'widget' );
+                var suppr = widget.find("button:contains('Supprimer')");
+                suppr.button("enable");
             }, this);
         },
         save:function(){

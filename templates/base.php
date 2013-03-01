@@ -76,9 +76,6 @@ Titre
 <div class="text-box-form"> Texte</div>
 <textarea class="content-editor" name="text_content"></textarea>
 
-<div class="submit">Enregistrer</div>
-<div class="delete">Effacer</div>
-<div class="form-close">Fermer</div>
 
 </div>
 
@@ -109,9 +106,6 @@ Titre
     <!--         <div id="submit_upload">Valider</div> -->
         </div>
     </div>
-    <div class="submit">Enregistrer</div>
-    <div class="delete">Effacer</div>
-    <div class="form-close">Fermer</div>
 </div>
 
 <div id="form-button-box">
