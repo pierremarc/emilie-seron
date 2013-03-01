@@ -88,6 +88,14 @@ function PostItem(id, container, map, index, titlebar)
                     that.elem.append('<div class="text-title">'+data.title+'</div><div class="text-content">'+data.text_content+'</div>');
                 }
                 
+                // permalink
+                var prmlnk = $('<div class="permalink-box">\
+                <div class="permalink-label">\
+                <a href="http://'+window.location.host+'/at/'+encodeURI(data.title)+'">http://'+window.location.host+'/at/'+data.title+'</a>\
+                </div>\
+                </div>');
+                that.elem.append(prmlnk);
+                
                 // append to layer
                 container.append(that.elem);
                 // insert in index
