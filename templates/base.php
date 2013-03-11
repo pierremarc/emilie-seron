@@ -32,7 +32,7 @@ if($is_logged)
 <script src="<?php echo $ROOT_URI; ?>/js/geom.js"></script>
 <script src="<?php echo $ROOT_URI; ?>/js/seron.js"></script>
 
-<link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/js/ui/jquery/css/smoothness/jquery-ui-1.10.1.custom.min.css" />
+<link rel="stylesheet" href="<?php echo $ROOT_URI; ?>/js/ui/jquery/css/smoothness/jquery-ui-1.10.1.custom.css" />
 
 <link rel="stylesheet/less" type="text/css" href="<?php echo $ROOT_URI; ?>/css/styles.less" />
 <script src="<?php echo $ROOT_URI; ?>/js/less.js"></script>
