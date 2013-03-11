@@ -39,7 +39,7 @@ xxx
     overflow:hidden;
     width:100%;
     height:100%;
-    background-color:#eee;
+    background-color:white;
 }
 
 #layer{
@@ -48,7 +48,7 @@ xxx
     top:0;
     width:999999px;
     height:999999px;
-    background-color:white;
+    background-color:yellow;
 }
 
 .post-item{
@@ -382,11 +382,11 @@ a{
 
 .index-category
 {
-    &.index-category-off{
-        >.index-category-name{
-            text-decoration: underline;
-        }
-    }
+//     &.index-category-off{
+//         >.index-category-name{
+//             text-decoration: underline;
+//         }
+    
     .index-category-name{
         font-family: Quick;
         font-size: 18px;
@@ -406,7 +406,13 @@ a{
             color:black;
         }
     }
-    
+    &.index-category-1{
+        &.index-category-off{
+            .index-category-name:after{
+                content:"---";
+            }
+        }
+    }
     &.index-category-2{
         .index-category-name{
             font-family: Quick;
