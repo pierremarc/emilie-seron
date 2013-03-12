@@ -120,8 +120,8 @@ function PostItem(id, container, map, index, titlebar)
                             evt.data.post_item.y = data.y;
                         });
                     });
-                    
-                    that.elem.append(EditBox(data.id, index.fmgr));
+                    var edit_box = EditBox(data.id, index.fmgr)
+                    that.elem.append(edit_box);
                 }
                 
                 that.pre_loaded = true;
@@ -267,7 +267,8 @@ function Index(container, map, fmgr, titlebar)
                 });
                 
                 var container = this.categories[post_item.data.category];
-                container._content.append(iit);
+                if(container !== undefined)
+                    container._content.append(iit);
             }
         },
         delete:function(id){
@@ -292,7 +293,7 @@ function Index(container, map, fmgr, titlebar)
                 var p_i = this.data[i];
                 if(p_i.data.title === name)
                 {
-                    var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x;
+                    var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x - this.container.width();
                     var ctop = ((this.map.height() - p_i.elem.height()) / 2) - p_i.y;
                     layer.animate({ left:cleft+'px', top:ctop+'px' });
                     p_i.show();
@@ -608,6 +609,26 @@ function FormManager(map, layer, index)
                         form.hide();
                     });
                 });
+                
+                var cat_ref = form.find('input[name="cat_ref"]');
+                api.set_table('categories');
+                api.findAll(function(data){
+                    var cats = data.result;
+                    cats.sort(function(a,b){
+                        return a.ord - b.ord;
+                    });
+                    var complete_source = [];
+                    for(var i = 0; i < cats.length; i++){
+                        complete_source.push({label:cats[i].name, id:cats[i].id});
+                    }
+                    cat.autocomplete({ source:complete_source });
+                    cat.on('autocompletechange', function(evt,ui){
+                        for(var i = 0; i < cats.length; i++){
+                            cat_ref.val(ui.item.id);
+                        }
+                    });
+                });
+                api.reset_table();
                 
                 
                 that.current_form.dialog('open');
