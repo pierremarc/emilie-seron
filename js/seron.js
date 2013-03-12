@@ -90,8 +90,7 @@ function PostItem(id, container, map, index, titlebar)
                 
                 // permalink
                 var prmlnk = $('<div class="permalink-box">\
-                <div class="permalink-label">Permalien</div>\
-                <a href="http://'+window.location.host+'/at/'+encodeURI(data.title)+'">http://'+window.location.host+'/at/'+data.title+'</a>\
+                <a class="permalink-link" href="http://'+window.location.host+'/at/'+encodeURI(data.title)+'">http://'+window.location.host+'/at/'+data.title+'</a>\
                 </div>');
                 that.elem.append(prmlnk);
                 
