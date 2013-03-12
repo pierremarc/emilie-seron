@@ -57,7 +57,7 @@ function PostItem(id, container, map, index, titlebar)
                         width: data.image_width +'px',
                         height: data.image_height +'px',
                     });
-                    that.image = $('<img witdh='+data.image_width+' height='+data.image_height+' src="/images/thumbnails/'+data.image_file+'" />');
+                    that.image = $('<img witdh='+data.image_width+' height='+data.image_height+' src="/es_media/thumbnails/'+data.image_file+'" />');
                     that.elem.append(that.image);
                     that.rect = new Geom.Rect(that.x, that.y, data.image_width, data.image_height);
                     that.container.on('drag', function(evt, ui){
@@ -132,7 +132,7 @@ function PostItem(id, container, map, index, titlebar)
             api.get(id, function(data){
                 that.elem.attr({width:data.image_width,
                                height:data.image_height});
-                that.image.attr({src:'/images/'+data.image_file,
+                that.image.attr({src:'/es_media/'+data.image_file,
                                 width:data.image_width,
                                 height:data.image_height});
             });
@@ -140,7 +140,7 @@ function PostItem(id, container, map, index, titlebar)
         show: function(){
             if(this.t === 'image_t' && !this.loaded)
             {
-                this.image.attr('src', '/images/'+this.data.image_file);
+                this.image.attr('src', '/es_media/'+this.data.image_file);
                 this.loaded = true; 
             }
         },
@@ -258,7 +258,7 @@ function Index(container, map, fmgr, titlebar)
                     
                 var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
                 iit.on('click', function(evt){
-                    var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x;
+                    var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x - (that.container.width() / 2);
                     var ctop = ((that.map.height() - post_item.elem.height()) / 2) - post_item.y;
                     layer.animate({ left:cleft+'px', top:ctop+'px' });
                     post_item.show();
@@ -293,7 +293,7 @@ function Index(container, map, fmgr, titlebar)
                 var p_i = this.data[i];
                 if(p_i.data.title === name)
                 {
-                    var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x - this.container.width();
+                    var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x - (this.container.width() / 2);
                     var ctop = ((this.map.height() - p_i.elem.height()) / 2) - p_i.y;
                     layer.animate({ left:cleft+'px', top:ctop+'px' });
                     p_i.show();
@@ -455,7 +455,7 @@ function FormManager(map, layer, index)
                         i_img.val(evt.data.img_obj.filename);
                         var thb = $('#form-thumbnail');
                         thb.empty();
-                        thb.append('<img src="/images/thumbnails/'+evt.data.img_obj.filename+'"/>');
+                        thb.append('<img src="/es_media/thumbnails/'+evt.data.img_obj.filename+'"/>');
                         form.find('input[name="image_width"]').val(evt.data.img_obj.width);
                         form.find('input[name="image_height"]').val(evt.data.img_obj.height);
                     });
@@ -580,7 +580,7 @@ function FormManager(map, layer, index)
                     form.find('input[name="image_file"]').val(data.image_file);
                     var thb = $('#form-thumbnail');
                     thb.empty();
-                    thb.append('<img src="/images/thumbnails/'+data.image_file+'"/>');
+                    thb.append('<img src="/es_media/thumbnails/'+data.image_file+'"/>');
                     form.find('input[name="image_width"]').val(data.image_width);
                     form.find('input[name="image_height"]').val(data.image_height);
                 }

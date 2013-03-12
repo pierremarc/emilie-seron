@@ -9,13 +9,15 @@
 if(!defined('IS_APPLICATION'))
     return;
 
+require_once('config.php');
+
 ini_set("memory_limit", "100M");
 // date_default_timezone_set("America/Los_Angeles");
 
 
 define("PRODUCTION", preg_match('/emilieseron\.be/', $_SERVER['SERVER_NAME']));
-define("IMAGE_URL_STEM", (PRODUCTION ? "http://emilieseron.be/" : "http://emilie.seron/images/"));
-define("IMAGE_PATH", dirname(__FILE__) . "/images/");
+define("IMAGE_URL_STEM", '/es_media/');
+define("IMAGE_PATH", dirname(__FILE__) . '/es_media/');
 
 // max size: 4 MB
 define("MAX_FILESIZE", 5000);

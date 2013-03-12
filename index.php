@@ -4,7 +4,7 @@ define('IS_APPLICATION', true);
 require 'Slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
-require 'api.php';
+require_once('api.php');
 
 $app = new \Slim\Slim(array(
     'mode' =>'development',
@@ -105,18 +105,20 @@ function is_logged()
 
 function get_images()
 {
+    global $UPLOAD_DIR;
+    global $MEDIA_URL;
     global $app;
     $res = $app->response();
     $res['Content-Type'] = 'application/json';
     $images = array();
-    foreach(glob("images/*.{jpg,jpeg,png}", GLOB_BRACE) as $fn)
+    foreach(glob($UPLOAD_DIR."*.{jpg,jpeg,png}", GLOB_BRACE) as $fn)
     {
         $sz = getimagesize($fn);
         $thname = basename($fn);
-        $thsz = getimagesize('images/thumbnails/'.$thname);
+        $thsz = getimagesize($UPLOAD_DIR.'thumbnails/'.$thname);
         $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1], 
                             'thumbnail'=>array(
-                                'url'=>'/images/thumbnails/'.$thname,
+                                'url'=>$MEDIA_URL.'thumbnails/'.$thname,
                                 'width' => $thsz[0], 'height' => $thsz[1]
                                 ));
     }
