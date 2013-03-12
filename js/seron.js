@@ -38,6 +38,7 @@ function PostItem(id, container, map, index, titlebar)
             that.map = map;
             that.index = index;
             that.titlebar = titlebar;
+            that.pre_loaded = false; 
             that.loaded = false; 
             api.get(id, function(data){
                 that.x = data.x;
@@ -123,6 +124,8 @@ function PostItem(id, container, map, index, titlebar)
                     
                     that.elem.append(EditBox(data.id, index.fmgr));
                 }
+                
+                that.pre_loaded = true;
             });
         },
         update_image:function(){
@@ -136,7 +139,7 @@ function PostItem(id, container, map, index, titlebar)
             });
         },
         show: function(){
-            if(this.t === 'image_t')
+            if(this.t === 'image_t' && !this.loaded)
             {
                 this.image.attr('src', '/images/'+this.data.image_file);
                 this.loaded = true; 
@@ -157,12 +160,31 @@ function Index(container, map, fmgr, titlebar)
             this.map = map;
             this.fmgr = fmgr;
             this.titlebar = titlebar;
-            this.categories = {};
+            
             this.data = [];
             this.items = [];
             var cc = $('<div>');
             this.container.append(cc);
             this.container._content = cc;
+            this.categories_ready = false;
+            this.setup_categories();
+        },
+        setup_categories:function(){
+            this.categories = {};
+            var that = this;
+            api.set_table('categories');
+            api.findAll(function(data){
+                var cats = data.result;
+                cats.sort(function(a,b){
+                    return a.ord - b.ord;
+                });
+                for(var i = 0; i < cats.length; i++){
+                    that.add_cat(cats[i].name.split('/'));
+                }
+                that.cat_data = cats;
+                that.categories_ready = true;
+            });
+            api.reset_table();
         },
         add_cat:function(cats){
             for(var i=0; i < cats.length; i++)
@@ -223,8 +245,13 @@ function Index(container, map, fmgr, titlebar)
             return cat_container;
         },
         add:function(post_item, layer){
-            var cats = post_item.data.category.split('/');
             var that = this;
+            if(!this.categories_ready)
+            {
+                window.setTimeout(function(){that.add(position, layer)} ,500);
+                return;
+            }
+            var cats = post_item.data.category.split('/');
             if(cats.length > 0)
             {
                 this.data.push(post_item);
@@ -240,7 +267,7 @@ function Index(container, map, fmgr, titlebar)
                     that.titlebar.add(post_item.data.title);
                 });
                 
-                var container = this.add_cat(cats);
+                var container = this.categories[post_item.data.category];
                 container._content.append(iit);
             }
         },
@@ -375,14 +402,18 @@ function FormManager(map, layer, index)
                 that.show(that.type_img);
                 that.current_form.dialog('open');
             });
+            $('#form-button-category').on('click', function(evt){
+                that.show_categories();
+                that.current_form.dialog('open');
+            });
             $('.form-close').on('click', function(evt){
                 $('.form').hide();
             });
             
             $('.form').dialog({
                 autoOpen: false,
-                height: 300,
-                width: 350,
+                height: 500,
+                width: 650,
                 modal: true,
                 buttons:{
                     Enregistrer:function(){
@@ -436,6 +467,50 @@ function FormManager(map, layer, index)
                 }).masonry( 'reload' );
             });
         },
+        show_categories:function(){
+            var form = $('#category-form');
+            this.current_form = form;
+            form.empty();
+            var cat_list = $('<ul id="form-category-list" />');
+            form.append(cat_list);
+            api.set_table('categories');
+            api.findAll(function(data){
+                var cats = data.result;
+                cats.sort(function(a,b){
+                    return a.ord - b.ord;
+                });
+                for(var i = 0; i < cats.length; i++){
+                    cat_list.append('<li class="form-category-item" id="id_'+cats[i].id+'" ><span>'+cats[i].name+'</span></li>');
+                }
+            });
+            api.reset_table();
+            cat_list.sortable();
+            cat_list.disableSelection();
+            
+            var new_cat=$('<input type="text" />');
+            var new_cat_submit=$('<span>enregistrer nouvelle category</span>');
+            new_cat_submit.button();
+            var new_cat_box=$('<div id="new_cat_box" />');
+            new_cat_box.append(new_cat);
+            new_cat_box.append(new_cat_submit);
+            new_cat_submit.on('click',function(){
+               if(new_cat.val().length > 0)
+               {
+                    var val = new_cat.val();
+                    var order = cat_list.find('li').length + 1;
+                    api.set_table('categories');
+                    api.add({insert:JSON.stringify({name:val, ord:order})}, function(data){
+                        cat_list.append('<li class="form-category-item" id="id_'+data.id+'" ><span>'+data.name+'</span></li>');
+                    });
+                    api.reset_table();
+               }
+            });
+            form.append(new_cat_box);
+            
+            var widget = this.current_form.dialog( 'widget' );
+            var suppr = widget.find("button:contains('Supprimer')");
+            suppr.remove();
+        },
         show:function(form_t){
             var form = $('#text-form');
             if(form_t === this.type_img)
@@ -467,6 +542,27 @@ function FormManager(map, layer, index)
             submit.on('click', function(evt){
                 that.save(form);
             });
+            
+            var cat = form.find('input[name="category"]');
+            var cat_ref = form.find('input[name="cat_ref"]');
+            api.set_table('categories');
+            api.findAll(function(data){
+                var cats = data.result;
+                cats.sort(function(a,b){
+                    return a.ord - b.ord;
+                });
+                var complete_source = [];
+                for(var i = 0; i < cats.length; i++){
+                    complete_source.push({label:cats[i].name, id:cats[i].id});
+                }
+                cat.autocomplete({ source:complete_source });
+                cat.on('autocompletechange', function(evt,ui){
+                    for(var i = 0; i < cats.length; i++){
+                        cat_ref.val(ui.item.id);
+                    }
+                });
+            });
+            api.reset_table();
             
             var widget = this.current_form.dialog( 'widget' );
             var suppr = widget.find("button:contains('Supprimer')");
@@ -521,9 +617,25 @@ function FormManager(map, layer, index)
                 suppr.button("enable");
             }, this);
         },
+        save_category:function()
+        {
+            var s = $('#form-category-list').sortable('toArray');
+            api.set_table('categories');
+            for(var i = 0; i <s.length; i++)
+            {
+                var id = s[i].split('_').pop();
+                api.update(id, {update:JSON.stringify({ord:i})});
+            }
+            api.reset_table();
+        },
         save:function(){
-            if(that.current_form === undefined)
+            if(this.current_form === undefined)
                 return;
+            if(this.current_form.attr('id') === 'category-form')
+            {
+                this.save_category();
+                return;
+            }
             var form = this.current_form;
             var json_data = form_to_json(form);
             var that = this;
@@ -546,7 +658,7 @@ $(document).ready(function(){
     var FM = FormManager(map, layer);
     var index = Index($('#index'), map, FM, tb);
     FM.index = index;
-    api.set_table('objs');
+    api.set_table('objects');
     
     
     function go_to_start(id, layer)
@@ -573,6 +685,20 @@ $(document).ready(function(){
         if(window.start_id !== undefined)
         {
             go_to_start(start_id, layer)
+        }
+        
+        function complete_load(pid)
+        {
+            var item =  window._ES_POST_ITEMS[pid];
+           if(item.pre_loaded)
+               item.show();
+           else
+               window.setTimeout(function(){complete_load(pid);}, 200);
+        };
+        
+        for(var pid in  window._ES_POST_ITEMS)
+        {
+            complete_load(pid);
         }
     });
     

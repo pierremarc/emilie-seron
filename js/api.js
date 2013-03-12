@@ -4,6 +4,7 @@
     ns.api = ns.api || {};
     ns.api.root_url_stem = '/api';
     ns.api.cur_table = '';
+    ns.api.old_table = '';
     
     ns.api.root_url = function(){
         return this.root_url_stem+'/'+this.cur_table;
@@ -11,7 +12,14 @@
     
     ns.api.set_table = function(table)
     {
-        this.cur_table += table;
+        this.old_table = this.cur_table;
+        this.cur_table = table;
+    };
+    
+    ns.api.reset_table = function()
+    {
+        this.cur_table = this.old_table;
+        this.old_table = '';
     };
     
     ns.api.findAll = function(cb) {

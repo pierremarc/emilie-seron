@@ -64,17 +64,22 @@ if($is_logged)
     TEXT FORM
 -->
 
-<div id="text-form" class="form">
-<input type="hidden" name="obj_type" value="text_t" />
-<input type="hidden" name="x" value="0" class="integer" />
-<input type="hidden" name="y" value="0" class="integer" />
-<div class="text-box-form-up">
-Titre
-<input type="text" name="title" />
-</div>
-<div class="text-box-form"> Catégorie <input type="text" name="category" /> </div>
-<div class="text-box-form"> Texte</div>
-<textarea class="content-editor" name="text_content"></textarea>
+<div id="text-form" class="form" title="Ajouter un texte">
+    <input type="hidden" name="obj_type" value="text_t" />
+    <input type="hidden" name="x" value="0" class="integer" />
+    <input type="hidden" name="y" value="0" class="integer" />
+    <input type="hidden" name="cat_ref" value="0" class="integer" />
+    
+    <div class="text-box-form-up">
+        Titre <input type="text" name="title" />
+    </div>
+    <div class="text-box-form"> 
+        Catégorie <input type="text" name="category" /> 
+    </div>
+    <div class="text-box-form"> 
+        Texte 
+    </div>
+    <textarea class="content-editor" name="text_content"></textarea>
 
 
 </div>
@@ -83,12 +88,13 @@ Titre
     IMAGE FORM
 -->
 
-<div id="image-form" class="form">
+<div id="image-form" class="form" title="Ajouter une image">
 <input type="hidden" name="obj_type" value="image_t" />
 <input type="hidden" name="x" value="0" class="integer" />
 <input type="hidden" name="y" value="0" class="integer" />
 <input type="hidden" name="image_width" value="0" class="integer" />
 <input type="hidden" name="image_height" value="0" class="integer" />
+<input type="hidden" name="cat_ref" value="0" class="integer" />
 <input type="hidden" name="image_file" value="" />
 
 <div class="text-box-form"> Nom <input type="text" name="title" /> </div>
@@ -108,11 +114,24 @@ Titre
     </div>
 </div>
 
+
+<!-- 
+Category FORM
+-->
+<div id="category-form" class="form" title="Gérer les catégories">
+    
+</div>
+
 <div id="form-button-box">
 <div id="form-button-text" class="form-button"> Nouveau Texte </div>
 <div id="form-button-image" class="form-button"> Nouvelle Image </div>
+<div id="form-button-category" class="form-button"> Gérer les catégories </div>
 <div id="form-button-logout" class="form-button"> <a href="/logout" title="logout">Quitter le mode édition</a> </div>
 </div>
+
+
+
+
 <?php endif ?>
 
 
