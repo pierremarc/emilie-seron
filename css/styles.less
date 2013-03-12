@@ -27,7 +27,7 @@ xxx
   margin: 0;
   border: none;
   margin: 0;
-  font-family: Goudy, serif;
+  font-family: Quick, serif;
 }
 
 a, a.visited, a:hover{ 
@@ -115,6 +115,10 @@ a {
 
 .form-button-logout{
     color: black;
+    font-family: Quick;
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing :0.05em;
 }
 
 
@@ -275,14 +279,22 @@ a {
   border: 2px solid black;
 }
 
+.permalink-box{
+}
+
+.permalink-label{
+    background-color: Gainsboro;
+}
 
 
-/* Header ------------------------------------------------------------- */*#header {
+/* Header ------------------------------------------------------------- */*
+
+#header {
   position: absolute;
   z-index: 0;
   margin-bottom: 15px;
   width: 99%;
-  height: 45px;
+  height: 50px;
   background: white;
 }
 #name-box {
@@ -290,14 +302,20 @@ a {
   width: 110px;
   margin-left: 10px;
   margin-top: 15px;
+  margin-left: 15px;
   text-align: center;
 }
 .name-link {
   font-family: Quick, sans;
-  font-size: 27px;
-  line-height : 29px;
+  font-size: 21px;
+  line-height : 25px;
   text-decoration: none;
   color : Tomato;
+}
+
+.name-link a:hover{
+    color : Tomato;
+    decoration : underline;
 }
 
 #titre-box {
@@ -323,7 +341,9 @@ a {
   letter-spacing: 0.05em;
   text-decoration: none;
 }
-/* Index ------------------------------------------------------------- */*#onglet-index-box {
+/* Index ------------------------------------------------------------- */*
+
+#onglet-index-box {
   cursor: pointer;
   float: right;
   height: 100%;
@@ -341,25 +361,28 @@ a {
   float: right;
   height: 100%;
   width: 300px;
-  background: LightGray ;
+  background: Gainsboro ;
   border: none;
 }
 .index-category.index-category-off > .index-category-name {
   text-decoration: underline;
-  text-align: center;
+  text-align: left;
+  color : blue;
   
 }
 
 .index-category .index-category-name {
   text-align: left;
   font-family: Quick;
+  color: blue;
   text-transform: uppercase;
   font-size: 15px;
-  letter-spacing :0.07em;
+  letter-spacing :0.06em;
   margin: 25px 0px 5px 25px;
 }
 .index-category .index-category-content .index-item {
     text-align : left;
+    color : black;
     font-family: Goudy, serif;
     font-size: 15px;
     font-style: italic;
@@ -378,6 +401,7 @@ a {
 .index-category.index-category-2 .index-category-name { 
     text-align : left;
     font-family: Goudy;
+    color : black;
     font-size: 21px;
     margin: 0px 0px 0px 25px;
     cursor: pointer;
