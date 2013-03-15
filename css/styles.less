@@ -9,6 +9,12 @@ Version: 0000
 xxx
 .
 */
+
+@color1: #43a843;
+@color2: #fff9f0;
+@letter-spacing :0.04em;
+
+
 @font-face {
   font-family: Goudy;
   src: url("SortsMillGoudy-Regular.ttf");
@@ -30,9 +36,17 @@ xxx
   font-family: Quick, serif;
 }
 
-a, a.visited, a:hover{ 
-    color:black;
+a {
+    color: black;
+}
+
+a.visited{
+    color: black;
+}
+
+a:hover{ 
     text-decoration:underline;
+    color : @color1;
 } 
 
 #map {
@@ -60,11 +74,49 @@ a, a.visited, a:hover{
 .post-item {
   position: absolute;
 }
-.post-item:hover .tool-box {
+.post-item:hover .tool-box{
   display: block;
 }
 
+.tool-box {
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.tool-item-edit {
+    display: inline-block;
+    cursor: pointer;
+    font-family: Quick;
+    font-size: 15px;
+    text-transform: uppercase;
+    padding: 12px;
+    letter-spacing :@letter-spacing;
+    background-color: white ;
+}
+.delete:hover {
+    border: none;
+    background-color: #FFFFC0;
+    border: 2px solid black;
+}
 
+.permalink-box{
+    display: none;
+}
+
+.permalink-label{
+    font-size: 12px;
+}
+
+.permalink-link {
+    font-size: 12px;
+    underline : none;
+    letter-spacing: @letter-spacing;
+    a:hover{
+        font-size: 12px;
+    }
+    
+}
 
 
 #index {
@@ -99,26 +151,27 @@ a {
     font-family: Quick;
     text-transform: uppercase;
     font-size: 15px;
-    letter-spacing :0.05em;
+    letter-spacing :@letter-spacing;
 }
 .form-button:hover {
     text-decoration: underline;
-    color: white;
+    color: @color1;
 }
 
 #form-button-text {
-  color: #0000ff;
 }
 #form-button-image {
-  color: #0000ff;
+}
+#form-button-category {
 }
 
-.form-button-logout{
-    color: black;
-    font-family: Quick;
-    text-transform: uppercase;
-    font-size: 15px;
-    letter-spacing :0.05em;
+#form-button-logout{
+    a{
+        color: @color1;
+    }
+    a:hover{
+        color: black;
+    }
 }
 
 
@@ -134,8 +187,8 @@ a {
   font-family: Quick;
   text-transform: uppercase;
   font-size: 15px;
-  letter-spacing: 0.02em;
   margin-top: 15px;
+  letter-spacing: 0.02em;
   margin-bottom: 5px;
 }
 .text-box-form-up {
@@ -148,7 +201,6 @@ a {
 .form input {
   background-color: white;
   border-bottom: solid 1px black;
-//   width: 596px;
 }
 #form-thumbnail {
   position: absolute;
@@ -257,47 +309,7 @@ a {
 .content-editor {
   border: 1px solid black;
 }
-.tool-box {
-  display: none;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-}
-.tool-item-edit {
-  display: inline-block;
-  cursor: pointer;
-  font-family: Quick;
-  font-size: 15px;
-  text-transform: uppercase;
-  padding: 12px;
-  border: 1px solid black;
-  background-color: Gainsboro ;
-}
-.delete:hover {
-  border: none;
-  background-color: #FFFFC0;
-  border: 2px solid black;
-}
 
-.permalink-box{
-}
-
-.permalink-label{
-    background-color: Gainsboro;
-    font-size: 12px;
-}
-
-.permalink-link {
-    font-size: 12px;
-    underline : none;
-    letter-spacing: 0.02em;
-}
-
-.permalink-link a, a.visited, a:hover{
-    background-color: Gainsboro;
-    font-size: 12px;
-    
-}
 
 /* Header ------------------------------------------------------------- */*
 
@@ -322,12 +334,13 @@ a {
   font-size: 21px;
   line-height : 25px;
   text-decoration: none;
-  color : black;
-}
-
-.name-link a:hover{
-    color : Tomato;
-    decoration : underline;
+  a:visited{
+      color: black;
+  }
+  a:hover{
+    text-color: @color1;
+    text-decoration : underline;
+  }
 }
 
 #titre-box {
@@ -360,7 +373,7 @@ a {
   float: right;
   height: 100%;
   width: 50px;
-  background: #FFFFC0;
+  background: #fff2e9;
 }
 .onglet-txt {
   font-family: Quick;
@@ -373,20 +386,20 @@ a {
   float: right;
   height: 100%;
   width: 300px;
-  background: #faf0e8 ;
+  background: @color2 ;
   border: none;
 }
 .index-category.index-category-off > .index-category-name {
   text-decoration: underline;
   text-align: left;
-  color : black;
+  color : @color1;
   
 }
 
 .index-category .index-category-name {
   text-align: left;
   font-family: Quick;
-  color: black;
+  color: @color1;
   text-transform: uppercase;
   font-size: 15px;
   letter-spacing :0.06em;
@@ -417,7 +430,6 @@ a {
     font-size: 21px;
     margin: 0px 0px 0px 25px;
     cursor: pointer;
-    letter-spacing :0em;
     text-transform : none;
     line-height: 25px;
 }

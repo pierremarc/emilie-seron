@@ -4,6 +4,22 @@
 * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Verdana%2CArial%2Csans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=4px&bgColorHeader=cccccc&bgTextureHeader=highlight_soft&bgImgOpacityHeader=75&borderColorHeader=aaaaaa&fcHeader=222222&iconColorHeader=222222&bgColorContent=ffffff&bgTextureContent=flat&bgImgOpacityContent=75&borderColorContent=aaaaaa&fcContent=222222&iconColorContent=222222&bgColorDefault=e6e6e6&bgTextureDefault=glass&bgImgOpacityDefault=75&borderColorDefault=d3d3d3&fcDefault=555555&iconColorDefault=888888&bgColorHover=dadada&bgTextureHover=glass&bgImgOpacityHover=75&borderColorHover=999999&fcHover=212121&iconColorHover=454545&bgColorActive=ffffff&bgTextureActive=glass&bgImgOpacityActive=65&borderColorActive=aaaaaa&fcActive=212121&iconColorActive=454545&bgColorHighlight=fbf9ee&bgTextureHighlight=glass&bgImgOpacityHighlight=55&borderColorHighlight=fcefa1&fcHighlight=363636&iconColorHighlight=2e83ff&bgColorError=fef1ec&bgTextureError=glass&bgImgOpacityError=95&borderColorError=cd0a0a&fcError=cd0a0a&iconColorError=cd0a0a&bgColorOverlay=aaaaaa&bgTextureOverlay=flat&bgImgOpacityOverlay=0&opacityOverlay=30&bgColorShadow=aaaaaa&bgTextureShadow=flat&bgImgOpacityShadow=0&opacityShadow=30&thicknessShadow=8px&offsetTopShadow=-8px&offsetLeftShadow=-8px&cornerRadiusShadow=8px
 * Copyright (c) 2013 jQuery Foundation and other contributors Licensed MIT */
 
+
+@font-face {
+    font-family: Goudy;
+    src: url("../../SortsMillGoudy-Regular.ttf");
+}
+@font-face {
+    font-family: Goudy;
+    src: url("SortsMillGoudy-Italic.ttf");
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: Quick;
+    src: url("DidactGothic.ttf");
+}
+
 /* Layout helpers
 ----------------------------------*/
 .ui-helper-hidden {
@@ -467,12 +483,13 @@ button.ui-button::-moz-focus-inner {
 	outline: 0;
 }
 .ui-dialog .ui-dialog-titlebar {
-/*	padding: .4em 1em;*/
+	padding: .4em 1em;
 	position: relative;
 }
 .ui-dialog .ui-dialog-title {
+    display: none;
 	float: left;
-/* 	margin: .1em 0; */
+ 	margin: 1em 1em; 
 	white-space: nowrap;
 	width: 90%;
 	overflow: hidden;
@@ -480,15 +497,20 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
+    margin: 1em 1em; 
 	right: .3em;
 	top: 50%;
 	width: 21px;
-	margin: -10px 0 0 0;
+	margin: 3px 0 0 0;
 	padding: 1px;
 	height: 20px;
+    background: none;
+    font-weight: normal;
+    
 }
 .ui-dialog .ui-dialog-content {
 	position: relative;
+    margin-top : 15px;
 	border: 0;
 	padding: .5em 1em;
 	background: none;
@@ -505,7 +527,7 @@ button.ui-button::-moz-focus-inner {
 	float: right;
 }
 .ui-dialog .ui-dialog-buttonpane button {
-	margin: .5em .4em .5em 18px;
+	margin: .5em 0em .5em 18px;
 	cursor: pointer;
 }
 .ui-dialog .ui-resizable-se {
@@ -806,7 +828,7 @@ body .ui-tooltip {
 }
 .ui-widget-header {
 	color: #222222;
-	font-weight: bold;
+    text-transform : uppercase;
 }
 .ui-widget-header a {
 	color: #222222;
@@ -891,7 +913,6 @@ body .ui-tooltip {
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-	font-weight: bold;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
@@ -1130,8 +1151,8 @@ body .ui-tooltip {
 
 /* Overlays */
 .ui-widget-overlay {
-	background: #aaaaaa url(images/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
-	opacity: .3;
+	background: yellow;
+	opacity: .5;
 	filter: Alpha(Opacity=30);
 }
 .ui-widget-shadow {
