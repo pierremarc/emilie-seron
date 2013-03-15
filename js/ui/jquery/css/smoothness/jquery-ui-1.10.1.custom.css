@@ -813,11 +813,19 @@ body .ui-tooltip {
 }
 .ui-widget input,
 .ui-widget select,
-.ui-widget textarea,
 .ui-widget button {
 	font-family: Verdana,Arial,sans-serif;
 	font-size: 1em;
 }
+
+.ui-widget textarea {
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1em;
+    width: 610px;
+    height: 270px;
+}
+
+
 .ui-widget-content {
 	border: 1px solid black;
 	background: white;
