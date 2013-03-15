@@ -381,15 +381,16 @@ function upload_file()
     
 }
 
-function FormManager(map, layer, index)
+function FormManager(map, layer, titlebar)
 {
     $('.form').hide();
     var proto = {
-        init:function(map, layer){
+        init:function(map, layer, titlebar){
             this.type_txt = 'text_t';
             this.type_img = 'image_t';
             this.map = map;
             this.layer = layer;
+            this.titlebar = titlebar;
             this.images = [];
             this.current_form = undefined; 
             this.current_edit_id = undefined;
@@ -660,12 +661,12 @@ function FormManager(map, layer, index)
             var json_data = form_to_json(form);
             var that = this;
             api.add({insert:json_data}, function(data){
-                PostItem(data.id, that.layer, that.map, that.index);
+                PostItem(data.id, that.layer, that.map, that.index, that.titlebar);
             });
         },
     };
     var ret = Object.create(proto);
-    ret.init(map, layer);
+    ret.init(map, layer, titlebar);
     return ret;
 }
 
@@ -675,7 +676,7 @@ $(document).ready(function(){
     var tb = TitleBar($('#titre-box'));
     layer.draggable();
     layer.css({ left:(layer.width() / -2)+'px', top:(layer.height() / -2)+'px' });
-    var FM = FormManager(map, layer);
+    var FM = FormManager(map, layer, tb);
     var index = Index($('#index'), map, FM, tb);
     FM.index = index;
     api.set_table('objects');
