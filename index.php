@@ -132,12 +132,32 @@ function get_images()
     {
         $sz = getimagesize($fn);
         $thname = basename($fn);
-        $thsz = getimagesize($UPLOAD_DIR.'thumbnails/'.$thname);
-        $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1], 
-                            'thumbnail'=>array(
-                                'url'=>$MEDIA_URL.'thumbnails/'.$thname,
-                                'width' => $thsz[0], 'height' => $thsz[1]
-                                ));
+        $thbfn = $UPLOAD_DIR.'thumbnails/'.$thname;
+        if(!file_exists($thbfn))
+        {
+            $u = new Upload();
+            $extension = $u->getExtension($fn);
+            if ($extension == "jpg" || $extension == "jpeg" ) {
+                $src = imagecreatefromjpeg($fn);
+            }
+            else if ($extension == "png") {
+                $src = imagecreatefrompng($fn);
+            }
+            else {
+                $src = imagecreatefromgif($fn);
+            }
+            list($originalWidth, $originalHeight) = $sz;
+            $u->resizeImage($src, 200, $fn, $UPLOAD_DIR.'thumbnails/', $originalWidth, $originalHeight);
+        }
+        if(file_exists($thbfn))
+        {
+            $thsz = getimagesize($thbfn);
+            $images[] = array('filename' => basename($fn), 'width' => $sz[0], 'height' => $sz[1], 
+                                'thumbnail'=>array(
+                                    'url'=>$MEDIA_URL.'thumbnails/'.$thname,
+                                    'width' => $thsz[0], 'height' => $thsz[1]
+                                    ));
+        }
     }
     $res->body(json_encode($images));
 }
