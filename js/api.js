@@ -40,12 +40,13 @@
         });
     };
 
-    ns.api.get = function(id, cb, obj) {
+    ns.api.get = function(id, cb, obj, data) {
         var cb = cb || console.log;
         var obj = obj || window;
         $.ajax({
             type: 'GET',
             url: this.root_url() + '/' + id,
+            data: data || {},
             dataType: "json",
             success: function(data){cb.apply(obj,[data]);}
         });

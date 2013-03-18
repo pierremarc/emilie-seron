@@ -4,7 +4,11 @@ define('IS_APPLICATION', true);
 require 'Slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
+
+require_once('MarkdownParser.php');
 require_once('api.php');
+
+$md_parser = new MarkdownParser();
 
 $app = new \Slim\Slim(array(
     'mode' =>'development',
@@ -19,6 +23,8 @@ $app->get('/get_images', 'get_images');
 $app->get('/salt', 'salt');
 $app->get('/login-page', 'login_page');
 $app->get('/login', 'login');
+$app->post('/markdown', 'md');
+
 if(is_logged())
 {
     $app->get('/logout', 'logout');
@@ -37,6 +43,17 @@ function index()
     $app->render('base.php', array('title' => 'Emile Seron', 'is_logged' => is_logged(), 'ROOT_URI'=>$req->getRootUri()));
 }
 
+
+function md()
+{
+    global $app;
+    global $md_parser;
+    $req = $app->request();
+    $res = $app->response();
+    $txt = $req->params('text');
+    $html = $md_parser->transform($txt);
+    $res->body($html);
+}
 
 function at($id) 
 {

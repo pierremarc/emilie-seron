@@ -86,7 +86,13 @@ function PostItem(id, container, map, index, titlebar)
                         left: that.x +'px',
                         top: that.y +'px',
                     });
-                    that.elem.append('<div class="text-title">'+data.title+'</div><div class="text-content">'+data.text_content+'</div>');
+                    var text_title = $('<div class="text-title">'+data.title+'</div>');
+                    var text_content = $('<div class="text-content" />');
+                    $.post('/markdown', {text:data.text_content}, function(html_data){
+                        text_content.html(html_data);
+                    });
+                    that.elem.append(text_title);
+                    that.elem.append(text_content);
                 }
                 
                 // permalink
@@ -729,6 +735,7 @@ $(document).ready(function(){
     
     if(IS_LOGGED)
     {
+        $('textarea').markItUp(MarkDownSettings);
         var uploader = new plupload.Uploader({
                 runtimes : 'html5',
                 browse_button : 'upload_file',

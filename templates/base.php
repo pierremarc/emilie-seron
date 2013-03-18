@@ -27,6 +27,11 @@ if($is_logged)
 {
     echo '<script src="'.$ROOT_URI.'/js/plupload.full.js"></script>';
     echo '<script src="'.$ROOT_URI.'/js/jquery.masonry.min.js"></script>';
+    echo '<script src="'.$ROOT_URI.'/js/markitup/jquery.markitup.js"></script>';
+    echo '<script src="'.$ROOT_URI.'/js/markitup/sets/markdown/set.js"></script>';
+    
+    echo '<link rel="stylesheet" type="text/css" href="'.$ROOT_URI.'/js/markitup/skins/simple/style.css" />';
+    echo '<link rel="stylesheet" type="text/css" href="'.$ROOT_URI.'/js/markitup/sets/markdown/style.css" />';
 }
 ?>
 <script src="<?php echo $ROOT_URI; ?>/js/geom.js"></script>
