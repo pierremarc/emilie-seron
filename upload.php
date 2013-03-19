@@ -12,7 +12,6 @@ if(!defined('IS_APPLICATION'))
 require_once('config.php');
 
 ini_set("memory_limit", "100M");
-// date_default_timezone_set("America/Los_Angeles");
 
 
 define("PRODUCTION", preg_match('/emilieseron\.be/', $_SERVER['SERVER_NAME']));
@@ -26,117 +25,127 @@ class Upload{
     
     function __construct()
     {
-        $this->thumbnails = array("thumbnails" => array("size" => 200));
+        $this->thumbnails_size = 200;
+        $this->finfo = new finfo(FILEINFO_MIME_TYPE);
+        $this->mimes = array(
+            'image/jpeg' => array(
+                'extension'=>'.jpeg', 
+                'create'=>'imagecreatefromjpeg', 
+                'save'=>'imagejpeg'),
+            'image/png' => array(
+                'extension'=>'.png', 
+                'create'=>'imagecreatefrompng', 
+                'save'=>'imagepng'),
+            'image/gif' => array(
+                'extension'=>'.gif', 
+                'create'=>'imagecreatefromgif', 
+                'save'=>'imagegif'),
+            );
     }
     
-    function getExtension($str) {
-        $i = strrpos($str,".");
-        if (!$i) { return ""; } 
-        $l = strlen($str) - $i;
-        $ext = substr($str, $i+1, $l);
-        return $ext;
+    function slugify($text)
+    { 
+        // replace non letter or digits by -
+        $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+        
+        // trim
+        $text = trim($text, '-');
+        
+        // transliterate
+        $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+        
+        // lowercase
+        $text = strtolower($text);
+        
+        // remove unwanted characters
+        $text = preg_replace('~[^-\w]+~', '', $text);
+        
+        if (empty($text))
+        {
+            return 'n-a';
+        }
+        
+        return $text;
     }
     
-    function resizeImage($image, $maxDimension, $destinationFilename, $path, $originalWidth, $originalHeight) {
-        $isHorizontal = $originalHeight < $originalWidth;
-        
-        if ($isHorizontal) {
-            $newHeight = ($originalHeight / $originalWidth) * $maxDimension;
-            $newWidth = $maxDimension;
+    function get_mime($filename)
+    {
+        return $this->finfo->file($filename);
+    }
+    
+    function image_create($file_path, $name)
+    {
+        error_log('image_create: '.$file_path. '  ' . $name);
+        $mime = $this->get_mime($file_path);
+        $image = $this->mimes[$mime]['create']($file_path);
+        $size = getimagesize($file_path);
+        return (object)array('resource'=>$image, 'mime'=>$mime, 'filename'=>$name, 'width'=>$size[0], 'height'=>$size[1]);
+    }
+    
+    function image_save($image, $dir)
+    {
+        error_log('image_save');
+        $filepath = IMAGE_PATH.$dir.$image->filename.$this->mimes[$image->mime]['extension'];
+        $this->mimes[$image->mime]['save']($image->resource, $filepath);
+    }
+    
+    function make_thumbnail($image) {
+        error_log('make_thumbnail');
+        $isHorizontal = $image->width < $image->height;
+        if ($isHorizontal) 
+        {
+            $newHeight = ($image->height / $image->width) * $this->thumbnails_size;
+            $newWidth = $this->thumbnails_size;
         }
-        else {
-            $newWidth = ($originalWidth / $originalHeight) * $maxDimension;
-            $newHeight = $maxDimension;
+        else 
+        {
+            $newWidth = ($image->width / $image->height) * $this->thumbnails_size;
+            $newHeight = $this->thumbnails_size;
         }
-        
         $tmp = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($tmp, $image->resource, 0, 0, 0, 0, $newWidth, $newHeight, $image->width, $image->height);
         
-        imagecopyresampled($tmp, $image, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
+        $thumbnail = (object)array('resource'=>$tmp, 'mime'=>$image->mime, 'filename'=>$image->filename, 'width'=>$newWidth, 'height'=>$newHeight);
+        $this->image_save($thumbnail, '/thumbnails/');
         
-        $newImageLocation = $path . $destinationFilename;
-        
-        $g = imagejpeg($tmp, $newImageLocation, 100);
-        
-        imagedestroy($tmp);
         return array("width" => (int)$newWidth, "height" => (int)$newHeight);
     }
     
     
     function handle_upload($post_name)
     {
+        error_log('handle_upload');
         $results = array();
         $error = null;
         $resultsSent = false;
         $url = '';
         
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $image_name = $_FILES[$post_name]["name"];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") 
+        {
+            $image_name = pathinfo($_FILES[$post_name]["name"]);
             $tmp_file = $_FILES[$post_name]["tmp_name"];
             
-            // need to handle files too large!
-            error_log("Request to handle " . $image_name);
-            error_log("Files: " . print_r($_FILES, true));
+            error_log($image_name['filename']);
             
-            if ($image_name) {
-                $filename = stripslashes($image_name);
-                $extension = strtolower($this->getExtension($filename));
-                
-                if (($extension != "jpg") && ($extension != "jpeg") && ($extension != "png") && ($extension != "gif")) {
-                    $error = 'Unknown image extension ' . $extension;
-                }
-                else {
-                    $size = filesize($tmp_file);
-                    if ($size > MAX_FILESIZE * 1024) {
-                        $error = "Size limit of " . MAX_FILESIZE . "KB exceeded.";
-                    }
-                    else {
-                        if ($extension == "jpg" || $extension == "jpeg" ) {
-                            $src = imagecreatefromjpeg($tmp_file);
-                        }
-                        else if ($extension == "png") {
-                            $src = imagecreatefrompng($tmp_file);
-                        }
-                        else {
-                            $src = imagecreatefromgif($tmp_file);
-                        }
-                        
-                        // set up a random, unique filename
-                        list($originalWidth, $originalHeight) = getimagesize($tmp_file);
-                        $result_filename_stem = date("YmdHi_" . rand());
-                        
-                        foreach ($this->thumbnails as $image_type => $details) {
-//                             $newFilename = $result_filename_stem . "_" . $image_type . ".jpg";
-                            $newFilename = $image_type . '/' . $result_filename_stem . ".jpg";
-                            $imageResult = array("url" => IMAGE_URL_STEM . $newFilename);
-                            $imageResult = array_merge($imageResult, $this->resizeImage($src, $details["size"], $newFilename, IMAGE_PATH, $originalWidth, $originalHeight));
-                            $results[$image_type] = $imageResult;
-                        }
-                        
-                        $full_filename = $result_filename_stem . ".jpg";
-                        copy($tmp_file, IMAGE_PATH . $full_filename);
-                        $results["full"] = array(
-                            "url" => IMAGE_URL_STEM . $full_filename, 
-                            "size" => $size, 
-                            "width" => $originalWidth, 
-                            "height" => $originalHeight
-                        );
-                        
-                        // get rid of the original temp file
-                        imagedestroy($src);
-                    }
-                }
-                
-                if ($error) 
-                {
-                    return array('status'=>'error');
-                }
-                else 
-                {
-                    $results['status'] = 'ok';
-                    return $results;
-                }
-                
+            if ($image_name) 
+            {
+                $result_filename_stem = $this->slugify($image_name['filename']);
+                $image = $this->image_create($tmp_file, $result_filename_stem);
+                $thumbnail = $this->make_thumbnail($image);
+                $this->image_save($image, '/');
+                imagedestroy($image->resource);
             }
+                
+            if ($error) 
+            {
+                return array('status'=>'error');
+            }
+            else 
+            {
+                $results['status'] = 'ok';
+                return $results;
+            }
+                
         }
     }
 }

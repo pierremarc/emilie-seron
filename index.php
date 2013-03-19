@@ -135,19 +135,11 @@ function get_images()
         $thbfn = $UPLOAD_DIR.'thumbnails/'.$thname;
         if(!file_exists($thbfn))
         {
+            require_once('upload.php');
             $u = new Upload();
-            $extension = $u->getExtension($fn);
-            if ($extension == "jpg" || $extension == "jpeg" ) {
-                $src = imagecreatefromjpeg($fn);
-            }
-            else if ($extension == "png") {
-                $src = imagecreatefrompng($fn);
-            }
-            else {
-                $src = imagecreatefromgif($fn);
-            }
-            list($originalWidth, $originalHeight) = $sz;
-            $u->resizeImage($src, 200, $fn, $UPLOAD_DIR.'thumbnails/', $originalWidth, $originalHeight);
+            $image_name = pathinfo($fn);
+            $image = $u->image_create($fn, $image_name['filename']);
+            $u->make_thumbnail($image);
         }
         if(file_exists($thbfn))
         {
@@ -166,7 +158,7 @@ function upload_image()
 {
     global $app;
     $res = $app->response();
-    require('upload.php');
+    require_once('upload.php');
     $u = new Upload();
 //     $app->render('debug.php', array('debug' => $_FILES));
     $result =  $u->handle_upload('file');
