@@ -136,11 +136,24 @@ function PostItem(id, container, map, index, titlebar)
         update_image:function(){
             var that = this;
             api.get(id, function(data){
-                that.elem.attr({width:data.image_width,
-                               height:data.image_height});
-                that.image.attr({src:'/es_media/'+data.image_file,
-                                width:data.image_width,
+                if(that.t === 'image_t')
+                {
+                    that.elem.attr({width:data.image_width,
                                 height:data.image_height});
+                    that.image.attr({src:'/es_media/'+data.image_file,
+                                    width:data.image_width,
+                                    height:data.image_height});
+                }
+                else
+                {
+                    
+                    var text_title = that.elem.find('.text-title');
+                    var text_content = that.elem.find('.text-content');
+                    text_title.text(data.title);
+                    $.post('/markdown', {text:data.text_content}, function(html_data){
+                        text_content.html(html_data);
+                    });
+                }
             });
         },
         show: function(){
@@ -616,15 +629,15 @@ function FormManager(map, layer, titlebar)
                 cat.val(data.category);
                 ix.val(data.x);
                 iy.val(data.y);
-                var submit = form.find('.submit');
-                submit.off();
-                submit.on('click', function(evt){
-                    var json_data = form_to_json(form);
-                    api.update(data.id, {update:json_data}, function(){
-                        window._ES_POST_ITEMS[data.id].update_image();
-                        form.hide();
-                    });
-                });
+//                 var submit = form.find('.submit');
+//                 submit.off();
+//                 submit.on('click', function(evt){
+//                     var json_data = form_to_json(form);
+//                     api.update(data.id, {update:json_data}, function(){
+//                         window._ES_POST_ITEMS[data.id].update_image();
+//                         form.hide();
+//                     });
+//                 });
                 
                 var cat_ref = form.find('input[name="cat_ref"]');
                 api.set_table('categories');
@@ -675,9 +688,19 @@ function FormManager(map, layer, titlebar)
             var form = this.current_form;
             var json_data = form_to_json(form);
             var that = this;
-            api.add({insert:json_data}, function(data){
-                PostItem(data.id, that.layer, that.map, that.index, that.titlebar);
-            });
+            if(that.current_edit_id === undefined)
+            {
+                api.add({insert:json_data}, function(data){
+                    PostItem(data.id, that.layer, that.map, that.index, that.titlebar);
+                });
+            }
+            else
+            {
+                var update_id = that.current_edit_id;
+                api.update(update_id, {update:json_data}, function(){
+                    window._ES_POST_ITEMS[update_id].update_image();
+                });
+            }
         },
     };
     var ret = Object.create(proto);
