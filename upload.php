@@ -78,6 +78,7 @@ class Upload{
         error_log('image_create: '.$file_path. '  ' . $name);
         $mime = $this->get_mime($file_path);
         $image = $this->mimes[$mime]['create']($file_path);
+        imagealphablending($image, true);
         $size = getimagesize($file_path);
         return (object)array('resource'=>$image, 'mime'=>$mime, 'filename'=>$name, 'width'=>$size[0], 'height'=>$size[1]);
     }
@@ -103,6 +104,8 @@ class Upload{
             $newHeight = $this->thumbnails_size;
         }
         $tmp = imagecreatetruecolor($newWidth, $newHeight);
+        imagealphablending($tmp, false);
+        imagesavealpha($tmp, true);
         imagecopyresampled($tmp, $image->resource, 0, 0, 0, 0, $newWidth, $newHeight, $image->width, $image->height);
         
         $thumbnail = (object)array('resource'=>$tmp, 'mime'=>$image->mime, 'filename'=>$image->filename, 'width'=>$newWidth, 'height'=>$newHeight);

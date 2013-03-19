@@ -94,28 +94,33 @@ if($is_logged)
 -->
 
 <div id="image-form" class="form" title="Ajouter une image">
-<input type="hidden" name="obj_type" value="image_t" />
-<input type="hidden" name="x" value="0" class="integer" />
-<input type="hidden" name="y" value="0" class="integer" />
-<input type="hidden" name="image_width" value="0" class="integer" />
-<input type="hidden" name="image_height" value="0" class="integer" />
-<input type="hidden" name="cat_ref" value="0" class="integer" />
-<input type="hidden" name="image_file" value="" />
+    <input type="hidden" name="obj_type" value="image_t" />
+    <input type="hidden" name="x" value="0" class="integer" />
+    <input type="hidden" name="y" value="0" class="integer" />
+    <input type="hidden" name="image_width" value="0" class="integer" />
+    <input type="hidden" name="image_height" value="0" class="integer" />
+    <input type="hidden" name="cat_ref" value="0" class="integer" />
+    <input type="hidden" name="image_file" value="" />
 
-<div class="text-box-form"> Nom <input type="text" name="title" /> </div>
-    <div class="text-box-form"> 
-        Catégorie <input type="text" name="category" /> 
+    <div class="image-form-top">
+        <div class="text-box-form">
+            Nom <input type="text" name="title" /> 
+        </div>
+        <div class="text-box-form"> 
+            Catégorie <input type="text" name="category" /> 
+        </div>
+        <div id="form-thumbnail"></div>
     </div>
-    <div id="form-thumbnail"></div>
+    <div class="image-form-bottom">
+    <div id="upload_file"><span>Ajouter des images à la collection</span></div>
     <div id="medias">
         <div id="media-item-box-wrapper">
             <div id="media-item-box"></div>
         </div>
-        <div id="upload_file"><span>Ajouter des images à la collection</span></div>
         <div id="upload">
             <div id="filelist"></div>
-    <!--         <div id="submit_upload">Valider</div> -->
         </div>
+    </div>
     </div>
 </div>
 
