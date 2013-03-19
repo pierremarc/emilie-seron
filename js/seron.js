@@ -455,9 +455,10 @@ function FormManager(map, layer, titlebar)
                 that.images = data;
                 var i_img = form.children('input[name="image_file"]');
                 $.each(that.images, function(idx, obj){
-                    var img = $('<div class="media-item">\
-                    <img src="'+obj.thumbnail.url+'" height="'+obj.thumbnail.height+'" width="'+obj.thumbnail.width+'"/>\
-                    </div>');
+                    var media_item = $('<div class="media-item" />');
+                    var img = $('<img src="'+obj.thumbnail.url+'" height="'+obj.thumbnail.height+'" width="'+obj.thumbnail.width+'" />');
+                    var media_del = $('<div class="media-remove">suprimer</div>');
+                    
                     img.on('click', {img_obj:obj}, function(evt){
                         i_img.val(evt.data.img_obj.filename);
                         var thb = $('#form-thumbnail');
@@ -466,7 +467,15 @@ function FormManager(map, layer, titlebar)
                         form.find('input[name="image_width"]').val(evt.data.img_obj.width);
                         form.find('input[name="image_height"]').val(evt.data.img_obj.height);
                     });
-                        mediabox.append(img);
+                    
+                    media_del.on('click', {fn:obj.filename}, function(evt){
+                        $.post('/delimage', evt.data, function(){
+                            media_item.remove();
+                        });
+                    });
+                    media_item.append(img);
+                    media_item.append(media_del);
+                    mediabox.append(media_item);
                 });
                 mediabox.masonry({
                     itemSelector : '.media-item',

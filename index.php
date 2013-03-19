@@ -29,6 +29,7 @@ if(is_logged())
 {
     $app->get('/logout', 'logout');
     $app->post('/upload', 'upload_image');
+    $app->post('/delimage', 'delete_image');
 }
 
 require_once('config.php');
@@ -164,6 +165,16 @@ function upload_image()
     $result =  $u->handle_upload('file');
     $res['Content-Type'] = 'application/json';
     $res->body(json_encode($result, JSON_NUMERIC_CHECK));
+}
+
+function delete_image()
+{
+    global $app;
+    global $UPLOAD_DIR;
+    $req = $app->request();
+    $fn = $req->post('fn');
+    unlink($UPLOAD_DIR.'/'.$fn);
+    unlink($UPLOAD_DIR.'/thumbnails/'.$fn);
 }
 
 // $app->hook('slim.before.dispatch', function () use ($app) {
