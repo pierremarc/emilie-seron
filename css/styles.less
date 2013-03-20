@@ -269,6 +269,31 @@ a {
     }
 }
 
+#category-form{
+    #form-category-list{
+        padding:4px;
+        .form-category-item{
+            padding:2px;
+            margin:2px;
+            border:1px solid gray;
+            font-weight:bold;
+            &.ui-sortable-helper{
+                cursor:move;
+                background-color:#aaa;
+            }
+            .form-category-item-delete{
+                float:right;
+                font-size:70%;
+                font-weight:normal;
+                cursor:pointer;
+                &:hover{
+                    color:red;
+                }
+            }
+        }
+    }
+}
+
 #form-button-box {
   position: absolute;
   z-index: 9;

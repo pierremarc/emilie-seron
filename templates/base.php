@@ -56,7 +56,7 @@ if($is_logged)
     </div>
    
     <div id="titre-box"> 
-        <div class="job">Titre</div>
+        <div class="job"></div>
     </div>
 
 </div>
@@ -73,13 +73,15 @@ if($is_logged)
     <input type="hidden" name="obj_type" value="text_t" />
     <input type="hidden" name="x" value="0" class="integer" />
     <input type="hidden" name="y" value="0" class="integer" />
-    <input type="hidden" name="cat_ref" value="0" class="integer" />
+<!--     <input type="hidden" name="cat_ref" value="0" class="integer" /> -->
     
     <div class="text-box-form-up">
         Titre <input type="text" name="title" />
     </div>
     <div class="text-box-form"> 
-        Catégorie <input type="text" name="category" /> 
+        Catégorie <!--<input type="text" name="category" /> -->
+        <select name="cat_ref" class="integer">
+        <select/> 
     </div>
     <div class="text-box-form"> 
         Texte 
@@ -99,7 +101,7 @@ if($is_logged)
     <input type="hidden" name="y" value="0" class="integer" />
     <input type="hidden" name="image_width" value="0" class="integer" />
     <input type="hidden" name="image_height" value="0" class="integer" />
-    <input type="hidden" name="cat_ref" value="0" class="integer" />
+<!--     <input type="hidden" name="cat_ref" value="0" class="integer" /> -->
     <input type="hidden" name="image_file" value="" />
 
     <div class="image-form-top">
@@ -107,7 +109,9 @@ if($is_logged)
             Nom <input type="text" name="title" /> 
         </div>
         <div class="text-box-form"> 
-            Catégorie <input type="text" name="category" /> 
+            Catégorie <!--<input type="text" name="category" /> -->
+            <select name="cat_ref" class="integer">
+            <select/>
         </div>
         <div id="form-thumbnail"></div>
     </div>

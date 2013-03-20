@@ -40,13 +40,13 @@
         });
     };
 
-    ns.api.get = function(id, cb, obj, data) {
+    ns.api.get = function(id, cb, obj, gdata) {
         var cb = cb || console.log;
         var obj = obj || window;
         $.ajax({
             type: 'GET',
             url: this.root_url() + '/' + id,
-            data: data || {},
+            data: gdata || {},
             dataType: "json",
             success: function(data){cb.apply(obj,[data]);}
         });
@@ -80,11 +80,13 @@
         });
     };
 
-    ns.api.delete = function(id, cb) {
+    ns.api.delete = function(id, cb, obj) {
+        var cb = cb || console.log;
+        var obj = obj || window;
         $.ajax({
             type: 'DELETE',
             url: this.root_url() + '/delete/' + id,
-            success: cb || console.log,
+            success: function(data){cb.apply(obj,[data]);},
             error: function(jqXHR, textStatus, errorThrown){
                 console.log('delete error: '+textStatus);
             }

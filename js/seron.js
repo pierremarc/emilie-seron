@@ -163,6 +163,9 @@ function PostItem(id, container, map, index, titlebar)
                 this.loaded = true; 
             }
         },
+        clear: function(){
+            this.elem.remove();
+        }
     };
     
     var ret = Object.create(proto);
@@ -179,8 +182,7 @@ function Index(container, map, fmgr, titlebar)
             this.fmgr = fmgr;
             this.titlebar = titlebar;
             
-            this.data = [];
-            this.items = [];
+            this.items = {};
             var cc = $('<div>');
             this.container.append(cc);
             this.container._content = cc;
@@ -197,39 +199,43 @@ function Index(container, map, fmgr, titlebar)
                     return a.ord - b.ord;
                 });
                 for(var i = 0; i < cats.length; i++){
-                    that.add_cat(cats[i].name.split('/'));
+                    that.add_cat(cats[i].name, cats[i].id);
                 }
                 that.cat_data = cats;
                 that.categories_ready = true;
             });
             api.reset_table();
         },
-        add_cat:function(cats){
-            for(var i=0; i < cats.length; i++)
+        add_cat:function(cat, id){
+            var cat_h = cat.split('/');
+            var cat_leaf_name = cat.split('/').pop();
+            if(this.categories[id] !== undefined)
             {
-                if(i > 0 && this.categories[cats.slice(0,i).join('/')] === undefined)
-                {
-                    this.add_cat(cats.slice(0,i));
-                }
+                return;
             }
-            var fn_cat = cats.join('/');
-            if(this.categories[fn_cat] !== undefined)
-            {
-                return this.categories[fn_cat];
-            }
-            var cat_container = $('<div class="index-category index-category-'+cats.length+'"></div>');
-            var cat_title = $('<div class="index-category-name">'+cats[cats.length - 1]+'</div>');
+            this.categories[id] = {};
+            
+            var cat_container = $('<div class="index-category index-category-'+cat_h.length+'"></div>');
+            var cat_title = $('<div class="index-category-name">'+cat_leaf_name+'</div>');
             var cat_content = $('<div class="index-category-content"></div>');
             cat_container.append(cat_title);
             cat_container.append(cat_content);
             cat_container._content = cat_content;
-            this.categories[fn_cat] = cat_container;
+            this.categories[id].container = cat_container;
+            this.categories[id].name = cat_leaf_name;
             var parent = this.container;
             var is_bound_to_root = true;
-            if(cats.length > 1)
+            if(cat_h.length > 1)
             {
-                var pname = cats.slice(0, cats.length - 1).join('/');
-                parent = this.categories[pname];
+                var pname = cat_h.slice(0, cats.length - 1).join('/');
+                for(var ci in this.categories)
+                {
+                    if(this.categories[ci].name === pname)
+                    {
+                        parent = this.categories[ci].container;
+                        break;
+                    }
+                }
                 is_bound_to_root = false;
             }
             
@@ -269,13 +275,12 @@ function Index(container, map, fmgr, titlebar)
                 window.setTimeout(function(){that.add(position, layer)} ,500);
                 return;
             }
-            var cats = post_item.data.category.split('/');
-            if(cats.length > 0)
+            
+            if(post_item.data.cat_ref > 0)
             {
-                this.data.push(post_item);
-                this.items[post_item.data.id] = iit;
-                    
-                var iit = $('<div class="index-item">'+post_item.data.title+'</div>');
+                var iit = $('<div class="index-item" data-x="'+post_item.x+'">'+post_item.data.title+'</div>');
+                this.items[post_item.id] = {data:post_item, element:iit};
+                
                 iit.on('click', function(evt){
                     var cleft = ((that.map.width() - post_item.elem.width()) / 2) - post_item.x - (that.container.width() / 2);
                     var ctop = ((that.map.height() - post_item.elem.height()) / 2) - post_item.y;
@@ -285,31 +290,38 @@ function Index(container, map, fmgr, titlebar)
                     that.titlebar.add(post_item.data.title);
                 });
                 
-                var container = this.categories[post_item.data.category];
-                if(container !== undefined)
-                    container._content.append(iit);
-            }
-        },
-        delete:function(id){
-            for(var i = 0; i < this.data.length; i++)
-            {
-                var p_i = this.data[i];
-                if(p_i.data.id === id)
+                var category = this.categories[post_item.data.cat_ref];
+                if(category !== undefined)
                 {
-                    if(p_i.data.category.length > 0)
+                    var container = category.container;
+                    var menu_items = container._content.find('.index-item');
+                    var inserted = false;
+                    for(var i = 0; i < menu_items.length; i++)
                     {
-                        this.items[id].remove()
+                        var menu_item = $(menu_items[i]);
+                        var x = parseInt(menu_item.attr('data-x'));
+                        if(x > post_item.x)
+                        {
+                            menu_item.before(iit);
+                            inserted = true;
+                            break;
+                        }
                     }
-                    p_i.elem.remove();
-                    this.data.remove(i);
-                    break;
+                    if(!inserted)
+                    {
+                        container._content.append(iit);
+                    }
                 }
             }
         },
+        delete:function(id){
+            if(this.items[id] !== undefined)
+                this.items[id].element.remove();
+        },
         go:function(name, layer){
-            for(var i = 0; i < this.data.length; i++)
+            for(var id in this.items)
             {
-                var p_i = this.data[i];
+                var p_i = this.items[id].data;
                 if(p_i.data.title === name)
                 {
                     var cleft = ((this.map.width() - p_i.elem.width()) / 2) - p_i.x - (this.container.width() / 2);
@@ -376,6 +388,7 @@ function form_to_json(form)
 {
     var inputs = form.find('input');
     var texts = form.find('textarea');
+    var selects = form.find('select');
     var ret = {};
     function extract(idx, html_elem){
         var elem = $(html_elem);
@@ -392,6 +405,7 @@ function form_to_json(form)
     }
     inputs.each(extract);
     texts.each(extract);
+    selects.each(extract);
     return JSON.stringify(ret);
 }
 
@@ -444,6 +458,8 @@ function FormManager(map, layer, titlebar)
                         var id = that.current_edit_id;
                         api.delete(id, function(){
                             that.index.delete(id);
+                            var del_item = window._ES_POST_ITEMS[id];
+                            del_item.clear();
                         });
                         $(this).dialog( "close" );
                     },
@@ -509,7 +525,20 @@ function FormManager(map, layer, titlebar)
                     return a.ord - b.ord;
                 });
                 for(var i = 0; i < cats.length; i++){
-                    cat_list.append('<li class="form-category-item" id="id_'+cats[i].id+'" ><span>'+cats[i].name+'</span></li>');
+                    var cid = cats[i].id;
+                    var cat_item = $('<li class="form-category-item" id="id_'+cats[i].id+'" ><span>'+cats[i].name+'</span></li>');
+                    var cat_del = $('<span class="form-category-item-delete">supprimer</span>');
+                    cat_item.append(cat_del);
+                    cat_list.append(cat_item);
+                    
+                    cat_del.on('click', {catid:cid,item:cat_item[0]}, function(evt){
+                        api.set_table('categories');
+                        api.delete(evt.data.catid, function(data){
+                            $(this).remove();
+                        }, evt.data.item);
+                        api.reset_table();
+                    });
+                    
                 }
             });
             api.reset_table();
@@ -526,6 +555,7 @@ function FormManager(map, layer, titlebar)
                if(new_cat.val().length > 0)
                {
                     var val = new_cat.val();
+                    new_cat.val('');
                     var order = cat_list.find('li').length + 1;
                     api.set_table('categories');
                     api.add({insert:JSON.stringify({name:val, ord:order})}, function(data){
@@ -539,6 +569,27 @@ function FormManager(map, layer, titlebar)
             var widget = this.current_form.dialog( 'widget' );
             var suppr = widget.find("button:contains('Supprimer')");
             suppr.remove();
+        },
+        cat_options:function(select, selected){
+            select.empty();
+            select.append('<option value="0">Pas de catégorie</option>');
+            api.set_table('categories');
+            api.findAll(function(data){
+                var selected_idx = -1;
+                var cats = data.result;
+                cats.sort(function(a,b){
+                    return a.ord - b.ord;
+                });
+                for(var i = 0; i < cats.length; i++){
+                    select.append('<option value="'+cats[i].id+'">'+cats[i].name+'</option>');
+                    if(selected === cats[i].id)
+                    {
+                        select.attr('selectedIndex', i+1);
+                    }
+                }
+            });
+            api.reset_table();
+            
         },
         show:function(form_t){
             var form = $('#text-form');
@@ -565,33 +616,8 @@ function FormManager(map, layer, titlebar)
             var iy = form.find('input[name="y"]');
             ix.val(-this.layer.position().left);
             iy.val(-this.layer.position().top);
-            var submit = form.find('.submit');
-            submit.off();
-            var that = this;
-            submit.on('click', function(evt){
-                that.save(form);
-            });
             
-            var cat = form.find('input[name="category"]');
-            var cat_ref = form.find('input[name="cat_ref"]');
-            api.set_table('categories');
-            api.findAll(function(data){
-                var cats = data.result;
-                cats.sort(function(a,b){
-                    return a.ord - b.ord;
-                });
-                var complete_source = [];
-                for(var i = 0; i < cats.length; i++){
-                    complete_source.push({label:cats[i].name, id:cats[i].id});
-                }
-                cat.autocomplete({ source:complete_source });
-                cat.on('autocompletechange', function(evt,ui){
-                    for(var i = 0; i < cats.length; i++){
-                        cat_ref.val(ui.item.id);
-                    }
-                });
-            });
-            api.reset_table();
+            this.cat_options(form.find('select[name="cat_ref"]'));
             
             var widget = this.current_form.dialog( 'widget' );
             var suppr = widget.find("button:contains('Supprimer')");
@@ -622,42 +648,13 @@ function FormManager(map, layer, titlebar)
                 that.current_edit_id = id;
                 
                 var title = form.find('input[name="title"]');
-                var cat = form.find('input[name="category"]');
                 var ix = form.find('input[name="x"]');
                 var iy = form.find('input[name="y"]');
                 title.val(data.title);
-                cat.val(data.category);
                 ix.val(data.x);
                 iy.val(data.y);
-//                 var submit = form.find('.submit');
-//                 submit.off();
-//                 submit.on('click', function(evt){
-//                     var json_data = form_to_json(form);
-//                     api.update(data.id, {update:json_data}, function(){
-//                         window._ES_POST_ITEMS[data.id].update_image();
-//                         form.hide();
-//                     });
-//                 });
                 
-                var cat_ref = form.find('input[name="cat_ref"]');
-                api.set_table('categories');
-                api.findAll(function(data){
-                    var cats = data.result;
-                    cats.sort(function(a,b){
-                        return a.ord - b.ord;
-                    });
-                    var complete_source = [];
-                    for(var i = 0; i < cats.length; i++){
-                        complete_source.push({label:cats[i].name, id:cats[i].id});
-                    }
-                    cat.autocomplete({ source:complete_source });
-                    cat.on('autocompletechange', function(evt,ui){
-                        for(var i = 0; i < cats.length; i++){
-                            cat_ref.val(ui.item.id);
-                        }
-                    });
-                });
-                api.reset_table();
+                this.cat_options(form.find('select[name="cat_ref"]', data.cat_ref));
                 
                 
                 that.current_form.dialog('open');
@@ -691,14 +688,17 @@ function FormManager(map, layer, titlebar)
             if(that.current_edit_id === undefined)
             {
                 api.add({insert:json_data}, function(data){
-                    PostItem(data.id, that.layer, that.map, that.index, that.titlebar);
+                    window._ES_POST_ITEMS[data.id] = PostItem(data.id, that.layer, that.map, that.index, that.titlebar);
                 });
             }
             else
             {
                 var update_id = that.current_edit_id;
                 api.update(update_id, {update:json_data}, function(){
-                    window._ES_POST_ITEMS[update_id].update_image();
+                    var update_pi = window._ES_POST_ITEMS[update_id];
+                    that.index.delete(update_id);
+                    update_pi.clear();
+                    window._ES_POST_ITEMS[update_id] = PostItem(update_id, that.layer, that.map, that.index, that.titlebar);
                 });
             }
         },
