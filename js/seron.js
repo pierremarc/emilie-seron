@@ -227,7 +227,7 @@ function Index(container, map, fmgr, titlebar)
             var is_bound_to_root = true;
             if(cat_h.length > 1)
             {
-                var pname = cat_h.slice(0, cats.length - 1).join('/');
+                var pname = cat_h.slice(0, cat_h.length - 1).join('/');
                 for(var ci in this.categories)
                 {
                     if(this.categories[ci].name === pname)
@@ -272,7 +272,7 @@ function Index(container, map, fmgr, titlebar)
             var that = this;
             if(!this.categories_ready)
             {
-                window.setTimeout(function(){that.add(position, layer)} ,500);
+                window.setTimeout(function(){that.add(post_item, layer)} ,500);
                 return;
             }
             
@@ -581,10 +581,11 @@ function FormManager(map, layer, titlebar)
                     return a.ord - b.ord;
                 });
                 for(var i = 0; i < cats.length; i++){
-                    select.append('<option value="'+cats[i].id+'">'+cats[i].name+'</option>');
-                    if(selected === cats[i].id)
+                    var option = $('<option value="'+cats[i].id+'">'+cats[i].name+'</option>')
+                    select.append(option);
+                    if(selected === parseInt(cats[i].id))
                     {
-                        select.attr('selectedIndex', i+1);
+                        select[0].selectedIndex =  i+1;
                     }
                 }
             });
@@ -654,7 +655,7 @@ function FormManager(map, layer, titlebar)
                 ix.val(data.x);
                 iy.val(data.y);
                 
-                this.cat_options(form.find('select[name="cat_ref"]', data.cat_ref));
+                this.cat_options(form.find('select[name="cat_ref"]'), data.cat_ref);
                 
                 
                 that.current_form.dialog('open');
