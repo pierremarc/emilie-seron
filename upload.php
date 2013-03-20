@@ -134,6 +134,9 @@ class Upload{
             {
                 $result_filename_stem = $this->slugify($image_name['filename']);
                 $image = $this->image_create($tmp_file, $result_filename_stem);
+                imagealphablending($image, false);
+                imagesavealpha($image, true);
+                
                 $thumbnail = $this->make_thumbnail($image);
                 $this->image_save($image, '/');
                 imagedestroy($image->resource);
